@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../../css/home-css/home.css'
 
 const Home = (props) => {
 

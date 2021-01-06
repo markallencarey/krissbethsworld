@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../../css/header-css/mobileNav.css'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const MobileNav = (props) => {

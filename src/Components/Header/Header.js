@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../../css/header-css/header.css'
 import MobileNav from './MobileNav'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'

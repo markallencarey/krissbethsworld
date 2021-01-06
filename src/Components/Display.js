@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../css/display.css'
 import routes from '../routes.js'
 import Header from './Header/Header.js'
 
