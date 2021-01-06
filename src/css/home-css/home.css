@@ -1,0 +1,19 @@
+.home {
+  height: 92vh;
+  width: 100vw;
+  position: relative;
+}
+
+.welcome-to {
+  position: relative;
+  top: 20vh;
+  font-size: 32px;
+  color: snow;
+}
+
+.title {
+  position: relative;
+  top: 20vh;
+  font-size: 56px;
+  color: snow;
+}

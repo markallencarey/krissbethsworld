@@ -1,0 +1,19 @@
+.header {
+  height: 8vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 150px;
+}
+
+.hamburger {
+  margin-left: 10px;
+}
+
+.cart-icon {
+  margin-right: 10px;
+}

@@ -1,0 +1,396 @@
+DROP TABLE IF EXISTS cart;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS auth;
+
+CREATE TABLE auth (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(100),
+  hash TEXT
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY REFERENCES auth(id),
+  first_name VARCHAR(100),
+  last_name VARCHAR(100),
+  address VARCHAR (200),
+  apt_no INT,
+  city VARCHAR(100),
+  state VARCHAR(100),
+  country VARCHAR(100),
+  zip_code INT,
+  phone_no VARCHAR(100)
+);
+
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  type TEXT,
+  store_quantity INT,
+  description TEXT,
+  img TEXT,
+  price FLOAT
+);
+
+CREATE TABLE cart (
+  id SERIAL PRIMARY KEY,
+  user_id INT REFERENCES users(id),
+  product_id INT REFERENCES products(id),
+  quantity INT
+);
+
+insert into products (id, name, type, store_quantity, description, img, price) values (1, 'Cottonmouth', 'notebook', 18, 'Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.', 'http://dummyimage.com/180x164.jpg/cc0000/ffffff', '5.08');
+insert into products (id, name, type, store_quantity, description, img, price) values (2, 'Tortoise, galapagos', 'notebook', 51, 'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.', 'http://dummyimage.com/158x101.bmp/dddddd/000000', '0.63');
+insert into products (id, name, type, store_quantity, description, img, price) values (3, 'Sloth, two-toed', 'notebook', 20, 'Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat.', 'http://dummyimage.com/236x107.jpg/dddddd/000000', '7.19');
+insert into products (id, name, type, store_quantity, description, img, price) values (4, 'Ground monitor (unidentified)', 'postcard', 28, 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.', 'http://dummyimage.com/168x231.png/ff4444/ffffff', '2.27');
+insert into products (id, name, type, store_quantity, description, img, price) values (5, 'Woodpecker, red-headed', 'notebook', 32, 'Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.', 'http://dummyimage.com/193x122.png/ff4444/ffffff', '6.13');
+insert into products (id, name, type, store_quantity, description, img, price) values (6, 'Chestnut weaver', 'washi tape', 82, 'Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', 'http://dummyimage.com/228x121.jpg/dddddd/000000', '9.49');
+insert into products (id, name, type, store_quantity, description, img, price) values (7, 'Tiger', 'washi tape', 45, 'Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat.', 'http://dummyimage.com/145x120.png/dddddd/000000', '1.57');
+insert into products (id, name, type, store_quantity, description, img, price) values (8, 'Red brocket', 'postcard', 63, 'Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.', 'http://dummyimage.com/188x217.jpg/5fa2dd/ffffff', '9.21');
+insert into products (id, name, type, store_quantity, description, img, price) values (9, 'Goldeneye, common', 'notebook', 98, 'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', 'http://dummyimage.com/225x100.jpg/cc0000/ffffff', '8.33');
+insert into products (id, name, type, store_quantity, description, img, price) values (10, 'Fox, grey', 'sticker', 79, 'Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio.', 'http://dummyimage.com/218x214.jpg/dddddd/000000', '8.20');
+insert into products (id, name, type, store_quantity, description, img, price) values (11, 'Lizard, mexican beaded', 'sticker', 90, 'In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh.', 'http://dummyimage.com/166x107.png/ff4444/ffffff', '3.70');
+insert into products (id, name, type, store_quantity, description, img, price) values (12, 'Partridge, coqui', 'postcard', 87, 'Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.', 'http://dummyimage.com/177x218.png/cc0000/ffffff', '4.22');
+insert into products (id, name, type, store_quantity, description, img, price) values (13, 'Eagle owl (unidentified)', 'notebook', 44, 'In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 'http://dummyimage.com/164x104.jpg/dddddd/000000', '7.12');
+insert into products (id, name, type, store_quantity, description, img, price) values (14, 'Squirrel, eurasian red', 'postcard', 26, 'Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien.', 'http://dummyimage.com/169x105.bmp/cc0000/ffffff', '3.30');
+insert into products (id, name, type, store_quantity, description, img, price) values (15, 'Madagascar fruit bat', 'sticker', 56, 'Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum.', 'http://dummyimage.com/117x184.bmp/5fa2dd/ffffff', '2.04');
+insert into products (id, name, type, store_quantity, description, img, price) values (16, 'Mongoose, yellow', 'washi tape', 16, 'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus.', 'http://dummyimage.com/249x171.jpg/5fa2dd/ffffff', '4.18');
+insert into products (id, name, type, store_quantity, description, img, price) values (17, 'Bear, black', 'notebook', 80, 'Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.', 'http://dummyimage.com/182x220.bmp/5fa2dd/ffffff', '3.15');
+insert into products (id, name, type, store_quantity, description, img, price) values (18, 'American badger', 'washi tape', 57, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.', 'http://dummyimage.com/131x242.png/ff4444/ffffff', '4.66');
+insert into products (id, name, type, store_quantity, description, img, price) values (19, 'Ring-tailed lemur', 'notebook', 15, 'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 'http://dummyimage.com/100x163.jpg/cc0000/ffffff', '0.53');
+insert into products (id, name, type, store_quantity, description, img, price) values (20, 'Wallaroo, common', 'notebook', 17, 'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.', 'http://dummyimage.com/110x183.bmp/5fa2dd/ffffff', '4.36');
+insert into products (id, name, type, store_quantity, description, img, price) values (21, 'Common zebra', 'washi tape', 84, 'Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.', 'http://dummyimage.com/213x130.png/dddddd/000000', '5.28');
+insert into products (id, name, type, store_quantity, description, img, price) values (22, 'White-bellied sea eagle', 'notebook', 3, 'In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.', 'http://dummyimage.com/106x173.bmp/ff4444/ffffff', '2.36');
+insert into products (id, name, type, store_quantity, description, img, price) values (23, 'Western patch-nosed snake', 'sticker', 51, 'Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.', 'http://dummyimage.com/197x101.bmp/5fa2dd/ffffff', '7.47');
+insert into products (id, name, type, store_quantity, description, img, price) values (24, 'Waterbuck, defassa', 'sticker', 26, 'Cras pellentesque volutpat dui.', 'http://dummyimage.com/195x150.bmp/dddddd/000000', '6.83');
+insert into products (id, name, type, store_quantity, description, img, price) values (25, 'Grey heron', 'notebook', 72, 'Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus.', 'http://dummyimage.com/250x144.png/5fa2dd/ffffff', '1.07');
+insert into products (id, name, type, store_quantity, description, img, price) values (26, 'Blue-footed booby', 'sticker', 21, 'In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat. Nulla nisl.', 'http://dummyimage.com/161x134.bmp/cc0000/ffffff', '0.53');
+insert into products (id, name, type, store_quantity, description, img, price) values (27, 'Great skua', 'postcard', 18, 'Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 'http://dummyimage.com/227x236.bmp/dddddd/000000', '7.25');
+insert into products (id, name, type, store_quantity, description, img, price) values (28, 'Otter, cape clawless', 'sticker', 67, 'Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.', 'http://dummyimage.com/221x115.jpg/ff4444/ffffff', '3.07');
+insert into products (id, name, type, store_quantity, description, img, price) values (29, 'Black kite', 'notebook', 46, 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.', 'http://dummyimage.com/230x250.bmp/dddddd/000000', '1.76');
+insert into products (id, name, type, store_quantity, description, img, price) values (30, 'Lemur, sportive', 'postcard', 83, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.', 'http://dummyimage.com/219x142.jpg/cc0000/ffffff', '3.97');
+insert into products (id, name, type, store_quantity, description, img, price) values (31, 'Dog, raccoon', 'sticker', 16, 'In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum.', 'http://dummyimage.com/142x161.png/dddddd/000000', '8.54');
+insert into products (id, name, type, store_quantity, description, img, price) values (32, 'Mountain goat', 'washi tape', 22, 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.', 'http://dummyimage.com/169x195.bmp/cc0000/ffffff', '8.34');
+insert into products (id, name, type, store_quantity, description, img, price) values (33, 'Shrike, southern white-crowned', 'washi tape', 8, 'Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 'http://dummyimage.com/244x130.png/5fa2dd/ffffff', '4.11');
+insert into products (id, name, type, store_quantity, description, img, price) values (34, 'Mongoose, banded', 'notebook', 68, 'Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.', 'http://dummyimage.com/237x207.bmp/cc0000/ffffff', '3.01');
+insert into products (id, name, type, store_quantity, description, img, price) values (35, 'Fox, bat-eared', 'notebook', 24, 'Suspendisse ornare consequat lectus.', 'http://dummyimage.com/111x185.png/cc0000/ffffff', '4.91');
+insert into products (id, name, type, store_quantity, description, img, price) values (36, 'Grizzly bear', 'postcard', 11, 'Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.', 'http://dummyimage.com/182x135.jpg/5fa2dd/ffffff', '3.53');
+insert into products (id, name, type, store_quantity, description, img, price) values (37, 'Common goldeneye', 'washi tape', 69, 'Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.', 'http://dummyimage.com/131x186.png/5fa2dd/ffffff', '7.55');
+insert into products (id, name, type, store_quantity, description, img, price) values (38, 'Whale, long-finned pilot', 'notebook', 85, 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', 'http://dummyimage.com/213x114.png/cc0000/ffffff', '5.64');
+insert into products (id, name, type, store_quantity, description, img, price) values (39, 'Pelican, australian', 'sticker', 96, 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem.', 'http://dummyimage.com/250x107.jpg/dddddd/000000', '1.58');
+insert into products (id, name, type, store_quantity, description, img, price) values (40, 'Sage hen', 'postcard', 27, 'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla.', 'http://dummyimage.com/245x155.png/cc0000/ffffff', '3.88');
+insert into products (id, name, type, store_quantity, description, img, price) values (41, 'African black crake', 'notebook', 36, 'Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.', 'http://dummyimage.com/197x185.bmp/ff4444/ffffff', '7.18');
+insert into products (id, name, type, store_quantity, description, img, price) values (42, 'Raven, white-necked', 'postcard', 16, 'Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.', 'http://dummyimage.com/100x185.bmp/ff4444/ffffff', '6.55');
+insert into products (id, name, type, store_quantity, description, img, price) values (43, 'Neotropic cormorant', 'notebook', 78, 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.', 'http://dummyimage.com/185x175.png/dddddd/000000', '3.97');
+insert into products (id, name, type, store_quantity, description, img, price) values (44, 'Galapagos mockingbird', 'sticker', 16, 'Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.', 'http://dummyimage.com/220x217.jpg/cc0000/ffffff', '5.01');
+insert into products (id, name, type, store_quantity, description, img, price) values (45, 'Eagle, golden', 'washi tape', 80, 'Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.', 'http://dummyimage.com/168x197.bmp/cc0000/ffffff', '0.17');
+insert into products (id, name, type, store_quantity, description, img, price) values (46, 'Slender loris', 'notebook', 12, 'Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.', 'http://dummyimage.com/230x179.bmp/dddddd/000000', '8.71');
+insert into products (id, name, type, store_quantity, description, img, price) values (47, 'Puma', 'postcard', 23, 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.', 'http://dummyimage.com/210x204.jpg/5fa2dd/ffffff', '8.91');
+insert into products (id, name, type, store_quantity, description, img, price) values (48, 'Indian star tortoise', 'washi tape', 29, 'In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat.', 'http://dummyimage.com/146x162.jpg/dddddd/000000', '7.49');
+insert into products (id, name, type, store_quantity, description, img, price) values (49, 'Gull, lava', 'washi tape', 89, 'Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus.', 'http://dummyimage.com/208x223.jpg/ff4444/ffffff', '0.62');
+insert into products (id, name, type, store_quantity, description, img, price) values (50, 'Bee-eater, carmine', 'postcard', 99, 'Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat.', 'http://dummyimage.com/179x134.png/ff4444/ffffff', '5.95');
+
+-- insert into auth (id, email, hash) values (1, 'jwhelband0@xinhuanet.com', 'WhO78w5yUkim');
+-- insert into auth (id, email, hash) values (2, 'swhye1@senate.gov', '2BaJCe3wu');
+-- insert into auth (id, email, hash) values (3, 'ilinwood2@indiatimes.com', 'Y5DKhf');
+-- insert into auth (id, email, hash) values (4, 'gkippie3@japanpost.jp', 'IEE6YW');
+-- insert into auth (id, email, hash) values (5, 'cwhittenbury4@phoca.cz', 'RVPJBbHCQ8');
+-- insert into auth (id, email, hash) values (6, 'rthirtle5@meetup.com', 'r6cOTXZ5lNgQ');
+-- insert into auth (id, email, hash) values (7, 'rjaksic6@salon.com', 'CVAz63nC');
+-- insert into auth (id, email, hash) values (8, 'imiskimmon7@dailymotion.com', 'VGlKjvkV1n');
+-- insert into auth (id, email, hash) values (9, 'azavattero8@bigcartel.com', 'bMaomDzGer2i');
+-- insert into auth (id, email, hash) values (10, 'pmasson9@hatena.ne.jp', 'kqWsx7fAGC');
+-- insert into auth (id, email, hash) values (11, 'splumridegea@goodreads.com', 'KrGpJxePROgT');
+-- insert into auth (id, email, hash) values (12, 'eemansonb@trellian.com', 'nwnDPlIQM');
+-- insert into auth (id, email, hash) values (13, 'erayntonc@nps.gov', 'l2xxiW1ji8Ta');
+-- insert into auth (id, email, hash) values (14, 'sbierd@guardian.co.uk', '8WMdhlPN0');
+-- insert into auth (id, email, hash) values (15, 'ckernane@sfgate.com', 'b6vXUUZpaZ');
+-- insert into auth (id, email, hash) values (16, 'thendrixf@pcworld.com', 'EYKM5z79jh0');
+-- insert into auth (id, email, hash) values (17, 'fwinksg@ezinearticles.com', 'FbW4TOS');
+-- insert into auth (id, email, hash) values (18, 'drubinfajnh@mapquest.com', '0p6sXwEhEU6');
+-- insert into auth (id, email, hash) values (19, 'rsouteri@toplist.cz', 'PsIdXco3fPhn');
+-- insert into auth (id, email, hash) values (20, 'ckillingworthj@dot.gov', 'kOGvE1jsyET');
+-- insert into auth (id, email, hash) values (21, 'nshevillk@wsj.com', 'P83ru0Hl');
+-- insert into auth (id, email, hash) values (22, 'ldeweyl@cloudflare.com', 'NPCQBz');
+-- insert into auth (id, email, hash) values (23, 'lflowerm@smh.com.au', '4GzVcoRuyC');
+-- insert into auth (id, email, hash) values (24, 'kmaiern@usatoday.com', 'ZImQgRFhK');
+-- insert into auth (id, email, hash) values (25, 'kbeno@storify.com', 'ZAmMFDChYuHG');
+-- insert into auth (id, email, hash) values (26, 'dvoulsp@amazon.co.uk', 'qW50VN661oC');
+-- insert into auth (id, email, hash) values (27, 'mseemmondsq@hatena.ne.jp', 'Ub3ygRE');
+-- insert into auth (id, email, hash) values (28, 'gkeaveneyr@cisco.com', 'yWKtLt');
+-- insert into auth (id, email, hash) values (29, 'hprandis@youtube.com', 'KynsOgjnlry');
+-- insert into auth (id, email, hash) values (30, 'mstockmant@google.com.hk', 'JOz0omAyr');
+-- insert into auth (id, email, hash) values (31, 'bedwicku@cmu.edu', 'uwMNN6amnX');
+-- insert into auth (id, email, hash) values (32, 'cseelv@desdev.cn', 'NpKHgXNj');
+-- insert into auth (id, email, hash) values (33, 'alegricew@house.gov', 'tcfttQQUCoq');
+-- insert into auth (id, email, hash) values (34, 'cmelvinx@npr.org', '2HkNgllcY2G');
+-- insert into auth (id, email, hash) values (35, 'elafrentzy@amazon.co.uk', 'RgcaFMSMM77');
+-- insert into auth (id, email, hash) values (36, 'rcasinaz@state.gov', '2Vr59xzlG');
+-- insert into auth (id, email, hash) values (37, 'aduiguid10@bloomberg.com', 'aEEYsQ0VRu4');
+-- insert into auth (id, email, hash) values (38, 'aboner11@trellian.com', '1BDkz0uM');
+-- insert into auth (id, email, hash) values (39, 'pdredge12@time.com', 'KzhS3pc');
+-- insert into auth (id, email, hash) values (40, 'kcuddihy13@uol.com.br', 'Fb9C2b7m0sj');
+-- insert into auth (id, email, hash) values (41, 'tplumbridge14@fc2.com', 'zvni4L0');
+-- insert into auth (id, email, hash) values (42, 'singerith15@sina.com.cn', 'RAlGTWxU');
+-- insert into auth (id, email, hash) values (43, 'abaysting16@loc.gov', 'm4YheU0C');
+-- insert into auth (id, email, hash) values (44, 'dhackwell17@toplist.cz', 'XE5MMN');
+-- insert into auth (id, email, hash) values (45, 'mbanner18@rakuten.co.jp', 'Z5Nh6e9ImbB');
+-- insert into auth (id, email, hash) values (46, 'hcartin19@themeforest.net', 'NsO7qYR');
+-- insert into auth (id, email, hash) values (47, 'rrollinson1a@ustream.tv', 'waoGNy');
+-- insert into auth (id, email, hash) values (48, 'ncaroline1b@meetup.com', 'CwbI1is');
+-- insert into auth (id, email, hash) values (49, 'ecouve1c@acquirethisname.com', '20yMKrdHGUy');
+-- insert into auth (id, email, hash) values (50, 'fetches1d@webeden.co.uk', 'GcWjXmp4');
+-- insert into auth (id, email, hash) values (51, 'sfalks1e@ebay.co.uk', 'D2U8EKogoTgY');
+-- insert into auth (id, email, hash) values (52, 'eskylett1f@quantcast.com', 'qeWQpjf5');
+-- insert into auth (id, email, hash) values (53, 'ikann1g@google.it', 'IBNOx1P2');
+-- insert into auth (id, email, hash) values (54, 'hgarford1h@paginegialle.it', 'S838LppGmN');
+-- insert into auth (id, email, hash) values (55, 'dpavese1i@vinaora.com', 'R3T868');
+-- insert into auth (id, email, hash) values (56, 'oferrettini1j@europa.eu', 'BM9wdKhqnOGQ');
+-- insert into auth (id, email, hash) values (57, 'nmeni1k@dot.gov', 'g6vuJR');
+-- insert into auth (id, email, hash) values (58, 'jgiacomelli1l@bloglines.com', 'fqFDbV');
+-- insert into auth (id, email, hash) values (59, 'slackeye1m@ed.gov', 'hD3uhl9oUOm');
+-- insert into auth (id, email, hash) values (60, 'gpizzie1n@godaddy.com', 'g2RdBx');
+-- insert into auth (id, email, hash) values (61, 'usowley1o@nsw.gov.au', 'BUqwiVmgWMxi');
+-- insert into auth (id, email, hash) values (62, 'aransbury1p@nature.com', 'wDsSv1r9H');
+-- insert into auth (id, email, hash) values (63, 'jhacker1q@parallels.com', 'qOh8W46');
+-- insert into auth (id, email, hash) values (64, 'bgarlinge1r@marketwatch.com', '0WDhBtT');
+-- insert into auth (id, email, hash) values (65, 'smcaulay1s@fema.gov', 'X9k8s1ncpd');
+-- insert into auth (id, email, hash) values (66, 'agoalby1t@tamu.edu', 'tWtjYMGNzi');
+-- insert into auth (id, email, hash) values (67, 'eherety1u@clickbank.net', 'hLInPiylEj');
+-- insert into auth (id, email, hash) values (68, 'ikidsley1v@prweb.com', 'MFnDWi');
+-- insert into auth (id, email, hash) values (69, 'lkinnie1w@independent.co.uk', 'zpZBLsga1P');
+-- insert into auth (id, email, hash) values (70, 'mtrinkwon1x@cocolog-nifty.com', 'TT0MlGTBzAW');
+-- insert into auth (id, email, hash) values (71, 'ctorvey1y@homestead.com', '23dMtEfbd');
+-- insert into auth (id, email, hash) values (72, 'ebrabbs1z@google.com.hk', 'vtWC9S');
+-- insert into auth (id, email, hash) values (73, 'kcrosston20@bigcartel.com', 'fkZQdmO');
+-- insert into auth (id, email, hash) values (74, 'dwoolgar21@over-blog.com', 'MzUxiq');
+-- insert into auth (id, email, hash) values (75, 'hplacido22@amazonaws.com', 'npn6lFQxaP9');
+-- insert into auth (id, email, hash) values (76, 'twanka23@mediafire.com', 'gGn8vrQzvE9');
+-- insert into auth (id, email, hash) values (77, 'zcubin24@elegantthemes.com', 'uMSsDS6N4Kr2');
+-- insert into auth (id, email, hash) values (78, 'cwinckle25@amazon.co.uk', 'qbM1jV176u3D');
+-- insert into auth (id, email, hash) values (79, 'akrol26@ucla.edu', 'RKm1S29K');
+-- insert into auth (id, email, hash) values (80, 'adoxey27@netscape.com', 'ozP8T6i7eS');
+-- insert into auth (id, email, hash) values (81, 'kkirkman28@hc360.com', 'pTYI1b');
+-- insert into auth (id, email, hash) values (82, 'pcanizares29@storify.com', 'EEn501F1G');
+-- insert into auth (id, email, hash) values (83, 'porrey2a@w3.org', 'WDGwXV6gLE');
+-- insert into auth (id, email, hash) values (84, 'agirault2b@oaic.gov.au', '47Ferul6t');
+-- insert into auth (id, email, hash) values (85, 'lkirkland2c@joomla.org', 'VpU0RD');
+-- insert into auth (id, email, hash) values (86, 'hsilkstone2d@moonfruit.com', 'YrFYf9p7Iht');
+-- insert into auth (id, email, hash) values (87, 'llombardo2e@merriam-webster.com', 'ilfyrsu5K');
+-- insert into auth (id, email, hash) values (88, 'zjarville2f@issuu.com', 'C2m9ULsCG');
+-- insert into auth (id, email, hash) values (89, 'kviner2g@skype.com', 'ETcgcpb');
+-- insert into auth (id, email, hash) values (90, 'cwidger2h@bing.com', 'sSIeQQYW8GFl');
+-- insert into auth (id, email, hash) values (91, 'ayitshak2i@smh.com.au', 'j0zv3FXNqo4Q');
+-- insert into auth (id, email, hash) values (92, 'rrickaby2j@google.nl', '6WGBEKs');
+-- insert into auth (id, email, hash) values (93, 'nniset2k@mayoclinic.com', '37gowW');
+-- insert into auth (id, email, hash) values (94, 'mfrazer2l@deliciousdays.com', 'xn9NxgKR48EP');
+-- insert into auth (id, email, hash) values (95, 'osleicht2m@mapy.cz', 'hHROFgEvcc');
+-- insert into auth (id, email, hash) values (96, 'jbraunroth2n@artisteer.com', '8QpERlAUYC');
+-- insert into auth (id, email, hash) values (97, 'kjeffries2o@elpais.com', 'ADp6PBdJba3');
+-- insert into auth (id, email, hash) values (98, 'vgawthrop2p@soundcloud.com', '2dkrDcY58');
+-- insert into auth (id, email, hash) values (99, 'sbravery2q@cnet.com', 'qrw7o2K9Y');
+-- insert into auth (id, email, hash) values (100, 'dashley2r@arstechnica.com', 'NVvKhKrdHG8');
+
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (1, 'Nanette', 'Shillingford', '650 David Center', 419, 'Pittsburgh', 'Pennsylvania', 'USA', '15205', '724-334-0970');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (2, 'Rurik', 'De Souza', '17 Delladonna Avenue', 231, 'Oklahoma City', 'Oklahoma', 'USA', '73179', '405-558-3333');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (3, 'Felice', 'Roan', '15577 Little Fleur Terrace', 39, 'Columbia', 'Missouri', 'USA', '65218', '573-983-7908');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (4, 'Sauncho', 'Slowly', '90160 Dexter Alley', 173, 'Bakersfield', 'California', 'USA', '93311', '805-924-5759');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (5, 'Gerard', 'Baroch', '40196 Ronald Regan Junction', 146, 'San Diego', 'California', 'USA', '92165', '619-633-1689');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (6, 'Davidde', 'Kristiansen', '46198 Loeprich Alley', 205, 'Los Angeles', 'California', 'USA', '90015', '626-764-2391');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (7, 'Marchall', 'Douberday', '48 Everett Drive', 447, 'South Lake Tahoe', 'California', 'USA', '96154', '530-755-6966');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (8, 'Anne-corinne', 'McPeeters', '16 Mayfield Circle', 114, 'Scottsdale', 'Arizona', 'USA', '85260', '480-184-6931');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (9, 'Desiree', 'Aylward', '5405 Fair Oaks Pass', 493, 'Erie', 'Pennsylvania', 'USA', '16510', '814-574-1800');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (10, 'Kirstyn', 'Bidder', '40711 Cordelia Street', 428, 'San Jose', 'California', 'USA', '95113', '408-326-5057');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (11, 'Gypsy', 'Thrussell', '7 Shopko Hill', 97, 'Bronx', 'New York', 'USA', '10454', '718-894-8471');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (12, 'Wallache', 'Baybutt', '4 Charing Cross Lane', 368, 'Lexington', 'Kentucky', 'USA', '40576', '859-638-0847');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (13, 'Constanta', 'Cornejo', '28 Petterle Avenue', 149, 'Duluth', 'Minnesota', 'USA', '55805', '218-570-9471');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (14, 'Catherin', 'Daulton', '478 Artisan Road', 327, 'Memphis', 'Tennessee', 'USA', '38150', '901-530-3127');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (15, 'Andros', 'Filippi', '9 Mandrake Place', 44, 'Fort Worth', 'Texas', 'USA', '76198', '682-698-5900');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (16, 'Rog', 'Hindenburg', '57 Morrow Junction', 211, 'Atlanta', 'Georgia', 'USA', '31132', '404-454-9591');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (17, 'Kylynn', 'Kitchaside', '343 Sheridan Crossing', 262, 'Washington', 'District of Columbia', 'USA', '20268', '202-400-5838');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (18, 'Judas', 'Oldroyde', '3 Arrowood Avenue', 334, 'Chicago', 'Illinois', 'USA', '60674', '312-619-2086');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (19, 'Claus', 'Orrett', '37769 Gale Place', 301, 'Jeffersonville', 'Indiana', 'USA', '47134', '812-696-8844');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (20, 'Waring', 'Ackroyd', '74 Esker Junction', 444, 'Washington', 'District of Columbia', 'USA', '20456', '202-681-7331');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (21, 'Wendell', 'Goodlud', '549 Fremont Junction', 174, 'Bakersfield', 'California', 'USA', '93386', '661-412-1081');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (22, 'Donni', 'Yetman', '6237 Elmside Crossing', 311, 'Norfolk', 'Virginia', 'USA', '23504', '757-947-9811');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (23, 'Myles', 'Blazic', '80721 Main Center', 49, 'Indianapolis', 'Indiana', 'USA', '46239', '317-412-5099');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (24, 'Adelaida', 'Hele', '521 Brentwood Drive', 131, 'Olympia', 'Washington', 'USA', '98516', '360-357-7372');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (25, 'Afton', 'Speek', '9470 Stone Corner Road', 242, 'Dallas', 'Texas', 'USA', '75265', '214-576-2789');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (26, 'Kira', 'Dunlap', '49 Oak Circle', 200, 'Anchorage', 'Alaska', 'USA', '99599', '907-812-7488');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (27, 'Had', 'Hursey', '73181 Pond Junction', 397, 'Decatur', 'Illinois', 'USA', '62525', '217-233-9094');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (28, 'Fraze', 'Britton', '40 Roth Crossing', 46, 'Lees Summit', 'Missouri', 'USA', '64082', '816-839-5795');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (29, 'Jared', 'Livett', '020 Erie Court', 388, 'Colorado Springs', 'Colorado', 'USA', '80995', '719-635-6938');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (30, 'Cynthie', 'Bennetto', '28069 Loftsgordon Junction', 480, 'Birmingham', 'Alabama', 'USA', '35242', '205-486-7897');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (31, 'Cris', 'Wycherley', '81 Esker Hill', 490, 'Reno', 'Nevada', 'USA', '89550', '775-119-8221');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (32, 'Trueman', 'Harm', '794 Hayes Crossing', 382, 'Corona', 'California', 'USA', '92878', '951-536-7422');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (33, 'Glendon', 'Showalter', '05 Kensington Road', 459, 'Las Vegas', 'Nevada', 'USA', '89125', '702-804-8332');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (34, 'Serge', 'Seymer', '991 Ridgeway Center', 98, 'Rochester', 'New York', 'USA', '14609', '585-641-1703');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (35, 'Ardella', 'Duffan', '410 Dwight Way', 46, 'Houston', 'Texas', 'USA', '77250', '713-896-4168');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (36, 'Georas', 'Simmance', '33 Esker Trail', 34, 'Sacramento', 'California', 'USA', '94297', '916-885-1326');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (37, 'Christine', 'La Padula', '599 Lukken Avenue', 494, 'Ridgely', 'Maryland', 'USA', '21684', '410-499-0931');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (38, 'Elsy', 'Kaspar', '3127 Memorial Court', 238, 'Birmingham', 'Alabama', 'USA', '35254', '205-198-9599');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (39, 'Gaspar', 'Boughey', '7 Ryan Alley', 286, 'Rochester', 'New York', 'USA', '14609', '585-743-1797');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (40, 'Ibby', 'Josh', '2 Sunnyside Plaza', 457, 'Cincinnati', 'Ohio', 'USA', '45264', '513-994-2072');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (41, 'Bendick', 'Crutchley', '5466 Talisman Hill', 159, 'Gainesville', 'Florida', 'USA', '32627', '352-461-0720');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (42, 'Jeremie', 'Yukhnini', '78157 North Court', 281, 'Winston Salem', 'North Carolina', 'USA', '27105', '704-899-9625');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (43, 'Flori', 'Overil', '5 Continental Point', 171, 'Colorado Springs', 'Colorado', 'USA', '80905', '719-308-9156');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (44, 'Alard', 'Jewson', '99347 Maywood Park', 164, 'Washington', 'District of Columbia', 'USA', '20062', '202-625-3203');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (45, 'Karlotta', 'Milmith', '96 Basil Junction', 99, 'Oklahoma City', 'Oklahoma', 'USA', '73119', '405-883-7586');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (46, 'Leda', 'Butchard', '50412 Monument Alley', 146, 'Buffalo', 'New York', 'USA', '14276', '716-833-1105');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (47, 'Perle', 'Cestard', '78708 Sutherland Alley', 48, 'El Paso', 'Texas', 'USA', '88546', '915-523-1286');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (48, 'Inez', 'Cudworth', '902 Sauthoff Parkway', 12, 'Visalia', 'California', 'USA', '93291', '559-335-5139');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (49, 'Leland', 'Dron', '51 Hooker Alley', 100, 'Reno', 'Nevada', 'USA', '89510', '775-511-8382');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (50, 'Juieta', 'Prosser', '5 Elka Point', 72, 'El Paso', 'Texas', 'USA', '79994', '915-185-0023');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (51, 'Isiahi', 'Bortolozzi', '057 Algoma Trail', 133, 'Pittsburgh', 'Pennsylvania', 'USA', '15286', '412-977-5809');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (52, 'Garek', 'Feldstern', '096 Shoshone Park', 500, 'Lake Charles', 'Louisiana', 'USA', '70616', '337-764-5225');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (53, 'Sollie', 'Crellin', '764 Marquette Alley', 82, 'New Orleans', 'Louisiana', 'USA', '70142', '504-403-7448');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (54, 'Emlen', 'Simmig', '96868 Westport Terrace', 52, 'Fairbanks', 'Alaska', 'USA', '99709', '907-177-3176');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (55, 'Kimmie', 'Fairpo', '89 Dennis Avenue', 429, 'Corpus Christi', 'Texas', 'USA', '78405', '361-894-0371');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (56, 'Corissa', 'Hunnicutt', '607 Barby Center', 327, 'Palm Bay', 'Florida', 'USA', '32909', '561-651-4934');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (57, 'Wallis', 'McKenny', '386 Claremont Court', 181, 'Santa Fe', 'New Mexico', 'USA', '87592', '505-235-6786');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (58, 'Krystal', 'Mattis', '5 Walton Circle', 457, 'San Jose', 'California', 'USA', '95138', '408-284-7614');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (59, 'Lyell', 'Proudler', '1030 Hallows Court', 409, 'Washington', 'District of Columbia', 'USA', '20456', '202-800-4533');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (60, 'Andriana', 'Paulot', '10410 Clarendon Way', 424, 'Sacramento', 'California', 'USA', '94207', '916-713-7709');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (61, 'Wiatt', 'MacKegg', '732 Service Trail', 365, 'Sacramento', 'California', 'USA', '94273', '916-592-2759');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (62, 'Cosmo', 'Grafton-Herbert', '396 Fairview Point', 240, 'Pasadena', 'California', 'USA', '91186', '626-643-9937');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (63, 'Aylmar', 'Ickowicz', '21 Acker Road', 251, 'Winston Salem', 'North Carolina', 'USA', '27116', '336-953-9957');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (64, 'Stevie', 'Semble', '10 Hermina Trail', 148, 'New York City', 'New York', 'USA', '10039', '212-983-9964');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (65, 'Kassi', 'Chatburn', '82555 Hoffman Circle', 87, 'New York City', 'New York', 'USA', '10019', '347-119-2684');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (66, 'Roxi', 'Abotson', '9315 Westend Circle', 45, 'Cincinnati', 'Ohio', 'USA', '45228', '513-513-4532');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (67, 'Ryann', 'Baitey', '6300 Butterfield Hill', 142, 'Bakersfield', 'California', 'USA', '93399', '661-716-4561');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (68, 'Jodi', 'Lucken', '37094 Debs Avenue', 224, 'Milwaukee', 'Wisconsin', 'USA', '53277', '414-436-2673');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (69, 'Marlene', 'Foldes', '053 Dunning Circle', 393, 'Midland', 'Texas', 'USA', '79710', '432-298-4231');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (70, 'Chelsey', 'Harbard', '1085 Vermont Road', 267, 'Seattle', 'Washington', 'USA', '98109', '206-136-8198');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (71, 'Hildegarde', 'Kalf', '0 5th Circle', 489, 'Minneapolis', 'Minnesota', 'USA', '55470', '612-554-3802');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (72, 'Remus', 'Gaskamp', '577 Acker Park', 79, 'Tulsa', 'Oklahoma', 'USA', '74141', '918-391-6513');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (73, 'Ginny', 'Peartree', '82923 Main Place', 430, 'Katy', 'Texas', 'USA', '77493', '281-802-5670');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (74, 'Carr', 'Waldocke', '57050 Texas Parkway', 256, 'Bronx', 'New York', 'USA', '10454', '718-811-0347');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (75, 'Glad', 'Cannam', '9259 Swallow Trail', 286, 'Glendale', 'Arizona', 'USA', '85311', '602-880-0718');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (76, 'Carole', 'Monni', '013 Dawn Lane', 330, 'Baton Rouge', 'Louisiana', 'USA', '70836', '225-843-1911');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (77, 'Ginni', 'Fidgin', '3 Oak Valley Center', 248, 'Beaverton', 'Oregon', 'USA', '97075', '503-224-8137');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (78, 'Murielle', 'Rabbage', '4278 Sachs Hill', 30, 'Marietta', 'Georgia', 'USA', '30061', '770-666-5651');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (79, 'Avram', 'Gamil', '916 Atwood Place', 365, 'El Paso', 'Texas', 'USA', '88589', '915-293-2997');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (80, 'Lyndsie', 'Peatman', '274 Schmedeman Hill', 240, 'Paterson', 'New Jersey', 'USA', '07522', '973-285-4814');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (81, 'Jerry', 'Bondar', '75064 Holmberg Avenue', 79, 'North Las Vegas', 'Nevada', 'USA', '89036', '702-230-6188');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (82, 'Ashlie', 'Eathorne', '857 Springview Street', 481, 'Jamaica', 'New York', 'USA', '11480', '917-456-0450');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (83, 'Mitch', 'Cecchi', '3 Judy Center', 222, 'Colorado Springs', 'Colorado', 'USA', '80995', '719-870-3725');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (84, 'Licha', 'Caukill', '1 Armistice Avenue', 116, 'Miami', 'Florida', 'USA', '33185', '305-154-4123');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (85, 'Sigvard', 'Augur', '42005 Continental Alley', 277, 'Van Nuys', 'California', 'USA', '91411', '213-311-6001');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (86, 'Ebenezer', 'Cornuau', '37 Springs Center', 339, 'Oklahoma City', 'Oklahoma', 'USA', '73167', '405-413-8226');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (87, 'Anabal', 'Demkowicz', '22899 Debs Avenue', 102, 'Albany', 'New York', 'USA', '12227', '518-129-3924');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (88, 'Sisile', 'Grellis', '5 Milwaukee Park', 123, 'Albany', 'New York', 'USA', '12232', '518-557-8255');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (89, 'Archibald', 'Montfort', '828 Golf View Center', 373, 'Oklahoma City', 'Oklahoma', 'USA', '73147', '405-893-4467');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (90, 'Jewell', 'Pisco', '07 Boyd Road', 168, 'El Paso', 'Texas', 'USA', '79977', '915-557-6487');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (91, 'Valle', 'Pennuzzi', '32142 6th Plaza', 51, 'Houston', 'Texas', 'USA', '77299', '713-909-2273');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (92, 'Walther', 'Maycock', '967 Rigney Way', 382, 'New York City', 'New York', 'USA', '10150', '212-135-2868');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (93, 'Blake', 'Stebbings', '72 Kenwood Junction', 154, 'Sarasota', 'Florida', 'USA', '34238', '941-785-7200');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (94, 'Timothy', 'Whittall', '6639 Troy Plaza', 322, 'Raleigh', 'North Carolina', 'USA', '27658', '919-338-0449');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (95, 'Elizabet', 'Signoret', '5 Warner Park', 390, 'Nashville', 'Tennessee', 'USA', '37250', '615-294-0239');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (96, 'Seline', 'Plail', '8 Darwin Way', 170, 'Largo', 'Florida', 'USA', '33777', '727-868-9929');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (97, 'Kara', 'Grint', '543 Bay Place', 146, 'Midland', 'Texas', 'USA', '79710', '432-427-7370');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (98, 'Cornelia', 'Waeland', '212 Mesta Lane', 90, 'Chicago', 'Illinois', 'USA', '60624', '312-808-3338');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (99, 'Lane', 'Angeli', '8 Granby Trail', 387, 'Seattle', 'Washington', 'USA', '98185', '206-688-2549');
+-- insert into users (id, first_name, last_name, address, apt_no, city, state, country, zip_code, phone_no) values (100, 'Grazia', 'Cartmale', '818 Dunning Terrace', 406, 'Gaithersburg', 'Maryland', 'USA', '20883', '240-446-2212');
+
+-- insert into cart (id, user_id, product_id, quantity) values (1, 62, 46, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (2, 89, 81, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (3, 93, 36, 7);
+-- insert into cart (id, user_id, product_id, quantity) values (4, 77, 28, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (5, 49, 10, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (6, 68, 10, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (7, 6, 85, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (8, 87, 30, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (9, 81, 57, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (10, 88, 79, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (11, 74, 27, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (12, 79, 24, 16);
+-- insert into cart (id, user_id, product_id, quantity) values (13, 55, 85, 20);
+-- insert into cart (id, user_id, product_id, quantity) values (14, 96, 36, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (15, 78, 85, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (16, 53, 64, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (17, 69, 92, 20);
+-- insert into cart (id, user_id, product_id, quantity) values (18, 93, 67, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (19, 47, 76, 18);
+-- insert into cart (id, user_id, product_id, quantity) values (20, 32, 89, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (21, 1, 96, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (22, 8, 59, 18);
+-- insert into cart (id, user_id, product_id, quantity) values (23, 40, 88, 16);
+-- insert into cart (id, user_id, product_id, quantity) values (24, 79, 12, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (25, 85, 57, 18);
+-- insert into cart (id, user_id, product_id, quantity) values (26, 47, 16, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (27, 14, 2, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (28, 87, 84, 19);
+-- insert into cart (id, user_id, product_id, quantity) values (29, 94, 39, 6);
+-- insert into cart (id, user_id, product_id, quantity) values (30, 95, 5, 20);
+-- insert into cart (id, user_id, product_id, quantity) values (31, 50, 79, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (32, 82, 52, 1);
+-- insert into cart (id, user_id, product_id, quantity) values (33, 59, 69, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (34, 1, 80, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (35, 92, 52, 11);
+-- insert into cart (id, user_id, product_id, quantity) values (36, 84, 5, 7);
+-- insert into cart (id, user_id, product_id, quantity) values (37, 61, 54, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (38, 9, 21, 6);
+-- insert into cart (id, user_id, product_id, quantity) values (39, 62, 10, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (40, 39, 10, 20);
+-- insert into cart (id, user_id, product_id, quantity) values (41, 78, 26, 14);
+-- insert into cart (id, user_id, product_id, quantity) values (42, 32, 58, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (43, 12, 39, 11);
+-- insert into cart (id, user_id, product_id, quantity) values (44, 7, 80, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (45, 44, 17, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (46, 14, 88, 10);
+-- insert into cart (id, user_id, product_id, quantity) values (47, 98, 9, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (48, 98, 71, 5);
+-- insert into cart (id, user_id, product_id, quantity) values (49, 1, 82, 5);
+-- insert into cart (id, user_id, product_id, quantity) values (50, 40, 6, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (51, 76, 40, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (52, 46, 94, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (53, 93, 54, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (54, 89, 34, 10);
+-- insert into cart (id, user_id, product_id, quantity) values (55, 10, 48, 14);
+-- insert into cart (id, user_id, product_id, quantity) values (56, 4, 41, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (57, 42, 69, 1);
+-- insert into cart (id, user_id, product_id, quantity) values (58, 97, 57, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (59, 18, 62, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (60, 38, 99, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (61, 35, 56, 5);
+-- insert into cart (id, user_id, product_id, quantity) values (62, 62, 41, 1);
+-- insert into cart (id, user_id, product_id, quantity) values (63, 73, 31, 18);
+-- insert into cart (id, user_id, product_id, quantity) values (64, 54, 94, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (65, 68, 8, 7);
+-- insert into cart (id, user_id, product_id, quantity) values (66, 46, 24, 6);
+-- insert into cart (id, user_id, product_id, quantity) values (67, 14, 58, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (68, 62, 82, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (69, 63, 70, 20);
+-- insert into cart (id, user_id, product_id, quantity) values (70, 79, 65, 14);
+-- insert into cart (id, user_id, product_id, quantity) values (71, 62, 20, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (72, 58, 75, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (73, 86, 17, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (74, 40, 2, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (75, 22, 76, 1);
+-- insert into cart (id, user_id, product_id, quantity) values (76, 60, 1, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (77, 92, 8, 19);
+-- insert into cart (id, user_id, product_id, quantity) values (78, 56, 44, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (79, 97, 97, 5);
+-- insert into cart (id, user_id, product_id, quantity) values (80, 42, 1, 15);
+-- insert into cart (id, user_id, product_id, quantity) values (81, 53, 14, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (82, 62, 11, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (83, 76, 52, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (84, 50, 19, 18);
+-- insert into cart (id, user_id, product_id, quantity) values (85, 9, 98, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (86, 58, 62, 1);
+-- insert into cart (id, user_id, product_id, quantity) values (87, 79, 87, 7);
+-- insert into cart (id, user_id, product_id, quantity) values (88, 40, 80, 13);
+-- insert into cart (id, user_id, product_id, quantity) values (89, 1, 8, 11);
+-- insert into cart (id, user_id, product_id, quantity) values (90, 38, 37, 19);
+-- insert into cart (id, user_id, product_id, quantity) values (91, 82, 52, 5);
+-- insert into cart (id, user_id, product_id, quantity) values (92, 93, 79, 4);
+-- insert into cart (id, user_id, product_id, quantity) values (93, 17, 34, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (94, 53, 50, 9);
+-- insert into cart (id, user_id, product_id, quantity) values (95, 73, 39, 12);
+-- insert into cart (id, user_id, product_id, quantity) values (96, 21, 85, 2);
+-- insert into cart (id, user_id, product_id, quantity) values (97, 74, 37, 8);
+-- insert into cart (id, user_id, product_id, quantity) values (98, 88, 27, 3);
+-- insert into cart (id, user_id, product_id, quantity) values (99, 73, 27, 19);
+-- insert into cart (id, user_id, product_id, quantity) values (100, 57, 60, 11);
+
+
