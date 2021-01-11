@@ -1,11 +1,17 @@
-@mixin flexCenter {
+@mixin flexCenter() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin flexColumnStart {
+@mixin flexColumnStart() {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+@mixin flexSpaceBetween() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

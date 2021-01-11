@@ -22,6 +22,7 @@
     "react-scripts": "4.0.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-promise-middleware": "^6.1.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -53,7 +54,7 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server/index.js",
-  "proxy": "http://locahost:3919",
+  "proxy": "http://localhost:3919",
   "devDependencies": {},
   "keywords": [],
   "author": "",

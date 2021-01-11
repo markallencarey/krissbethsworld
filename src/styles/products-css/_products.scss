@@ -1,0 +1,12 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  height: 92vh;
+  width: $bodyWidth;
+  margin: 20px 0px;
+}

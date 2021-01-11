@@ -1,0 +1,63 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+$paddingBottom: 20px;
+
+.single-product {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  word-wrap: wrap;
+  height: 92vh;
+  width: $bodyWidth;
+  margin: 20px 0px;
+}
+
+.single-product-img {
+  height: 300px;
+  padding-bottom: 40px;
+}
+
+.single-product-name {
+  font-size: 28px;
+  font-weight: 300;
+  padding-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 18px;
+}
+
+.single-product-price {
+  font-size: 28px;
+  font-weight: 300;
+  padding-bottom: $paddingBottom;
+}
+
+.add-to-cart-btn {
+  font-size: 22px;
+  font-weight: 300;
+  font-family: $buttonFontFamily;
+  padding: 8px;
+  margin-bottom: $paddingBottom;
+}
+
+.single-product-description-container {
+  width: 300px;
+}
+
+.single-product-description {
+  font-size: 18px;
+}
+
+@media (min-width: 425px) {
+  .single-product-img {
+    height: 400px;
+  }
+}
+
+@media (min-width: 768px) {
+  .single-product-img {
+    height: 500px;
+  }
+}

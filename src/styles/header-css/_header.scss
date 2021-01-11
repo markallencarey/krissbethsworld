@@ -1,9 +1,11 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
 .header {
   height: 8vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include flexSpaceBetween();
+  background-color: $globalColor;
 }
 
 .logo {

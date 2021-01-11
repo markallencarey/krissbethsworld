@@ -1,0 +1,42 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.product-list-item {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  word-wrap: wrap;
+}
+
+.product-img {
+  height: 140px;
+  padding-bottom: 10px;
+}
+
+.product-name {
+  font-size: 14px;
+  font-weight: 300;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 18px;
+}
+
+.product-price {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+@media (min-width: 425px) {
+  .product-img {
+    height: 200px;
+  }
+}
+
+@media (min-width: 768px) {
+  .product-img {
+    height: 175px;
+  }
+}

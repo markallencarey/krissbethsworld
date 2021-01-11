@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import CartMenuItem from '../Header/CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const Cart = (props) => {
+
+  // const [cartItems, setCartItems] = useState([])
+
+  // useEffect(() => {
+  //   axios.get('/api/cart').then(res => {
+  //     console.log(res.data)
+  //     setCartItems(res.data)
+  //   }).catch(err => console.log(err))
+  // }, [])
 
   return (
     <div>
@@ -15,39 +25,7 @@ const Cart = (props) => {
       </div>
 
       <div className='cart-menu-list'>
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-        <CartMenuItem />
-
-
+        
       </div>
 
       <div className='cart-checkout-btn-div'>

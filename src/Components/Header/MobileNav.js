@@ -13,7 +13,7 @@ const MobileNav = (props) => {
       </div>
       <div className='mobile-nav-items'>
         <p className='mobile-nav-item'>Home</p>
-        <p className='mobile-nav-item'>Products</p>
+        <p className='mobile-nav-item'>Shop</p>
         <p className='mobile-nav-item'>Cart</p>
         <p className='mobile-nav-item'>Login</p>
       </div>

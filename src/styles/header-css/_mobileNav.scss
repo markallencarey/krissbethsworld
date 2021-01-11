@@ -1,3 +1,6 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
 .mobile-nav {
   @include flexColumnStart();
   position: absolute;
@@ -10,7 +13,7 @@
   overflow: hidden;
   transition: all 500ms;
   z-index: 5;
-  box-shadow: 5px 5px 10px 8px rgba(0,0,0,0.75);
+  box-shadow: $globalBoxShadow;
 }
 
 .mobile-nav-hide {
