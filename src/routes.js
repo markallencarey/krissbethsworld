@@ -14,7 +14,7 @@ export default (
     <Route path='/cart' component={Cart} />
     <Route path='/checkout' component={Checkout} />
     <Route exact path='/login' component={Login} />
-    <Route path='/login/register' component={Register} />
+    <Route exact path='/login/register' component={Register} />
     <Route exact path='/products' component={Products} />
     <Route path='/products/:product_id' component={SingleProduct} />
   </Switch>

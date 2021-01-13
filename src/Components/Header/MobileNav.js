@@ -14,7 +14,7 @@ const MobileNav = (props) => {
         <p className='mobile-back-text'>Back</p>
       </div>
 
-      <p>Welcome, firstName</p>
+      {/* <p>Welcome, firstName</p> */}
 
       <div className='mobile-nav-items'>
         <Link to={'/'}>
