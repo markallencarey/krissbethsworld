@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 /*data object:
   description
@@ -9,15 +11,17 @@ import React, { useState } from 'react'
   store_quantity
   type
 */
-const SingleProduct = (props) => {
+const Product = (props) => {
 
   return (
     <div className='product-list-item'>
-      <img className='product-img' src={props.product.img} />
-      <p className='product-name'>{props.product.name}</p>
-      <p className='product-price'>${props.product.price}</p>
+      <Link to={`/products/${props.product.id}`}>
+        <img className='product-img' src={props.product.img} alt='product'/>
+        <p className='product-name'>{props.product.name}</p>
+        <p className='product-price'>${props.product.price}</p>
+      </Link>
     </div>
   )
 }
 
-export default SingleProduct
+export default withRouter(Product)

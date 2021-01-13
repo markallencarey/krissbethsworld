@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import CartMenuItem from '../Header/CartMenuItem'
+import React from 'react'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const Cart = (props) => {

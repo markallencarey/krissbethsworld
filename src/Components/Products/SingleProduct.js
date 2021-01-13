@@ -26,7 +26,7 @@ const SingleProduct = (props) => {
   return (
     <div className='single-product'>
       <img className='single-product-img'
-      src={singleProduct.img} />
+        src={singleProduct.img} alt='product'/>
       <p className='single-product-name'>{singleProduct.name}</p>
       <p className='single-product-price'>${singleProduct.price}</p>
       <button className='add-to-cart-btn'>ADD TO CART</button>

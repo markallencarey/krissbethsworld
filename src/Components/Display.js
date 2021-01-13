@@ -1,20 +1,19 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import routes from '../routes.js'
 import Header from './Header/Header.js'
 
 const Display = (props) => {
 
-  const [cart, setCart] = useState([])
+  // const [cart, setCart] = useState([])
 
-  function addToCart(id, quantity) {
-    const body = { product_id: id, quantity }
+  // function addToCart(id, quantity) {
+  //   const body = { product_id: id, quantity }
     
-    axios.post('/api/cart', body).then(res => {
-      console.log(res.data)
-      setCart(res.data)
-    }, [])
-  }
+  //   axios.post('/api/cart', body).then(res => {
+  //     console.log(res.data)
+  //     setCart(res.data)
+  //   }, [])
+  // }
 
 
   return (

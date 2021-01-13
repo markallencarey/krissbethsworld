@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import MobileNav from './MobileNav'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
@@ -18,6 +19,14 @@ const Header = (props) => {
     setIsCartMenuOpen(!isCartMenuOpen)
   }
 
+  function logout() {
+    axios.delete('/auth/logout').then(() => {
+
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
     <div>
       <header className='header'>
@@ -29,10 +38,11 @@ const Header = (props) => {
         <nav className={`mobile-nav ${isNavMenuOpen ? null : 'mobile-nav-hide'}`}>
           <MobileNav
             toggleNavMenu={toggleNavMenu}
+            logout={logout}
           />
         </nav>
 
-        <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' />
+        <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' alt='logo'/>
         
         <AiOutlineShopping
           onClick={toggleCartMenu}
