@@ -8,6 +8,7 @@ import Register from './Components/Home/Register'
 import Products from './Components/Products/Products'
 import SingleProduct from './Components/Products/SingleProduct'
 import Loading from './Components/Home/Loading'
+import LoggedOut from './Components/Home/LoggedOut'
 
 export default (
   <Switch>
@@ -16,6 +17,7 @@ export default (
     <Route path='/checkout' component={Checkout} />
     <Route exact path='/login' component={Login} />
     <Route exact path='/login/register' component={Register} />
+    <Route path='/loggedout' component={LoggedOut} />
     <Route exact path='/products' component={Products} />
     <Route path='/products/:product_id' component={SingleProduct} />
     <Route path='/loading' component={Loading} />

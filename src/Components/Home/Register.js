@@ -17,7 +17,6 @@ const Register = (props) => {
   const [country, setCountry] = useState([])
   const [zipCode, setZipCode] = useState([])
   const [phoneNo, setPhoneNo] = useState([])
-  const [isRegistered, setIsRegistered] = useState(false)
 
   function handleEmailInput(value) {
     setEmail(value)
@@ -67,7 +66,7 @@ const Register = (props) => {
     axios.post('/auth/register', { email, password, firstName, lastName, address, aptNo, city, state, country, zipCode, phoneNo }).then(res => {
       setEmail('')
       setPassword('')
-      // setFirstName('')
+      setFirstName('')
       setLastName('')
       setAddress('')
       setAptNo('')
@@ -76,7 +75,7 @@ const Register = (props) => {
       setCountry('')
       setZipCode('')
       setPhoneNo('')
-      setIsRegistered(true)
+      props.registerUser(res.data)
     }).catch(err => {
       setEmail('')
       setPassword('')
@@ -95,7 +94,7 @@ const Register = (props) => {
 
   return (
     <div className='Register'>
-      {!isRegistered ? (
+      {!props.isRegistered ? (
         <div className='register-form'>
           <div>
             <p>Email: </p>
@@ -564,5 +563,12 @@ const Register = (props) => {
   )
 }
 
-const mapStateToProps = (reduxState) => reduxState.firstName
+function mapStateToProps(reduxState) {
+  return {
+    ...reduxState.user,
+    ...reduxState.isLoggedIn,
+    ...reduxState.isRegistered
+  }
+}
+
 export default connect(mapStateToProps, { registerUser })(withRouter(Register))

@@ -1,5 +1,7 @@
+import axios from 'axios'
+
 const initialState = {
-  firstName: '',
+  user: {},
   isLoggedIn: false,
   isRegistered: false,
 }
@@ -8,17 +10,18 @@ const REGISTER_USER = 'REGISTER_USER'
 const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT = 'LOGOUT'
 
-export function registerUser(firstName) {
+export function registerUser(user) {
   return {
     type: REGISTER_USER,
-    payload: firstName,
+    payload: user,
   }
 }
 
-export function loginUser(firstName) {
+export function loginUser(user) {
+
   return {
     type: LOGIN_USER,
-    payload: firstName,
+    payload: user,
   }
 }
 
@@ -33,14 +36,15 @@ export default function userReducer(state = initialState, action) {
     case REGISTER_USER:
       return {
         ...state,
-        firstName: action.payload,
+        user: action.payload,
         isRegistered: true,
-      isLoggedIn: true
+        isLoggedIn: true
       }
     case LOGIN_USER:
       return {
         ...state,
-        firstName: action.payload,
+        user: action.payload,
+        isRegistered: true,
         isLoggedIn: true
       }
     case LOGOUT:

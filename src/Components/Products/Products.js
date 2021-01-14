@@ -6,7 +6,7 @@ import { getAllProducts } from '../../redux/productsReducer'
 
 const Products = (props) => {
 
-  const {getAllProducts} = props
+  const { getAllProducts } = props
 
   useEffect(() => {
     getAllProducts()
@@ -17,18 +17,20 @@ const Products = (props) => {
       {props.isLoading ? (
         <Loading />
       ) : (
-        props.products.map(element => {
-          return (
-            <Product key={element.id} product={element} />
-          )
-        })
-      )}
+          props.products.map(element => {
+            return (
+              <Product key={element.id} product={element} />
+            )
+          })
+        )}
     </div>
   )
 }
 
 function mapStateToProps(reduxState) {
-  return reduxState.products
+  return {
+    ...reduxState.products
+  }
 }
 
 export default connect(mapStateToProps, { getAllProducts })(Products)

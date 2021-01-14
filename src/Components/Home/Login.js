@@ -1,19 +1,18 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { loginUser, logoutUser } from '../../redux/userReducer'
 import { Link, withRouter } from 'react-router-dom'
 
 const Login = (props) => {
 
   const [email, setEmail] = useState([])
   const [password, setPassword] = useState([])
-  const [firstName, setFirstName] = useState([])
   //put logged in on redux
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     axios.get('/auth/user').then(res => {
       console.log(res.data)
-      setFirstName(res.data.first_name)
     })
   }, [])
 
@@ -26,24 +25,37 @@ const Login = (props) => {
   }
 
   function login() {
-    axios.post('/auth/login', { email, password }).then(res => {
-      //set user on redux
-      //then route to wherever
-      setEmail('')
-      setPassword('')
-      setFirstName(res.data.first_name)
-      //put logged in on redux
-      setIsLoggedIn(true)
-    }).catch(err => {
-      setEmail('')
-      setPassword('')
-      console.log(err)
+    if (email === '' && password==='') {
+      alert('Please enter your email and password')
+    } else if (password === '') {
+      alert('Please enter your password')
+    } else if (email === '') {
+      alert('Please enter your email')
+    } else {
+      axios.post('/auth/login', { email, password }).then(res => {
+        //set user on redux
+        //then route to wherever
+        setEmail('')
+        setPassword('')
+        //put logged in on redux
+        props.loginUser(res.data)
+      }).catch(err => {
+        setEmail('')
+        setPassword('')
+        console.log(err)
+      })
+    }
+  }
+
+  function logout() {
+    axios.delete('/auth/logout').then(res => {
+      props.logoutUser()
     })
   }
 
   return (
     <div className='Login'>
-      {!isLoggedIn ? (
+      {!props.isLoggedIn ? (
         <div className='login-form'>
           <p>Email: </p>
           <form>
@@ -72,18 +84,21 @@ const Login = (props) => {
       ) : (
           <div className='login-welcome-back'>
             <p>Welcome back,</p>
-            <p>{firstName}!</p>
+            <p>{props.user.first_name}!</p>
             <Link to={'/products'}>
-              <p>Shop</p>
+              <p>Check out my shop</p>
             </Link>
+            <button onClick={logout}>Log Out</button>
           </div>
         )}
-
-
-
-
     </div>
   )
 }
 
-export default withRouter(Login)
+function mapStateToProps(reduxState) {
+  return {
+    ...reduxState.user, ...reduxState.cart
+  }
+}
+
+export default connect(mapStateToProps, { loginUser, logoutUser })(withRouter(Login))

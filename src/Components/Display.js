@@ -1,6 +1,8 @@
 import React from 'react'
+import axios from 'axios'
 import routes from '../routes.js'
 import Header from './Header/Header.js'
+
 
 const Display = (props) => {
 
@@ -14,7 +16,6 @@ const Display = (props) => {
   //     setCart(res.data)
   //   }, [])
   // }
-
 
   return (
     <div className='Display'>
