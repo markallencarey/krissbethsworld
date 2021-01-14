@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { loginUser } from '../../redux/userReducer'
 import { connect } from 'react-redux'
@@ -31,7 +31,10 @@ const MobileNav = (props) => {
           onClick={props.toggleNavMenu}>Login</p>
         </Link>
         <p
-          onClick={props.logout, props.toggleNavMenu}
+          onClick={() => {
+            props.logout()
+            props.toggleNavMenu()
+          }}
         >Sign Out</p>
       </div>
     </div>

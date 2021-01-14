@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
 import Product from './Product'
 import Loading from '../Home/Loading'
 import { connect } from 'react-redux'
@@ -7,18 +6,11 @@ import { getAllProducts } from '../../redux/productsReducer'
 
 const Products = (props) => {
 
-  // const [products, setProducts] = useState([])
+  const {getAllProducts} = props
 
-  // useEffect(() => {
-  //   axios.get('/api/products').then(res => {
-  //     setProducts(res.data)
-  //   }).catch(err => console.log(err))
-  // }, [])
   useEffect(() => {
-    props.getAllProducts()
+    getAllProducts()
   }, [])
-
-  // const productMap = 
 
   return (
     <div className='product-list'>

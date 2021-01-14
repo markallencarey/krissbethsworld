@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { getOneProduct } from '../../redux/productsReducer'
+import Loading from '../Home/Loading'
 
 /*
   data object: {
@@ -15,26 +17,31 @@ import axios from 'axios'
 
 const SingleProduct = (props) => {
 
-  const [singleProduct, setSingleProduct] = useState([])
-
   useEffect(() => {
-    axios.get(`/api/products/${props.match.params.product_id}`).then(res => {
-      setSingleProduct(res.data)
-    }).catch(err => console.log(err))
+    props.getOneProduct(props.match.params.product_id)
   }, [])
 
   return (
-    <div className='single-product'>
-      <img className='single-product-img'
-        src={singleProduct.img} alt='product'/>
-      <p className='single-product-name'>{singleProduct.name}</p>
-      <p className='single-product-price'>${singleProduct.price}</p>
-      <button className='add-to-cart-btn'>ADD TO CART</button>
-      <div className='single-product-description-container'>
-        <p className='single-product-description'>{singleProduct.description}</p>
-      </div>
+    <div >
+      {props.isLoading ? (
+        <Loading />
+      ) : (
+          <div className='single-product'>
+            <img className='single-product-img'
+              src={props.product.img} alt='product' />
+            <p className='single-product-name'>{props.product.name}</p>
+            <p className='single-product-price'>${props.product.price}</p>
+            <button className='add-to-cart-btn'>ADD TO CART</button>
+            <div className='single-product-description-container'>
+              <p className='single-product-description'>{props.product.description}</p>
+            </div>
+          </div>
+        )}
     </div>
   )
 }
 
-export default SingleProduct
+function mapStateToProps(reduxState) {
+  return reduxState.products
+}
+export default connect(mapStateToProps, { getOneProduct })(SingleProduct)

@@ -20,7 +20,6 @@ export function getAllProducts() {
 
 export function getOneProduct(productId) {
   const res = axios.get(`/api/products/${productId}`)
-
   return {
     type: GET_ONE_PRODUCT,
     payload: res,
@@ -50,7 +49,7 @@ export default function productsReducer(state = initialState, action) {
         ...state,
         isLoading: true
       }
-    case GET_ONE_PRODUCT + 'FULFILLED':
+    case GET_ONE_PRODUCT + '_FULFILLED':
       return {
         ...state,
         isLoading: false,
