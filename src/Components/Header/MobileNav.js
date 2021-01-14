@@ -1,6 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import { loginUser } from '../../redux/userReducer'
+import { connect } from 'react-redux'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const MobileNav = (props) => {
@@ -14,7 +15,7 @@ const MobileNav = (props) => {
         <p className='mobile-back-text'>Back</p>
       </div>
 
-      {/* <p>Welcome, firstName</p> */}
+      <p>Welcome, {props.firstName}</p>
 
       <div className='mobile-nav-items'>
         <Link to={'/'}>
@@ -38,4 +39,5 @@ const MobileNav = (props) => {
   )
 }
 
-export default withRouter(MobileNav)
+const mapStateToProps = (reduxState) => reduxState.firstName
+export default connect(mapStateToProps, { loginUser }) (withRouter(MobileNav))

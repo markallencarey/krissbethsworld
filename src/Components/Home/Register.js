@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { registerUser } from '../../redux/userReducer'
+import { connect } from 'react-redux'
 
 const Register = (props) => {
 
@@ -188,6 +190,7 @@ const Register = (props) => {
                 onChange={e => handleStateInput(e.target.value)}
               /> */}
               <select
+                className='state-select'
                 value={state}
                 onChange={e => handleStateInput(e.target.value)}
               >
@@ -541,6 +544,9 @@ const Register = (props) => {
           </div>
 
           <button onClick={register}>Register</button>
+          <Link to={'/login'}>
+            <button>Back</button>
+          </Link>
         </div>
       ) : (
           <div className='Registered'>
@@ -558,4 +564,5 @@ const Register = (props) => {
   )
 }
 
-export default withRouter(Register)
+const mapStateToProps = (reduxState) => reduxState.firstName
+export default connect(mapStateToProps, { registerUser })(withRouter(Register))
