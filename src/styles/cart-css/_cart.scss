@@ -1,2 +1,6 @@
 @import '../base-css/variables';
 @import '../base-css/mixins';
+
+.Cart {
+  @include componentTopPosition();
+}

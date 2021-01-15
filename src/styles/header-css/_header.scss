@@ -6,6 +6,10 @@
   width: 100vw;
   @include flexSpaceBetween();
   background-color: $globalColor;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .logo {

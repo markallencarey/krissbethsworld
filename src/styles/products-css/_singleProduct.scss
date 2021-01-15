@@ -12,6 +12,7 @@ $paddingBottom: 20px;
   height: 92vh;
   width: $bodyWidth;
   margin: 20px 0px;
+  @include componentTopPosition();
 }
 
 .single-product-img {
@@ -39,6 +40,26 @@ $paddingBottom: 20px;
   padding: 8px;
   margin-bottom: $paddingBottom;
 }
+
+.quantity-div {
+  @include flexCenter();
+  margin-top: 0px;
+  margin-bottom: $paddingBottom;
+  font-size: 28px;
+}
+
+.increase-quantity-btn, .decrease-quantity-btn {
+  font-weight: 300;
+  font-family: $buttonFontFamily;
+  font-size: 28px;
+  height: 30px;
+  width: 30px;
+  @include flexCenter();
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
 
 .single-product-description-container {
   width: 300px;

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { updateCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
@@ -9,6 +10,7 @@ const Cart = (props) => {
   useEffect(() => {
     axios.get('/api/cart').then(res => {
       console.log(props.cart)
+
     })
   })
 
@@ -45,4 +47,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps, { updateCart })(Cart)

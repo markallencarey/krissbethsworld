@@ -3,7 +3,7 @@ import React from 'react'
 const Checkout = (props) => {
 
   return (
-    <div>Checkout.js</div>
+    <div className='Checkout'>Checkout.js</div>
   )
 }
 

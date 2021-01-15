@@ -2,6 +2,7 @@
 @import '../base-css/mixins';
 
 .product-list {
+  @include componentTopPosition();
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

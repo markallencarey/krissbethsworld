@@ -9,10 +9,10 @@
   text-align: left;
   background-color: snow;
   height: auto;
-  width: auto;
+  width: 120px;
   overflow: hidden;
   transition: all 500ms;
-  z-index: 5;
+  z-index: 1000;
   box-shadow: $globalBoxShadow;
 }
 

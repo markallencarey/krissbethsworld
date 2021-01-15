@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Link, withRouter } from 'react-router-dom'
 import MobileNav from './MobileNav'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
@@ -42,7 +43,9 @@ const Header = (props) => {
           />
         </nav>
 
-        <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' alt='logo'/>
+        <Link to={'/'}>
+          <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' alt='logo'/>
+        </Link>
         
         <AiOutlineShopping
           onClick={toggleCartMenu}
@@ -59,4 +62,4 @@ const Header = (props) => {
   )
 }
 
-export default Header
+export default withRouter(Header)

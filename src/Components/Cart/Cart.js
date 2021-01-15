@@ -4,7 +4,7 @@ import Checkout from './Checkout.js'
 const Cart = (props) => {
 
   return (
-    <div>
+    <div className='Cart'>
       <div>Cart.js</div>
       <Checkout />
     </div>

@@ -1,8 +1,12 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
 .Loading {
   height: 92vh;
   width: 100vw;
   display: flex;
   justify-content: center;
+  @include componentTopPosition();
 }
 
 .loading-roller {

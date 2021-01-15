@@ -13,12 +13,13 @@ module.exports = {
   addToCart: async (req, res) => {
     const db = req.app.get('db')
 
-    const { product_id, quantity } = req.body
+    let { product_id, quantity } = req.body
     const { id } = req.session.user
     const user_id = id
 
     const [product] = await db.cart.get_product_in_cart([user_id, product_id])
     if (product) {
+      quantity += product.quantity
       await db.cart.change_quantity([quantity, user_id, product_id])
     } else {
       await db.cart.add_to_cart([user_id, product_id, quantity])

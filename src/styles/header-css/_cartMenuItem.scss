@@ -4,14 +4,22 @@
 .cart-menu-item {
   padding: 10px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  // width: 100%;
+  justify-content: space-between;
+
 }
 
-.cart-menu-title {
-  font-size: 24px;
+.cart-menu-item-name {
+  font-size: 18px;
+  @include headerFontStyle();
+  font-family: $globalFontFamily;
 }
 
 .cart-menu-item-quantity {
   padding-left: 10px;
   font-size: 18px;
+  font-size: 18px;
+  @include headerFontStyle();
+  font-family: $globalFontFamily;
 }

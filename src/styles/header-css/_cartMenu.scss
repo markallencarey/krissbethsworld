@@ -14,6 +14,9 @@
   transition: all 500ms;
   z-index: 5;
   box-shadow: $globalBoxShadow;
+  font-size: 14px;
+  @include headerFontStyle();
+  font-family: $globalFontFamily;
 }
 
 .cart-menu-hide {
@@ -42,18 +45,18 @@
   max-height: 70vh;
   overflow-y: auto;
   padding: 10px 10px;
-  // border: 5px black solid;
 }
 
 /* ---------------------------- */
 
 .cart-checkout-btn-div {
   @include flexCenter();
-  // border: 5px black solid;
-}
-
-.cart-checkout-btn {
-  font-size: 20px;
-  padding: 5px;
-  margin: 15px 0px 15px 0px;
+  button {
+    font-size: 16px;
+    @include headerFontStyle();
+    padding: 8px;
+    font-family: $globalFontFamily;
+    padding: 5px;
+    margin: 15px 0px 15px 0px;
+  }
 }

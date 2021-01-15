@@ -1,0 +1,17 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.logged-out {
+    height: 92vh;
+    width: 60vw;
+    @include flexColumnCenter();
+    @include componentTopPosition();
+    margin-top: 40%;
+    
+    p {
+      padding-bottom: 40px;
+      font-size: 22px;
+      @include headerFontStyle();
+      line-height: 24px;
+    }
+}

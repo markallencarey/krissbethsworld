@@ -10,6 +10,12 @@
   align-items: flex-start;
 }
 
+@mixin flexColumnCenter() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @mixin flexSpaceBetween() {
   display: flex;
   align-items: center;
@@ -23,8 +29,13 @@
 }
 
 @mixin backTextStyle() {
-  font-weight: 300;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing:1px;
   font-size: 14px;
+}
+
+@mixin componentTopPosition() {
+  position: relative;
+  top: 8vh;
 }

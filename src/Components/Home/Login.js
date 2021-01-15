@@ -8,7 +8,6 @@ const Login = (props) => {
 
   const [email, setEmail] = useState([])
   const [password, setPassword] = useState([])
-  //put logged in on redux
 
   useEffect(() => {
     axios.get('/auth/user').then(res => {
@@ -25,7 +24,7 @@ const Login = (props) => {
   }
 
   function login() {
-    if (email === '' && password==='') {
+    if (email === '' && password === '') {
       alert('Please enter your email and password')
     } else if (password === '') {
       alert('Please enter your password')
@@ -54,31 +53,43 @@ const Login = (props) => {
     <div className='Login'>
       {!props.isLoggedIn ? (
         <div className='login-form'>
-          <p>Email: </p>
-          <form>
-            <input
-              type='email'
-              placeholder='email'
-              value={email}
-              onChange={e => handleEmailInput(e.target.value)}
-            />
-          </form>
-          <p>Password: </p>
-          <form>
-            <input
-              type='password'
-              placeholder='password'
-              value={password}
-              onChange={e => handlePasswordInput(e.target.value)}
-            />
-          </form>
-          <button onClick={login}>Login</button>
-          <p>New user?</p>
-          <Link
-            className='link'
-            to={'/login/register'}>
-            <button>Register</button>
-          </Link>
+          <div className='login-form-email'>
+            <p >Email: </p>
+            <form>
+              <input
+                type='email'
+                placeholder='email'
+                value={email}
+                onChange={e => handleEmailInput(e.target.value)}
+              />
+            </form>
+          </div>
+
+          <div className='login-form-password'>
+            <p >Password: </p>
+            <form>
+              <input
+                type='password'
+                placeholder='password'
+                value={password}
+                onChange={e => handlePasswordInput(e.target.value)}
+              />
+            </form>
+          </div>
+
+          <button
+            className='login-form-login-btn'
+            onClick={login}>Login</button>
+          <div className='login-form-register'>
+            <p>New user?</p>
+            <Link
+              className='link'
+              to={'/login/register'}>
+              <button
+                
+              >Register</button>
+            </Link>
+          </div>
         </div>
       ) : (
           <div className='login-welcome-back'>
