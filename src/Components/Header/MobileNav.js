@@ -15,11 +15,11 @@ const MobileNav = (props) => {
 
   return (
     <div>
-      <div className='nav-back-btn'
+      <div className='nav-close-btn'
         onClick={props.toggleNavMenu}>
         <MdKeyboardArrowLeft
           size='18' />
-        <p className='mobile-back-text'>Back</p>
+        <p className='mobile-close-text'>Close</p>
       </div>
 
       {props.isLoggedIn ? (

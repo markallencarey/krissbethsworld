@@ -2,24 +2,42 @@
 @import '../base-css/mixins';
 
 .cart-menu-item {
-  padding: 10px;
+  padding: 20px 10px;
   display: flex;
-  align-items: center;
-  // width: 100%;
+  align-items: flex-end;
+  width: 100%;
+  height: 40px;
   justify-content: space-between;
+  position: relative;
+}
 
+.cart-menu-img {
+  height: 40px;
+  padding-right: 10px;
+}
+
+.cart-menu-item-name-div {
+  width: 120px;
+  text-overflow: ellipsis;
 }
 
 .cart-menu-item-name {
-  font-size: 18px;
   @include headerFontStyle();
   font-family: $globalFontFamily;
+  font-size: 14px;
+  text-align: left;
 }
 
 .cart-menu-item-quantity {
-  padding-left: 10px;
-  font-size: 18px;
-  font-size: 18px;
   @include headerFontStyle();
   font-family: $globalFontFamily;
+  font-size: 16px;
+  padding-left: 10px;
+}
+
+.cart-menu-item-price {
+  @include headerFontStyle();
+  font-family: $globalFontFamily;
+  padding: 0px 20px 0px 10px;
+  font-size: 16px;
 }

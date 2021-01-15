@@ -26,12 +26,17 @@ const SingleProduct = (props) => {
   }, [])
 
   function addToCart(quantity) {
-    const body = { product_id: props.match.params.product_id, quantity: quantity }
-    console.log(props.match.params.product_id)
-
-    axios.post('/api/cart', body).then(res => {
-      props.updateCart(res.data)
-    })
+    if (props.isLoggedIn) {
+      const body = { product_id: props.match.params.product_id, quantity: quantity }
+      console.log(props.match.params.product_id)
+  
+      axios.post('/api/cart', body).then(res => {
+        props.updateCart(res.data)
+      })
+    } else {
+      alert('Please log in before adding to cart')
+    }
+    
   }
 
   function increaseQuantity() {
@@ -80,7 +85,8 @@ const SingleProduct = (props) => {
 function mapStateToProps(reduxState) {
   return {
     ...reduxState.products,
-    ...reduxState.cart
+    ...reduxState.cart,
+    ...reduxState.user
   }
 }
 

@@ -85,9 +85,7 @@ const Login = (props) => {
             <Link
               className='link'
               to={'/login/register'}>
-              <button
-                
-              >Register</button>
+              <button>Register</button>
             </Link>
           </div>
         </div>
@@ -98,7 +96,7 @@ const Login = (props) => {
             <Link
               className='link'
               to={'/products'}>
-              <p>Check out my shop</p>
+              <p className='check-out-shop'>Check out my shop</p>
             </Link>
             <button onClick={logout}>Log Out</button>
           </div>

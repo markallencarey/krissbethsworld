@@ -10,18 +10,26 @@ const Cart = (props) => {
   useEffect(() => {
     axios.get('/api/cart').then(res => {
       console.log(props.cart)
-
     })
   })
+
+  function clearCart() {
+    
+  }
 
   return (
     <div>
 
-      <div className='cart-back-btn'
-        onClick={props.toggleCartMenu}>
-        <MdKeyboardArrowLeft
-          size='18' />
-        <p className='cart-back-text'>Back</p>
+      <div className='cart-menu-header'>
+        <div className='cart-menu-close-btn'
+          onClick={props.toggleCartMenu}>
+          <MdKeyboardArrowLeft
+            size='18' />
+          <p className='cart-menu-close-text'>Close</p>
+        </div>
+        <button
+          className='cart-menu-clear-cart-btn'
+        >Clear Cart</button>
       </div>
 
       <div className='cart-menu-list'>

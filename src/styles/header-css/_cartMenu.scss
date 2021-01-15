@@ -28,14 +28,25 @@
 
 /* ---------------------------- */
 
-.cart-back-btn {
+.cart-menu-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-menu-close-btn {
   display: flex;
   padding: 10px;
   align-items: center;
+  
 }
 
-.cart-back-text {
+.cart-menu-close-text {
   @include backTextStyle();
+}
+
+.cart-menu-clear-cart-btn {
+  padding: 15px;
+  
 }
 
 /* ---------------------------- */
