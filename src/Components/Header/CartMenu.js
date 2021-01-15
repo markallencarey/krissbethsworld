@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { updateCart } from '../../redux/cartReducer'
+import { updateCart, clearCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
@@ -14,7 +14,9 @@ const Cart = (props) => {
   })
 
   function clearCart() {
-    
+    axios.delete('/api/cart/clear').then(res => {
+      props.clearCart()
+    })
   }
 
   return (
@@ -28,6 +30,7 @@ const Cart = (props) => {
           <p className='cart-menu-close-text'>Close</p>
         </div>
         <button
+          onClick={clearCart}
           className='cart-menu-clear-cart-btn'
         >Clear Cart</button>
       </div>
@@ -55,4 +58,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { updateCart })(Cart)
+export default connect(mapStateToProps, { updateCart, clearCart })(Cart)

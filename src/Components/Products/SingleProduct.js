@@ -33,6 +33,13 @@ const SingleProduct = (props) => {
       axios.post('/api/cart', body).then(res => {
         props.updateCart(res.data)
       })
+      setProductQuantity(1)
+
+      if (productQuantity === 1) {
+        alert(`${productQuantity} ${props.product.name} were added to your cart!`)
+      } else if (productQuantity > 1) {
+        alert(`${productQuantity} ${props.product.name}s were added to your cart!`)
+      }
     } else {
       alert('Please log in before adding to cart')
     }

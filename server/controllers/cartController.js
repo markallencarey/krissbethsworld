@@ -62,10 +62,8 @@ module.exports = {
 
   clearCart: async (req, res) => {
     const db = req.app.get('db')
-    console.log('hello')
 
     const { id } = req.session.user
-    console.log(id)
     const user_id = id
 
     await db.cart.clear_cart([user_id])
