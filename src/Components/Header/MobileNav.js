@@ -18,32 +18,44 @@ const MobileNav = (props) => {
       <div className='nav-back-btn'
         onClick={props.toggleNavMenu}>
         <MdKeyboardArrowLeft
-          size='20' />
+          size='18' />
         <p className='mobile-back-text'>Back</p>
       </div>
 
       {props.isLoggedIn ? (
-        <p>Welcome, {props.user.first_name}</p>
+        <div className='mobile-nav-welcome'>
+          <p>Welcome,</p>
+          <p>{props.user.first_name}!</p>
+        </div>
       ) : (null)}
 
       <div className='mobile-nav-items'>
-        <Link to={'/'}>
+        <Link
+          className='link'
+          to={'/'}>
           <p className='mobile-nav-item'
             onClick={props.toggleNavMenu}>Home</p>
         </Link>
-        <Link to={'/products'}>
+        <Link
+          className='link'
+          to={'/products'}>
           <p className='mobile-nav-item'
             onClick={props.toggleNavMenu}>Shop</p>
         </Link>
 
         {!props.isLoggedIn ? (
-          <Link to={'/login'}>
+          <Link
+            className='link'
+            to={'/login'}>
             <p className='mobile-nav-item'
               onClick={props.toggleNavMenu}>Log In</p>
           </Link>
         ) : (
-            <Link to={'/loggedout'}>
+            <Link
+              className='link'
+              to={'/loggedout'}>
               <p
+                className='mobile-nav-item'
                 onClick={() => {
                   logout()
                   props.toggleNavMenu()
@@ -51,7 +63,7 @@ const MobileNav = (props) => {
               >Log Out</p>
             </Link>
           )}
-          
+
       </div>
     </div>
 

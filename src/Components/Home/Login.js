@@ -33,11 +33,8 @@ const Login = (props) => {
       alert('Please enter your email')
     } else {
       axios.post('/auth/login', { email, password }).then(res => {
-        //set user on redux
-        //then route to wherever
         setEmail('')
         setPassword('')
-        //put logged in on redux
         props.loginUser(res.data)
       }).catch(err => {
         setEmail('')
@@ -77,7 +74,9 @@ const Login = (props) => {
           </form>
           <button onClick={login}>Login</button>
           <p>New user?</p>
-          <Link to={'/login/register'}>
+          <Link
+            className='link'
+            to={'/login/register'}>
             <button>Register</button>
           </Link>
         </div>
@@ -85,7 +84,9 @@ const Login = (props) => {
           <div className='login-welcome-back'>
             <p>Welcome back,</p>
             <p>{props.user.first_name}!</p>
-            <Link to={'/products'}>
+            <Link
+              className='link'
+              to={'/products'}>
               <p>Check out my shop</p>
             </Link>
             <button onClick={logout}>Log Out</button>

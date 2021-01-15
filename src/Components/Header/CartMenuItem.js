@@ -4,11 +4,11 @@ const CartMenuItem = (props) => {
 
   return (
   <div className='cart-menu-item'>
-      <p className='cart-menu-title'>Sticker</p>
-      <p className='cart-menu-item-quantity'>x3</p>
+      <p className='cart-menu-title'>{props.cartItem.name}</p>
+      <p className='cart-menu-item-quantity'>{props.cartItem.quantity}</p>
+      <p className='cart-menu-item-price'>{props.cartItem.price}</p>
     </div>
   )
-
 }
 
 export default CartMenuItem

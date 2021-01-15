@@ -6,10 +6,10 @@
   position: absolute;
   top: 0vh;
   left: 0;
-  width: 135px;
   text-align: left;
   background-color: snow;
   height: auto;
+  width: auto;
   overflow: hidden;
   transition: all 500ms;
   z-index: 5;
@@ -23,12 +23,24 @@
   box-shadow: none;
 }
 
+.mobile-nav-welcome {
+  padding: 0px 20px;
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+}
+
 .mobile-nav-items {
   padding: 10px 20px;
+  @include headerFontStyle;
 }
 
 .mobile-nav-item {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 5px;
 }
 
@@ -36,8 +48,5 @@
   display: flex;
   padding: 10px;
   align-items: center;
-}
-
-.mobile-back-text {
-  font-size: 18px;
+  @include backTextStyle();
 }

@@ -6,7 +6,9 @@ const LoggedOut = (props) => {
   return (
     <div className='logged-out'>
       <p>You have been successfully logged out</p>
-      <Link to={'/'}>
+      <Link
+        className='link'
+        to={'/'}>
         <p>Return Home</p>
       </Link>
     </div>

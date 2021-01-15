@@ -1,22 +1,13 @@
-// const cart = {
-//   total: 0,
-//   items: []
-// }
-
-// function updateTotal(itemPrice) {
-//   cart.total += itemPrice
-// }
-
 module.exports = {
   getCart: async (req, res) => {
     const db = req.app.get('db')
 
-    const { id } = req.session.user
-    const user_id = id
-
-    const cart = await db.cart.get_cart([user_id])
-
-    res.status(200).send(cart)
+    if (req.session.user) {
+      const { id } = req.session.user
+      const user_id = id
+      const cart = await db.cart.get_cart([user_id])
+      res.status(200).send(cart)
+    }
   },
 
   addToCart: async (req, res) => {
@@ -52,14 +43,14 @@ module.exports = {
     res.status(200).send(cart)
   },
 
-  removeProduct: async (req, res) => {
+  removeFromCart: async (req, res) => {
     const db = req.app.get('db')
 
     const { product_id } = req.body
     const { id } = req.session.user
     const user_id = id
 
-    await db.cart.remove_product([user_id, product_id])
+    await db.cart.remove_from_cart([user_id, product_id])
 
     const cart = await db.cart.get_cart([user_id])
 

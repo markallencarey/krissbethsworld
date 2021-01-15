@@ -21,11 +21,9 @@ $paddingBottom: 20px;
 
 .single-product-name {
   font-size: 28px;
-  font-weight: 300;
-  padding-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  padding-bottom: $paddingBottom;
   line-height: 32px;
+  @include headerFontStyle()
 }
 
 .single-product-price {

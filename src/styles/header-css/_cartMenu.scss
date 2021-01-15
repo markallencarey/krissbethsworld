@@ -32,7 +32,7 @@
 }
 
 .cart-back-text {
-  font-size: 18px;
+  @include backTextStyle();
 }
 
 /* ---------------------------- */

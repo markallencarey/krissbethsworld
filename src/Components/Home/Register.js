@@ -182,12 +182,6 @@ const Register = (props) => {
           <div>
             <p>State: </p>
             <form>
-              {/* <input
-                type='text'
-                placeholder='state'
-                value={state}
-                onChange={e => handleStateInput(e.target.value)}
-              /> */}
               <select
                 className='state-select'
                 value={state}
@@ -264,6 +258,7 @@ const Register = (props) => {
                 value={country}
                 onChange={e => handleCountryInput(e.target.value)}
               >
+                <option value="ISO 3166-2:US">United States</option>
                 <option value="ISO 3166-2:AF">Afghanistan</option>
                 <option value="ISO 3166-2:AX">Åland Islands</option>
                 <option value="ISO 3166-2:AL">Albania</option>
@@ -499,7 +494,6 @@ const Register = (props) => {
                 <option value="ISO 3166-2:UA">Ukraine</option>
                 <option value="ISO 3166-2:AE">United Arab Emirates</option>
                 <option value="ISO 3166-2:GB">United Kingdom</option>
-                <option value="ISO 3166-2:US">United States</option>
                 <option value="ISO 3166-2:UM">United States Minor Outlying Islands</option>
                 <option value="ISO 3166-2:UY">Uruguay</option>
                 <option value="ISO 3166-2:UZ">Uzbekistan</option>
@@ -543,7 +537,9 @@ const Register = (props) => {
           </div>
 
           <button onClick={register}>Register</button>
-          <Link to={'/login'}>
+          <Link
+            className='link'
+            to={'/login'}>
             <button>Back</button>
           </Link>
         </div>
@@ -553,7 +549,9 @@ const Register = (props) => {
             <p>{firstName}!</p>
             <p>Thanks for coming to my shop!</p>
             <p>Check out some of my products below:</p>
-            <Link to={'/products'}>
+            <Link
+              className='link'
+              to={'/products'}>
               <p>Shop</p>
             </Link>
           </div>

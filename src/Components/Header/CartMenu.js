@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import CartMenuItem from './CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
+import axios from 'axios'
 
 const Cart = (props) => {
 
-  // const [cartItems, setCartItems] = useState([])
-
-  // useEffect(() => {
-  //   axios.get('/api/cart').then(res => {
-  //     console.log(res.data)
-  //     setCartItems(res.data)
-  //   }).catch(err => console.log(err))
-  // }, [])
+  useEffect(() => {
+    axios.get('/api/cart').then(res => {
+      console.log(props.cart)
+    })
+  })
 
   return (
     <div>
@@ -18,12 +18,16 @@ const Cart = (props) => {
       <div className='cart-back-btn'
         onClick={props.toggleCartMenu}>
         <MdKeyboardArrowLeft
-          size='20' />
+          size='18' />
         <p className='cart-back-text'>Back</p>
       </div>
 
       <div className='cart-menu-list'>
-        
+        {props.cart.map(element => {
+          return (
+            <CartMenuItem key={element.id} cartItem={element} />
+          )
+        })}
       </div>
 
       <div className='cart-checkout-btn-div'>
@@ -34,4 +38,11 @@ const Cart = (props) => {
   )
 }
 
-export default Cart
+function mapStateToProps(reduxState) {
+  return {
+    ...reduxState.cart,
+    ...reduxState.total
+  }
+}
+
+export default connect(mapStateToProps)(Cart)

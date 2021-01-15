@@ -31,7 +31,7 @@ app.get('/api/products/:product_id', productsCtrl.getSingleProduct)
 app.get('/api/cart', cartCtrl.getCart)
 app.post('/api/cart', cartCtrl.addToCart)
 app.put('/api/cart', cartCtrl.changeQuantity)
-app.delete('/api/cart', cartCtrl.removeProduct)
+app.delete('/api/cart', cartCtrl.removeFromCart)
 app.delete('/api/cart/clear', cartCtrl.clearCart)
 
 massive({
