@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { loginUser, logoutUser } from '../../redux/userReducer'
+import { updateCart } from '../../redux/cartReducer'
 import { Link, withRouter } from 'react-router-dom'
 
 const Login = (props) => {
@@ -111,4 +112,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { loginUser, logoutUser })(withRouter(Login))
+export default connect(mapStateToProps, { loginUser, logoutUser, updateCart })(withRouter(Login))

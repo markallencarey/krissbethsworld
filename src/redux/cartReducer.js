@@ -3,7 +3,6 @@ const initialState = {
 }
 
 const UPDATE_CART = 'UPDATE_CART'
-// const CHANGE_QUANTITY = 'CHANGE_QUANTITY'
 // const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const CLEAR_CART = 'CLEAR_CART'
 
@@ -14,13 +13,6 @@ export function updateCart(cart) {
     payload: cart,
   }
 }
-
-// export function changeQuantity(product) {
-//   return {
-//     type: CHANGE_QUANTITY,
-//     payload: product,
-//   }
-// }
 
 // export function removeFromCart(product) {
 //   return {
@@ -39,9 +31,6 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case UPDATE_CART:
       return {...state, cart: action.payload}
-    // case CHANGE_QUANTITY:
-    //   const newCart = [...state.cart, action.payload]
-    //   return {}
     // case REMOVE_FROM_CART:
     //   return {}
     case CLEAR_CART:

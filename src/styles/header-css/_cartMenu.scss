@@ -3,16 +3,17 @@
 
 .cart-menu {
   position: absolute;
-  top: 0vh;
+  top: 0;
   right: 0;
-  width: 320px;
+  width: 100vw;
+  max-height: 70vh;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  // text-align: left;
   background-color: $menuColor;
   overflow: hidden;
   transition: all 500ms;
-  z-index: 5;
+  // z-index: 5;
   box-shadow: $globalBoxShadow;
   font-size: 14px;
   @include headerFontStyle();
@@ -31,11 +32,11 @@
 .cart-menu-header {
   display: flex;
   justify-content: space-between;
+  padding: 10px 0px 0px 10px;
 }
 
 .cart-menu-close-btn {
   display: flex;
-  padding: 10px;
   align-items: center;
   
 }
@@ -45,15 +46,13 @@
 }
 
 .cart-menu-clear-cart-btn {
-  padding: 15px;
-  
+  font-size: 14px;
 }
 
 /* ---------------------------- */
 
 .cart-menu-list {
-  @include flexColumnStart();
-  max-height: 70vh;
+  @include flexColumnCenter();
   overflow-y: auto;
   padding: 10px 10px;
 }
@@ -64,10 +63,7 @@
   @include flexCenter();
   button {
     font-size: 16px;
-    @include headerFontStyle();
-    padding: 8px;
-    font-family: $globalFontFamily;
-    padding: 5px;
-    margin: 15px 0px 15px 0px;
+    // padding: 10px;
+    margin-bottom: 10px;
   }
 }

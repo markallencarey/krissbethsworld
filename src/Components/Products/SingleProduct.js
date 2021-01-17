@@ -28,8 +28,7 @@ const SingleProduct = (props) => {
   function addToCart(quantity) {
     if (props.isLoggedIn) {
       const body = { product_id: props.match.params.product_id, quantity: quantity }
-      console.log(props.match.params.product_id)
-  
+
       axios.post('/api/cart', body).then(res => {
         props.updateCart(res.data)
       })
@@ -41,9 +40,9 @@ const SingleProduct = (props) => {
         alert(`${productQuantity} ${props.product.name}s were added to your cart!`)
       }
     } else {
-      alert('Please log in before adding to cart')
+      alert('Please log in!')
     }
-    
+
   }
 
   function increaseQuantity() {
@@ -62,24 +61,27 @@ const SingleProduct = (props) => {
           <div className='single-product'>
             <img className='single-product-img'
               src={props.product.img} alt='product' />
-            <p className='single-product-name'>{props.product.name}</p>
+            <div className='single-product-name-div'>
+              <p className='single-product-name'>{props.product.name}</p>
+            </div>
             <p className='single-product-price'>${props.product.price}</p>
             <button
               className='add-to-cart-btn'
               onClick={(() => addToCart(productQuantity))}
             >ADD TO CART</button>
             <div className='quantity-div'>
-              <button
-                className='increase-quantity-btn'
-                onClick={increaseQuantity}
-              >+</button>
-              <p>{productQuantity}</p>
+
               <button
                 className='decrease-quantity-btn'
                 onClick={decreaseQuantity}
               >-</button>
+              <p>{productQuantity}</p>
+              <button
+                className='increase-quantity-btn'
+                onClick={increaseQuantity}
+              >+</button>
             </div>
-            
+
             <div className='single-product-description-container'>
               <p className='single-product-description'>{props.product.description}</p>
             </div>

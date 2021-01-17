@@ -10,13 +10,6 @@
   font-size: 22px;
   @include headerFontStyle();
 
-  button {
-    font-size: 14px;
-    @include headerFontStyle();
-    padding: 8px;
-    font-family: $globalFontFamily;
-  }
-
   input {
     padding: 8px;
     width: 250px;
@@ -70,9 +63,6 @@
   .check-out-shop {
     padding-top: 40px;
     padding-bottom: 120px;
-    text-decoration: underline;
+    font-size: 18px;
   }
 }
-
-
-

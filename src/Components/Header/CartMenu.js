@@ -7,10 +7,14 @@ import axios from 'axios'
 
 const Cart = (props) => {
 
-  useEffect(() => {
+  function handleGetCart() {
     axios.get('/api/cart').then(res => {
-      console.log(props.cart)
+      props.updateCart(res.data)
     })
+  }
+
+  useEffect(() => {
+    handleGetCart()
   })
 
   function clearCart() {
@@ -38,7 +42,11 @@ const Cart = (props) => {
       <div className='cart-menu-list'>
         {props.cart.map(element => {
           return (
-            <CartMenuItem key={element.id} cartItem={element} />
+            <CartMenuItem
+              key={element.id}
+              cartItem={element}
+              handleGetCart={handleGetCart}
+            />
           )
         })}
       </div>

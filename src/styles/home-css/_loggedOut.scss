@@ -8,9 +8,9 @@
     @include componentTopPosition();
     margin-top: 40%;
     
-    p {
+    .logged-out-msg {
       padding-bottom: 40px;
-      font-size: 22px;
+      font-size: 18px;
       @include headerFontStyle();
       line-height: 24px;
     }
