@@ -6,6 +6,7 @@ module.exports = {
       const { id } = req.session.user
       const user_id = id
       const cart = await db.cart.get_cart([user_id])
+
       res.status(200).send(cart)
     }
   },
@@ -15,19 +16,21 @@ module.exports = {
 
     if (req.session.user) {
       let { product_id, quantity } = req.body
+      console.log('product_id ' + product_id)
       const { id } = req.session.user
       const user_id = id
-  
+
       const [product] = await db.cart.get_product_in_cart([user_id, product_id])
       if (product) {
         quantity += product.quantity
         await db.cart.change_quantity([quantity, user_id, product_id])
+
       } else {
         await db.cart.add_to_cart([user_id, product_id, quantity])
       }
-  
+
       const cart = await db.cart.get_cart([user_id])
-  
+
       res.status(200).send(cart)
     }
   },
@@ -50,6 +53,8 @@ module.exports = {
     const db = req.app.get('db')
 
     const { product_id } = req.body
+    console.log('req.body is ' + req.body)
+    console.log('product_id is ' + product_id)
     const { id } = req.session.user
     const user_id = id
 

@@ -1,0 +1,48 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  @include headerFontStyle();
+  background-color: $globalColor;
+}
+
+.cart-item-info {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.cart-img {
+  height: 75px;
+}
+
+.cart-item-name-div {
+  padding-left: 10px;
+}
+
+.cart-item-name {
+  text-align: left;
+  font-size: 20px;
+}
+
+.cart-item-cost-info {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  padding: 20px 0px;
+}
+
+.cart-item-quantity {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.cart-item-price {
+  font-size: 18px;
+  padding-left: 10px;
+}

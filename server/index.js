@@ -5,6 +5,7 @@ const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const productsCtrl = require('./controllers/productsController')
 const cartCtrl = require('./controllers/cartController')
+const stripeCtrl = require('./controllers/stripeController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 const app = express()
@@ -33,6 +34,9 @@ app.post('/api/cart', cartCtrl.addToCart)
 app.put('/api/cart', cartCtrl.changeQuantity)
 app.delete('/api/cart', cartCtrl.removeFromCart)
 app.delete('/api/cart/clear', cartCtrl.clearCart)
+
+//stripeController
+app.post('/create-checkout-session', stripeCtrl.createCheckoutSession)
 
 massive({
   connectionString: CONNECTION_STRING,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { updateCart } from '../../redux/cartReducer'
 import axios from 'axios'
@@ -8,10 +8,15 @@ const CartMenuItem = (props) => {
   let price = (props.cartItem.quantity * props.cartItem.price).toFixed(2)
 
   function removeCartMenuItem() {
-    axios.delete('/api/cart').then(res => {
+
+    const body = { product_id: props.cartItem.product_id }
+
+    console.log(body)
+
+    axios.delete('/api/cart', body).then(res => {
       props.updateCart(res.data)
       console.log(props.cart)
-      props.handleGetCart()
+      // props.handleGetCart()
     })
   }
 

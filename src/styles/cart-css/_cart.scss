@@ -1,6 +1,82 @@
 @import '../base-css/variables';
 @import '../base-css/mixins';
 
-.Cart {
+.cart {
   @include componentTopPosition();
+  height: 92vh;
+  width: $bodyWidth;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4vh;
+  width: $bodyWidth;
+  position: fixed;
+  top: 8vh;
+  background-color: $globalColor;
+  z-index: 5;
+}
+
+.cart-close-btn {
+  display: flex;
+  align-items: center;
+}
+
+.cart-close-text {
+  font-size: 16px;
+}
+
+.cart-clear-cart-btn {
+  font-size: 16px;
+}
+
+.cart-list {
+  @include flexColumnCenter();
+  overflow-y: auto;
+  position: absolute;
+  top: 4vh;
+  height: 82vh;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  bottom: 0;
+  @include headerFontStyle();
+  z-index: 5;
+  background-color: $globalColor;
+}
+
+.cart-total-div {
+  display: flex;
+  width: $bodyWidth;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.cart-total-text {
+  font-size: 18px;
+}
+
+.cart-total-price {
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.cart-checkout-btn-div {
+  button {
+    font-size: 20px;
+  }
 }

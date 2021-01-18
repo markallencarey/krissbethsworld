@@ -1,9 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getOneProduct } from '../../redux/productsReducer'
 import { updateCart } from '../../redux/cartReducer'
 import Loading from '../Home/Loading'
+import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 /*
   data object: {
@@ -59,31 +61,45 @@ const SingleProduct = (props) => {
         <Loading />
       ) : (
           <div className='single-product'>
-            <img className='single-product-img'
-              src={props.product.img} alt='product' />
-            <div className='single-product-name-div'>
-              <p className='single-product-name'>{props.product.name}</p>
+            <div className='single-product-header'>
+              <Link
+                to={'/products'}
+                className='link'
+              >
+                <div className='single-product-back-btn'>
+                  <MdKeyboardArrowLeft
+                    size='22' />
+                  <p className='single-product-back-text'>Shop</p>
+                </div>
+              </Link>
             </div>
-            <p className='single-product-price'>${props.product.price}</p>
-            <button
-              className='add-to-cart-btn'
-              onClick={(() => addToCart(productQuantity))}
-            >ADD TO CART</button>
-            <div className='quantity-div'>
-
+            <div className='single-product-body'>
+              <img className='single-product-img'
+                src={props.product.img} alt='product' />
+              <div className='single-product-name-div'>
+                <p className='single-product-name'>{props.product.name}</p>
+              </div>
+              <p className='single-product-price'>${props.product.price}</p>
               <button
-                className='decrease-quantity-btn'
-                onClick={decreaseQuantity}
-              >-</button>
-              <p>{productQuantity}</p>
-              <button
-                className='increase-quantity-btn'
-                onClick={increaseQuantity}
-              >+</button>
-            </div>
+                className='add-to-cart-btn'
+                onClick={(() => addToCart(productQuantity))}
+              >ADD TO CART</button>
+              <div className='quantity-div'>
 
-            <div className='single-product-description-container'>
-              <p className='single-product-description'>{props.product.description}</p>
+                <button
+                  className='decrease-quantity-btn'
+                  onClick={decreaseQuantity}
+                >-</button>
+                <p>{productQuantity}</p>
+                <button
+                  className='increase-quantity-btn'
+                  onClick={increaseQuantity}
+                >+</button>
+              </div>
+
+              <div className='single-product-description-container'>
+                <p className='single-product-description'>{props.product.description}</p>
+              </div>
             </div>
           </div>
         )}
@@ -99,4 +115,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { getOneProduct, updateCart })(SingleProduct)
+export default connect(mapStateToProps, { getOneProduct, updateCart })(withRouter(SingleProduct))

@@ -4,18 +4,20 @@ import { updateCart, clearCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
+import { Link, withRouter } from 'react-router-dom'
 
-const Cart = (props) => {
+const CartMenu = (props) => {
 
   function handleGetCart() {
     axios.get('/api/cart').then(res => {
       props.updateCart(res.data)
+      console.log('cart handled!')
     })
   }
 
-  useEffect(() => {
-    handleGetCart()
-  })
+  // useEffect(() => {
+  //   handleGetCart()
+  // })
 
   function clearCart() {
     axios.delete('/api/cart/clear').then(res => {
@@ -25,7 +27,6 @@ const Cart = (props) => {
 
   return (
     <div>
-
       <div className='cart-menu-header'>
         <div className='cart-menu-close-btn'
           onClick={props.toggleCartMenu}>
@@ -51,9 +52,13 @@ const Cart = (props) => {
         })}
       </div>
 
-      <div className='cart-checkout-btn-div'>
-        <button className='cart-checkout-btn'>Checkout</button>
-      </div>
+      <Link
+        className='link'
+        to={'/cart'}>
+        <div className='cart-menu-checkout-btn-div'>
+          <button className='cart-menu-checkout-btn'>Checkout</button>
+        </div>
+      </Link>
 
     </div>
   )
@@ -66,4 +71,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { updateCart, clearCart })(Cart)
+export default connect(mapStateToProps, { updateCart, clearCart })(withRouter(CartMenu))
