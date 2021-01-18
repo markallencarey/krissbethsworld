@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
+import { clearCart } from '../../redux/cartReducer'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const MobileNav = (props) => {
@@ -10,6 +11,7 @@ const MobileNav = (props) => {
   function logout() {
     axios.delete('/auth/logout').then(res => {
       props.logoutUser()
+      props.clearCart()
     })
   }
 
@@ -77,4 +79,4 @@ function mapStateToProps(reduxState) {
   }
 }
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(MobileNav))
+export default connect(mapStateToProps, { logoutUser, clearCart })(withRouter(MobileNav))

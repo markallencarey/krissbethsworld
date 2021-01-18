@@ -21,6 +21,8 @@ $paddingBottom: 20px;
   width: 100vw;
   position: fixed;
   top: 8vh;
+  z-index: 5;
+  background-color: $globalColor;
 }
 
 .single-product-back-btn {
@@ -90,8 +92,6 @@ $paddingBottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
 }
-
-
 
 .single-product-description-container {
   width: 300px;

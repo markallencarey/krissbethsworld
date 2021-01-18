@@ -6,19 +6,20 @@
   height: 92vh;
   width: 100vw;
   @include componentTopPosition();
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  }
 
 .welcome-to {
   position: relative;
-  top: 20vh;
+  @include headerFontStyle();
   font-size: 32px;
   color: snow;
-  padding-bottom: 20px;
 }
 
 .title {
   position: relative;
-  top: 20vh;
   font-size: 56px;
   color: snow;
   font-family: 'Satisfy';
@@ -27,11 +28,28 @@
 .hero-img {
   height: 100vh;
   width: 100vw;
-  background-image: url('https://images.unsplash.com/photo-1440335680360-79703e7032f9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-  // background-image: url('/public/KBWorld-hero-img.png');
+  background-image: url('../images/KBWorld-hero-img.png');
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -8vh;
+  // left: -20vw;
+  // filter: blur(2px);
+  // opacity: 0.5;
+}
+
+.home-welcome-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  top: 5vh;
+  position: relative;
+  border: 2px $globalColor solid;
+}
+
+.KB-hero-logo {
+  z-index: 100;
+  height: 400px;
 }

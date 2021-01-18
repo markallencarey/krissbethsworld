@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { updateCart, clearCart } from '../../redux/cartReducer'
+import { updateCart, clearCart, getCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
@@ -13,15 +13,8 @@ const CartMenu = (props) => {
 
   const [message, setMessage] = useState('')
 
-  function handleGetCart() {
-    axios.get('/api/cart').then(res => {
-      props.updateCart(res.data)
-      console.log('cart handled!')
-    })
-  }
-
   useEffect(() => {
-    handleGetCart()
+    props.getCart()
 
     const query = new URLSearchParams(window.location.search)
 
@@ -32,13 +25,7 @@ const CartMenu = (props) => {
     if (query.get('canceled')) {
       setMessage("Order canceled - continue to shop around and checkout when you're ready")
     }
-  })
-
-  function clearCart() {
-    axios.delete('/api/cart/clear').then(res => {
-      props.clearCart()
-    })
-  }
+  }, [props.isLoggedIn])
 
   async function handleClick() {
     const stripe = await stripePromise
@@ -51,6 +38,7 @@ const CartMenu = (props) => {
     }).catch(err => {
       alert(err)
     })
+
   }
 
   return (
@@ -63,13 +51,13 @@ const CartMenu = (props) => {
           <p className='cart-menu-close-text'>Close</p>
         </div>
         <button
-          onClick={clearCart}
+          onClick={props.clearCart}
           className='cart-menu-clear-cart-btn'
         >Clear Cart</button>
       </div>
 
       <div className='cart-menu-list'>
-        {props.isLoading ? (
+        {props.cartIsLoading ? (
           <Loading />
         ) : (
             props.cart.map(element => {
@@ -77,7 +65,6 @@ const CartMenu = (props) => {
                 <CartMenuItem
                   key={element.id}
                   cartItem={element}
-                  handleGetCart={handleGetCart}
                 />
               )
             })
@@ -97,8 +84,8 @@ const CartMenu = (props) => {
 function mapStateToProps(reduxState) {
   return {
     ...reduxState.cart,
-    ...reduxState.total
+    ...reduxState.user
   }
 }
 
-export default connect(mapStateToProps, { updateCart, clearCart })(CartMenu)
+export default connect(mapStateToProps, { updateCart, clearCart, getCart })(CartMenu)

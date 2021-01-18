@@ -57,7 +57,7 @@ const SingleProduct = (props) => {
 
   return (
     <div >
-      {props.isLoading ? (
+      {props.productIsLoading ? (
         <Loading />
       ) : (
           <div className='single-product'>

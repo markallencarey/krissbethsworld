@@ -1,5 +1,6 @@
 @import '../base-css/variables';
 @import '../base-css/mixins';
+@import url(https://fonts.googleapis.com/css?family=Satisfy:regular);
 
 .Login {
   @include componentTopPosition();
@@ -8,7 +9,6 @@
   flex-direction: column;
   justify-content: center;
   font-size: 22px;
-  @include headerFontStyle();
 
   input {
     padding: 8px;
@@ -28,6 +28,7 @@
 
 .login-form-email {
   margin-bottom: 20px;
+  @include headerFontStyle();
 
   p {
     margin-bottom: 10px;
@@ -36,6 +37,7 @@
 
 .login-form-password {
   margin-bottom: 20px;
+  @include headerFontStyle();
 
   p {
     margin-bottom: 10px;
@@ -44,9 +46,11 @@
 
 .login-form-login-btn {
   margin-bottom: 40px;
+  @include headerFontStyle();
 }
 
 .login-form-register {
+  @include headerFontStyle();
   margin-bottom: 30px;
 
   p {
@@ -60,8 +64,19 @@
     padding: 5px;
   }
 
+  .welcome-back {
+    @include headerFontStyle();
+    font-size: 18px;
+  }
+  
+  .login-first-name {
+    font-family: 'Satisfy';
+    font-size: 44px;
+    padding: 20px;
+  }
+
   .check-out-shop {
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 120px;
     font-size: 18px;
   }

@@ -92,8 +92,8 @@ const Login = (props) => {
         </div>
       ) : (
           <div className='login-welcome-back'>
-            <p>Welcome back,</p>
-            <p>{props.user.first_name}!</p>
+            <p className='welcome-back'>Welcome back,</p>
+            <p className='login-first-name'>{props.user.first_name}!</p>
             <Link
               className='link'
               to={'/products'}>

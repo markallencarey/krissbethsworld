@@ -3,7 +3,7 @@ import axios from 'axios'
 const initialState = {
   products: [],
   product: {},
-  isLoading: true,
+  productIsLoading: true,
 }
 
 const GET_ALL_PRODUCTS = 'GET_ALL_PRODUCTS'
@@ -31,34 +31,34 @@ export default function productsReducer(state = initialState, action) {
     case GET_ALL_PRODUCTS + '_PENDING':
       return {
         ...state,
-        isLoading: true
+        productIsLoading: true
       }
     case GET_ALL_PRODUCTS + '_FULFILLED':
       return {
         ...state,
-        isLoading: false,
+        productIsLoading: false,
         products: action.payload.data
       }
     case GET_ALL_PRODUCTS + '_REJECTED':
       return {
         ...state,
-        isLoading: false
+        productIsLoading: false
       }
     case GET_ONE_PRODUCT + '_PENDING':
       return {
         ...state,
-        isLoading: true
+        productIsLoading: true
       }
     case GET_ONE_PRODUCT + '_FULFILLED':
       return {
         ...state,
-        isLoading: false,
+        productIsLoading: false,
         product: action.payload.data
       }
     case GET_ONE_PRODUCT + '_REJECTED':
       return {
         ...state,
-        isLoading: false
+        productIsLoading: false
       }
     default:
       return state

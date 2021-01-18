@@ -1,10 +1,22 @@
+import axios from 'axios'
+
 const initialState = {
   cart: [],
+  cartIsLoading: true,
 }
 
+const GET_CART = 'GET_CART'
 const UPDATE_CART = 'UPDATE_CART'
-// const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
 const CLEAR_CART = 'CLEAR_CART'
+
+export function getCart() {
+  const res = axios.get('/api/cart')
+  
+  return {
+    type: GET_CART,
+    payload: res,
+  }
+}
 
 export function updateCart(cart) {
   return {
@@ -13,14 +25,9 @@ export function updateCart(cart) {
   }
 }
 
-// export function removeFromCart(product) {
-//   return {
-//     type: REMOVE_FROM_CART,
-//     payload: product,
-//   } 
-// }
-
 export function clearCart() {
+  axios.delete('/api/cart/clear')
+  
   return {
     type: CLEAR_CART,
   }
@@ -28,10 +35,24 @@ export function clearCart() {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case GET_CART + '_PENDING':
+      return {
+        ...state,
+        cartIsLoading: true
+      }
+    case GET_CART + '_FULFILLED':
+      return {
+        ...state,
+        cartIsLoading: false,
+        cart: action.payload.data
+      }
+    case GET_CART + '_REJECTED':
+      return {
+        ...state,
+        cartIsLoading: false
+      }
     case UPDATE_CART:
       return { ...state, cart: action.payload }
-    // case REMOVE_FROM_CART:
-    //   return {}
     case CLEAR_CART:
       return { ...state, cart: [] }
     default:

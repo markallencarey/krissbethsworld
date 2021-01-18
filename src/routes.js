@@ -7,6 +7,8 @@ import Products from './Components/Products/Products'
 import SingleProduct from './Components/Products/SingleProduct'
 import Loading from './Components/Home/Loading'
 import LoggedOut from './Components/Home/LoggedOut'
+import StripeSuccess from './Components/Header/StripeSuccess'
+import StripeCanceled from './Components/Header/StripeCanceled'
 
 export default (
   <Switch>
@@ -17,5 +19,7 @@ export default (
     <Route exact path='/products' component={Products} />
     <Route path='/products/:product_id' component={SingleProduct} />
     <Route path='/loading' component={Loading} />
+    <Route exact path='/checkout/success' component={StripeSuccess} />
+    <Route exact path='/checkout/canceled' component={StripeCanceled} />
   </Switch>
 )

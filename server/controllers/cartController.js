@@ -8,6 +8,8 @@ module.exports = {
       const cart = await db.cart.get_cart([user_id])
 
       res.status(200).send(cart)
+    } else {
+      res.sendStatus(404)
     }
   },
 

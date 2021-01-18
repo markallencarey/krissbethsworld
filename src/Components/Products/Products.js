@@ -14,7 +14,7 @@ const Products = (props) => {
 
   return (
     <div className='product-list'>
-      {props.isLoading ? (
+      {props.productIsLoading ? (
         <Loading />
       ) : (
           props.products.map(element => {

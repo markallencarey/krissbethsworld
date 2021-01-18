@@ -5,6 +5,7 @@ import MobileNav from './MobileNav'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
 import { AiOutlineShopping } from 'react-icons/ai'
+import KBLogo from '../../images/KBWorld-logo-nobg.png'
 
 const Header = (props) => {
 
@@ -44,7 +45,7 @@ const Header = (props) => {
         </nav>
 
         <Link to={'/'}>
-          <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' alt='logo'/>
+          <img className='logo' src={KBLogo} alt='logo'/>
         </Link>
         
         <AiOutlineShopping
