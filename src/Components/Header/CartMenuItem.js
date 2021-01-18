@@ -9,14 +9,9 @@ const CartMenuItem = (props) => {
 
   function removeCartMenuItem() {
 
-    const body = { product_id: props.cartItem.product_id }
-
-    console.log(body)
-
-    axios.delete('/api/cart', body).then(res => {
+    axios.delete(`/api/cart?product_id=${props.cartItem.product_id}`).then(res => {
       props.updateCart(res.data)
       console.log(props.cart)
-      // props.handleGetCart()
     })
   }
 

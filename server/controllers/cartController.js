@@ -52,8 +52,7 @@ module.exports = {
   removeFromCart: async (req, res) => {
     const db = req.app.get('db')
 
-    const { product_id } = req.body
-    console.log('req.body is ' + req.body)
+    const { product_id } = req.query
     console.log('product_id is ' + product_id)
     const { id } = req.session.user
     const user_id = id
