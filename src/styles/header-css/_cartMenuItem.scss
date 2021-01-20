@@ -5,11 +5,15 @@
   display: flex;
   align-items: flex-end;
   width: 100%;
-  // height: 40px;
   justify-content: space-between;
   padding-bottom: 10px;
-  // position: relative;
   @include headerFontStyle();
+}
+
+.cart-menu-link-div {
+  display: flex;
+  align-items: flex-end;
+  width: 50vw;
 }
 
 .cart-menu-img {
@@ -17,18 +21,32 @@
 }
 
 .cart-menu-item-name-div {
-  width: 50vw;
+  width: 100%;
   padding-left: 10px;
-//   text-overflow: ellipsis;
 }
 
 .cart-menu-item-name {
   text-align: left;
 }
 
-.cart-menu-item-quantity {
-  font-size: 16px;
+.cart-menu-qty-div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 50px;
   padding-left: 10px;
+
+  .cart-menu-item-quantity {
+  font-size: 16px;
+  }
+
+  button {
+    padding: 0px 3px;
+  }
+
+  .cart-menu-increase {
+    margin-left: -3px;
+  }
 }
 
 .cart-menu-item-price {

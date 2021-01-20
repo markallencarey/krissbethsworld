@@ -1,18 +1,23 @@
 @import './variables';
 @import './mixins';
 
+*{
+  // box-sizing: border-box;
+  // padding: 0px;
+  // margin: 0px;
+}
+
 .Display {
   text-align: center;
   font-family: $globalFontFamily;
-  height: 100vh;
-  width: 100vw;
   position: relative;
   background-color: $globalColor;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   font-weight: 300;
+  height: 100vh;
+  width: 100vw;
 }
 
 .link {

@@ -1,0 +1,22 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.nav-bar-welcome {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-top: 2px;
+
+  p {
+    font-size: 12px;
+  }
+}
+
+.nav-bar-items {
+  display: flex;
+  align-items: center;
+  p {
+    padding: 10px;
+    font-size: 16px;
+  }
+}

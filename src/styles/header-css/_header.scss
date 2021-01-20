@@ -5,7 +5,7 @@
   height: 8vh;
   width: 100vw;
   @include flexSpaceBetween();
-  // background-color: $globalColor;
+  backdrop-filter: blur(3px);
   position: fixed;
   top: 0;
   left: 0;
@@ -15,6 +15,10 @@
 .logo {
   height: 60px;
   margin-top: 3px;
+  margin-right: 5px;
+  position: absolute;
+  top: 0;
+  left: 42vw;
 }
 
 .hamburger {
@@ -23,4 +27,44 @@
 
 .cart-icon {
   margin-right: 10px;
+}
+
+.nav-bar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    position: fixed;
+  }
+  
+  .logo {
+    height: 80px;
+    position: absolute;
+    left: 44vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo {
+    height: 100px;
+    position: absolute;
+    left: 46vw;
+  }
+  .header {
+    height: 10vh;
+    position: fixed;
+  }
+  .hamburger {
+    display: none;
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    @include headerFontStyle();
+    padding: 10px;
+  }
+  .cart-menu {
+    width: 30vw;
+  }
 }

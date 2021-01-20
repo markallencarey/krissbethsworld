@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateCart, clearCart, getCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
@@ -6,25 +6,14 @@ import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
+// import { ClickAwayListener } from '@material-ui/core'
 
 const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMxXrd2mycNJBIxKbzC8amtkDwRCRDrCVJWqJ30kcmeFrkmeJ91CxB00NvHR5Fep')
 
 const CartMenu = (props) => {
 
-  const [message, setMessage] = useState('')
-
   useEffect(() => {
     props.getCart()
-
-    const query = new URLSearchParams(window.location.search)
-
-    if (query.get('success')) {
-      setMessage('Order placed! You will receive an email confirmation.')
-    }
-
-    if (query.get('canceled')) {
-      setMessage("Order canceled - continue to shop around and checkout when you're ready")
-    }
   }, [props.isLoggedIn])
 
   async function handleClick() {
@@ -38,10 +27,14 @@ const CartMenu = (props) => {
     }).catch(err => {
       alert(err)
     })
-
   }
 
+  // function handleClickAway() {
+  //   props.toggleCartMenu()
+  // }
+
   return (
+    // <ClickAwayListener onClickAway={handleClickAway}>
     <div>
       <div className='cart-menu-header'>
         <div className='cart-menu-close-btn'
@@ -71,13 +64,20 @@ const CartMenu = (props) => {
           )}
       </div>
 
-      <div className='cart-menu-checkout-btn-div'>
-        <button
-          className='cart-menu-checkout-btn'
-          onClick={handleClick}
-        >Checkout</button>
-      </div>
+      <footer>
+        {/* <div className='cart-menu-total-div'>
+          <p className='cart-menu-total-text'>Total:</p>
+          <p className='cart-menu-total-price'>${total}</p>
+        </div> */}
+        <div className='cart-menu-checkout-btn-div'>
+          <button
+            className='cart-menu-checkout-btn'
+            onClick={handleClick}
+          >Checkout</button>
+        </div>
+      </footer>
     </div>
+    // </ClickAwayListener>
   )
 }
 

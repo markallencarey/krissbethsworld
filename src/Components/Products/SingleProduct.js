@@ -44,7 +44,6 @@ const SingleProduct = (props) => {
     } else {
       alert('Please log in!')
     }
-
   }
 
   function increaseQuantity() {

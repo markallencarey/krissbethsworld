@@ -7,10 +7,8 @@
   right: 0;
   width: 100vw;
   max-height: 90vh;
-  min-height: 70vh;
   display: flex;
   flex-direction: column;
-  // text-align: left;
   background-color: $menuColor;
   overflow: hidden;
   transition: all 500ms;
@@ -61,11 +59,32 @@
 
 /* ---------------------------- */
 
-.cart-menu-checkout-btn-div {
-  @include flexCenter();
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 5px;
+    
+  .cart-menu-total-div {
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    .cart-menu-total-price {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
   button {
     font-size: 16px;
-    padding: 20px;
-    // margin-bottom: 10px;
+    padding: 10px;
   }
 }
+
+// @media (min-width: 768px) {
+//   .cart-menu {
+//     width: 40vw;
+//   }
+// }

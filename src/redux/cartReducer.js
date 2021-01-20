@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const initialState = {
   cart: [],
+  cartTotal: 0,
   cartIsLoading: true,
 }
 

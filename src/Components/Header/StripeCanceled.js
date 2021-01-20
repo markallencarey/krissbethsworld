@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
 const StripeCanceled = (props) => {
+  useEffect(() => {
+    
+  })
 
   return (
     <div className='Stripe-Canceled'>
-      <p>The checkout was cancelled</p>
-      <Link to={'/products'}>
-        <p className='link'>Return to Shop</p>
+      <p>The checkout was canceled</p>
+      <Link
+        to={'/products'}
+        className='link'
+      >
+        <p>Return to Shop</p>
       </Link>
     </div>
   )

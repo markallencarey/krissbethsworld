@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
 import MobileNav from './MobileNav'
+import NavBar from './NavBar'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
 import { AiOutlineShopping } from 'react-icons/ai'
@@ -42,6 +43,9 @@ const Header = (props) => {
             toggleNavMenu={toggleNavMenu}
             logout={logout}
           />
+        </nav>
+        <nav>
+          <NavBar />
         </nav>
 
         <Link to={'/'}>
