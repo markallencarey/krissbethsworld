@@ -1,10 +1,12 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require('./controllers/authController')
 const productsCtrl = require('./controllers/productsController')
 const cartCtrl = require('./controllers/cartController')
+const stripeCtrl = require('./controllers/stripeController')
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
 const app = express()
@@ -16,6 +18,7 @@ app.use(session({
   secret: SESSION_SECRET,
   cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }))
+
 
 //authController
 app.post('/auth/register', authCtrl.register)
@@ -31,8 +34,17 @@ app.get('/api/products/:product_id', productsCtrl.getSingleProduct)
 app.get('/api/cart', cartCtrl.getCart)
 app.post('/api/cart', cartCtrl.addToCart)
 app.put('/api/cart', cartCtrl.changeQuantity)
-app.delete('/api/cart', cartCtrl.removeProduct)
+app.delete('/api/cart', cartCtrl.removeFromCart)
 app.delete('/api/cart/clear', cartCtrl.clearCart)
+
+//stripeController
+app.post('/create-checkout-session', stripeCtrl.createCheckoutSession)
+
+app.use(express.static(`${__dirname}/../build`))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 massive({
   connectionString: CONNECTION_STRING,

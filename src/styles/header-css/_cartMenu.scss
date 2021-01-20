@@ -1,0 +1,90 @@
+@import '../base-css/variables';
+@import '../base-css/mixins';
+
+.cart-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $menuColor;
+  overflow: hidden;
+  transition: all 500ms;
+  z-index: 5;
+  box-shadow: $globalBoxShadow;
+  font-size: 14px;
+  @include headerFontStyle();
+  font-family: $globalFontFamily;
+}
+
+.cart-menu-hide {
+  width: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* ---------------------------- */
+
+.cart-menu-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 0px 10px;
+}
+
+.cart-menu-close-btn {
+  display: flex;
+  align-items: center;
+  
+}
+
+.cart-menu-close-text {
+  @include backTextStyle();
+}
+
+.cart-menu-clear-cart-btn {
+  font-size: 14px;
+}
+
+/* ---------------------------- */
+
+.cart-menu-list {
+  @include flexColumnCenter();
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 10px 10px;
+}
+
+/* ---------------------------- */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 5px;
+    
+  .cart-menu-total-div {
+    font-size: 16px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    .cart-menu-total-price {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+// @media (min-width: 768px) {
+//   .cart-menu {
+//     width: 40vw;
+//   }
+// }

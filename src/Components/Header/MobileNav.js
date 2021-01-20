@@ -1,26 +1,82 @@
-import React, { useState } from 'react'
-import '../../css/header-css/mobileNav.css'
+import React from 'react'
+import axios from 'axios'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { logoutUser } from '../../redux/userReducer'
+import { clearCart } from '../../redux/cartReducer'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const MobileNav = (props) => {
 
+  function logout() {
+    axios.delete('/auth/logout').then(res => {
+      props.logoutUser()
+      props.clearCart()
+    })
+  }
+
   return (
     <div>
-      <div className='nav-back-btn'
-      onClick={props.toggleNavMenu}>
+      <div className='nav-close-btn'
+        onClick={props.toggleNavMenu}>
         <MdKeyboardArrowLeft
-        size='20'/>
-        <p className='mobile-back-text'>Back</p>
+          size='18' />
+        <p className='mobile-close-text'>Close</p>
       </div>
+
+      {props.isLoggedIn ? (
+        <div className='mobile-nav-welcome'>
+          <p>Welcome,</p>
+          <p>{props.user.first_name}!</p>
+        </div>
+      ) : (null)}
+
       <div className='mobile-nav-items'>
-        <p className='mobile-nav-item'>Home</p>
-        <p className='mobile-nav-item'>Products</p>
-        <p className='mobile-nav-item'>Cart</p>
-        <p className='mobile-nav-item'>Login</p>
+        <Link
+          className='link'
+          to={'/'}>
+          <p className='mobile-nav-item'
+            onClick={props.toggleNavMenu}>Home</p>
+        </Link>
+        <Link
+          className='link'
+          to={'/products'}>
+          <p className='mobile-nav-item'
+            onClick={props.toggleNavMenu}>Shop</p>
+        </Link>
+
+        {!props.isLoggedIn ? (
+          <Link
+            className='link'
+            to={'/login'}>
+            <p className='mobile-nav-item'
+              onClick={props.toggleNavMenu}>Log In</p>
+          </Link>
+        ) : (
+            <Link
+              className='link'
+              to={'/loggedout'}>
+              <p
+                className='mobile-nav-item'
+                onClick={() => {
+                  logout()
+                  props.toggleNavMenu()
+                }}
+              >Log Out</p>
+            </Link>
+          )}
+
       </div>
     </div>
 
   )
 }
 
-export default MobileNav
+function mapStateToProps(reduxState) {
+  return {
+    ...reduxState.user,
+    ...reduxState.isLoggedIn
+  }
+}
+
+export default connect(mapStateToProps, { logoutUser, clearCart })(withRouter(MobileNav))

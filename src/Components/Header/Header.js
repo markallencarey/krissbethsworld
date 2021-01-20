@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import '../../css/header-css/header.css'
+import axios from 'axios'
+import { Link, withRouter } from 'react-router-dom'
 import MobileNav from './MobileNav'
+import NavBar from './NavBar'
 import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
 import { AiOutlineShopping } from 'react-icons/ai'
+import KBLogo from '../../images/KBWorld-logo-nobg.png'
 
 const Header = (props) => {
 
@@ -19,6 +22,14 @@ const Header = (props) => {
     setIsCartMenuOpen(!isCartMenuOpen)
   }
 
+  function logout() {
+    axios.delete('/auth/logout').then(() => {
+
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
     <div>
       <header className='header'>
@@ -30,10 +41,16 @@ const Header = (props) => {
         <nav className={`mobile-nav ${isNavMenuOpen ? null : 'mobile-nav-hide'}`}>
           <MobileNav
             toggleNavMenu={toggleNavMenu}
+            logout={logout}
           />
         </nav>
+        <nav>
+          <NavBar />
+        </nav>
 
-        <img className='logo' src='https://uilogos.co/img/logotype/ideaa.png' />
+        <Link to={'/'}>
+          <img className='logo' src={KBLogo} alt='logo'/>
+        </Link>
         
         <AiOutlineShopping
           onClick={toggleCartMenu}
@@ -50,4 +67,4 @@ const Header = (props) => {
   )
 }
 
-export default Header
+export default withRouter(Header)

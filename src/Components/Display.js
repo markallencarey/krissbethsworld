@@ -1,16 +1,21 @@
-import React, { useState } from 'react'
-import '../css/display.css'
+import React, { useEffect } from 'react'
+import axios from 'axios'
 import routes from '../routes.js'
 import Header from './Header/Header.js'
 
+
 const Display = (props) => {
+
+  useEffect(() => {
+    axios.get('/auth/user').then(res => {
+      console.log(res.data)
+    })
+  }, [])
 
   return (
     <div className='Display'>
-      <div className='hero-img'>
-        <Header />
-        {routes}
-      </div>
+      <Header />
+      {routes}
     </div >
   )
 }

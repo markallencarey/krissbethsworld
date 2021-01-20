@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
-import Product from './SingleProduct.js'
+import React, { useEffect } from 'react'
+import Product from './Product'
+import Loading from '../Home/Loading'
+import { connect } from 'react-redux'
+import { getAllProducts } from '../../redux/productsReducer'
 
 const Products = (props) => {
 
+  const { getAllProducts } = props
+
+  useEffect(() => {
+    getAllProducts()
+  }, [])
+
   return (
-    <div>
-      <div>Products.js</div>
-     <Product />
+    <div className='product-list'>
+      {props.productIsLoading ? (
+        <Loading />
+      ) : (
+          props.products.map(element => {
+            return (
+              <Product key={element.id} product={element} />
+            )
+          })
+        )}
     </div>
-    
   )
 }
 
-export default Products
+function mapStateToProps(reduxState) {
+  return {
+    ...reduxState.products
+  }
+}
+
+export default connect(mapStateToProps, { getAllProducts })(Products)
