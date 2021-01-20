@@ -8,6 +8,8 @@
 }
 
 .Display {
+  height: 100vh;
+  width: 100vw;
   text-align: center;
   font-family: $globalFontFamily;
   position: relative;
@@ -16,8 +18,6 @@
   flex-direction: column;
   align-items: center;
   font-weight: 300;
-  height: 100vh;
-  width: 100vw;
 }
 
 .link {

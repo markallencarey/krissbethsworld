@@ -49,7 +49,7 @@
   .logo {
     height: 100px;
     position: absolute;
-    left: 46vw;
+    left: 45vw;
   }
   .header {
     height: 10vh;
@@ -63,8 +63,5 @@
     align-items: center;
     @include headerFontStyle();
     padding: 10px;
-  }
-  .cart-menu {
-    width: 30vw;
   }
 }
