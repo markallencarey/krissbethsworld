@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
@@ -17,6 +18,7 @@ app.use(session({
   secret: SESSION_SECRET,
   cookie: { maxAge: 1000 * 60 * 60 * 24 }
 }))
+
 
 //authController
 app.post('/auth/register', authCtrl.register)
@@ -37,6 +39,12 @@ app.delete('/api/cart/clear', cartCtrl.clearCart)
 
 //stripeController
 app.post('/create-checkout-session', stripeCtrl.createCheckoutSession)
+
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../build/index.html'))
+})
 
 massive({
   connectionString: CONNECTION_STRING,
