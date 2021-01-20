@@ -2,7 +2,7 @@
 @import '../base-css/mixins';
 @import url(https://fonts.googleapis.com/css?family=Satisfy:regular);
 
-.Login {
+.Register {
   @include componentTopPosition();
   margin-top: 10%;
   display: flex;
@@ -27,7 +27,7 @@
   }
 }
 
-.login-form-email {
+.register-form-email, .register-form-password, .register-form-first-name, .register-form-last-name, .register-form-phone-no {
   margin-bottom: 20px;
   @include headerFontStyle();
 
@@ -36,50 +36,36 @@
   }
 }
 
-.login-form-password {
-  margin-bottom: 20px;
-  @include headerFontStyle();
-
-  p {
-    margin-bottom: 10px;
-  }
-}
-
-.login-form-login-btn {
+.register-form-register-btn {
   margin-bottom: 40px;
   @include headerFontStyle();
 }
 
-.login-form-register {
-  @include headerFontStyle();
+.Registered {
   
-  margin-bottom: 30px;
-
-  p {
-    margin-bottom: 10px;
-  }
-}
-
-.login-welcome-back {
   p {
     line-height: 24px;
     padding: 5px;
+    @include headerFontStyle();
   }
 
-  .welcome-back {
-    @include headerFontStyle();
-    font-size: 18px;
+  .register-welcome {
+
   }
-  
-  .login-first-name {
+
+  .register-first-name {
     font-family: 'Satisfy';
+    line-height: 24px;
     font-size: 44px;
     padding: 20px;
   }
 
-  .check-out-shop {
-    padding-top: 60px;
+  .register-thanks {
+    margin-top: 20px;
     padding-bottom: 120px;
+  }
+
+  .register-check-out {
     font-size: 18px;
   }
 }

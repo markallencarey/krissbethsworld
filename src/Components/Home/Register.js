@@ -10,12 +10,12 @@ const Register = (props) => {
   const [password, setPassword] = useState([])
   const [firstName, setFirstName] = useState([])
   const [lastName, setLastName] = useState([])
-  const [address, setAddress] = useState([])
-  const [aptNo, setAptNo] = useState([])
-  const [city, setCity] = useState([])
-  const [state, setState] = useState([])
-  const [country, setCountry] = useState([])
-  const [zipCode, setZipCode] = useState([])
+  // const [address, setAddress] = useState([])
+  // const [aptNo, setAptNo] = useState([])
+  // const [city, setCity] = useState([])
+  // const [state, setState] = useState([])
+  // const [country, setCountry] = useState([])
+  // const [zipCode, setZipCode] = useState([])
   const [phoneNo, setPhoneNo] = useState([])
 
   function handleEmailInput(value) {
@@ -34,46 +34,46 @@ const Register = (props) => {
     setLastName(value)
   }
 
-  function handleAddressInput(value) {
-    setAddress(value)
-  }
+  // function handleAddressInput(value) {
+  //   setAddress(value)
+  // }
 
-  function handleAptNoInput(value) {
-    setAptNo(value)
-  }
+  // function handleAptNoInput(value) {
+  //   setAptNo(value)
+  // }
 
-  function handleCityInput(value) {
-    setCity(value)
-  }
+  // function handleCityInput(value) {
+  //   setCity(value)
+  // }
 
-  function handleStateInput(value) {
-    setState(value)
-  }
+  // function handleStateInput(value) {
+  //   setState(value)
+  // }
 
-  function handleCountryInput(value) {
-    setCountry(value)
-  }
+  // function handleCountryInput(value) {
+  //   setCountry(value)
+  // }
 
-  function handleZipCodeInput(value) {
-    setZipCode(value)
-  }
+  // function handleZipCodeInput(value) {
+  //   setZipCode(value)
+  // }
 
   function handlePhoneNoInput(value) {
     setPhoneNo(value)
   }
 
   function register() {
-    axios.post('/auth/register', { email, password, firstName, lastName, address, aptNo, city, state, country, zipCode, phoneNo }).then(res => {
+    axios.post('/auth/register', { email, password, firstName, lastName, phoneNo }).then(res => {
       setEmail('')
       setPassword('')
       setFirstName('')
       setLastName('')
-      setAddress('')
-      setAptNo('')
-      setCity('')
-      setState('')
-      setCountry('')
-      setZipCode('')
+      // setAddress('')
+      // setAptNo('')
+      // setCity('')
+      // setState('')
+      // setCountry('')
+      // setZipCode('')
       setPhoneNo('')
       props.registerUser(res.data)
     }).catch(err => {
@@ -81,12 +81,12 @@ const Register = (props) => {
       setPassword('')
       setFirstName('')
       setLastName('')
-      setAddress('')
-      setAptNo('')
-      setCity('')
-      setState('')
-      setCountry('')
-      setZipCode('')
+      // setAddress('')
+      // setAptNo('')
+      // setCity('')
+      // setState('')
+      // setCountry('')
+      // setZipCode('')
       setPhoneNo('')
       console.log(err)
     })
@@ -96,7 +96,7 @@ const Register = (props) => {
     <div className='Register'>
       {!props.isRegistered ? (
         <div className='register-form'>
-          <div>
+          <div className='register-form-email'>
             <p>Email: </p>
             <form>
               <input
@@ -108,7 +108,7 @@ const Register = (props) => {
             </form>
           </div>
 
-          <div>
+          <div className='register-form-password'>
             <p>Password: </p>
             <form>
               <input
@@ -120,7 +120,7 @@ const Register = (props) => {
             </form>
           </div>
 
-          <div>
+          <div className='register-form-first-name'>
             <p>First Name: </p>
             <form>
               <input
@@ -132,7 +132,7 @@ const Register = (props) => {
             </form>
           </div>
 
-          <div>
+          <div className='register-form-last-name'>
             <p>Last Name: </p>
             <form>
               <input
@@ -144,7 +144,7 @@ const Register = (props) => {
             </form>
           </div>
 
-          <div>
+          {/* <div>
             <p>Address: </p>
             <form>
               <input
@@ -522,9 +522,9 @@ const Register = (props) => {
                 onChange={e => handleZipCodeInput(e.target.value)}
               />
             </form>
-          </div>
+          </div> */}
 
-          <div>
+          <div className='register-form-phone-no'>
             <p>Phone Number: </p>
             <form>
               <input
@@ -536,7 +536,9 @@ const Register = (props) => {
             </form>
           </div>
 
-          <button onClick={register}>Register</button>
+          <button
+            className='register-form-register-btn'
+            onClick={register}>Register</button>
           <Link
             className='link'
             to={'/login'}>
@@ -545,14 +547,13 @@ const Register = (props) => {
         </div>
       ) : (
           <div className='Registered'>
-            <p>Welcome</p>
-            <p>{firstName}!</p>
-            <p>Thanks for coming to my shop!</p>
-            <p>Check out some of my products below:</p>
+            <p className='register-welcome'>Welcome</p>
+            <h1 className='register-first-name'>{props.user.first_name}!</h1>
+            <p className='register-thanks'>Thanks for coming to my shop!</p>
             <Link
               className='link'
               to={'/products'}>
-              <p>Shop</p>
+              <p className='register-check-out'>Check out some of my products</p>
             </Link>
           </div>
         )}
