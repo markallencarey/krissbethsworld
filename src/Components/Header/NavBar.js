@@ -1,45 +1,51 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
+import { Container, Nav } from 'react-bootstrap'
 
 const NavBar = (props) => {
 
+  const { logoutUser, clearCart, isLoggedIn, user } = props
+
   function logout() {
     axios.delete('/auth/logout').then(res => {
-      props.logoutUser()
-      props.clearCart()
+      logoutUser()
+      clearCart()
     })
   }
 
   return (
-    <div className='nav-bar'>
-
-      <div className='nav-bar-items'>
+    <Nav className='nav-bar'>
+      <Nav.Item>
         <Link
           to={'/'}
           className='link'
         >
           <p>Home</p>
         </Link>
+      </Nav.Item>
+      <Nav.Item>
         <Link
           to={'/products'}
           className='link'
         >
           <p>Shop</p>
         </Link>
-
-        {!props.isLoggedIn ? (
+      </Nav.Item>
+      {!isLoggedIn ? (
+        <Nav.Item>
           <Link
             to={'/login'}
             className='link'
           >
             <p>Log In</p>
           </Link>
-        ) : (
+        </Nav.Item>
+      ) : (
+          <Nav.Item>
             <Link
               to={'/loggedout'}
               className='link'>
@@ -50,17 +56,14 @@ const NavBar = (props) => {
                 }}
               >Log Out</p>
             </Link>
-          )}
-</div>
-
-        {props.isLoggedIn ? (
-          <div className='nav-bar-welcome'>
-            <p>Welcome, {props.user.first_name}!</p>
-          </div>
-        ) : (null)}
-
-
-    </div>
+          </Nav.Item>
+        )}
+      {isLoggedIn ? (
+        <Container className='nav-bar-welcome'>
+          <p>Welcome, {user.first_name}!</p>
+        </Container>
+      ) : (null)}
+    </Nav>
   )
 }
 

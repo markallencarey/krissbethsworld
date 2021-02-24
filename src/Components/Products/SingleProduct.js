@@ -6,6 +6,7 @@ import { getOneProduct } from '../../redux/productsReducer'
 import { updateCart } from '../../redux/cartReducer'
 import Loading from '../Home/Loading'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { Container, Image, Button } from 'react-bootstrap'
 
 /*
   data object: {
@@ -21,25 +22,28 @@ import { MdKeyboardArrowLeft } from 'react-icons/md'
 
 const SingleProduct = (props) => {
 
+  const { getOneProduct, isLoggedIn, updateCart, product, productIsLoading } = props
+
   const [productQuantity, setProductQuantity] = useState(1)
 
   useEffect(() => {
-    props.getOneProduct(props.match.params.product_id)
-  }, [])
+    getOneProduct(props.match.params.product_id)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
 
   function addToCart(quantity) {
-    if (props.isLoggedIn) {
+    if (isLoggedIn) {
       const body = { product_id: props.match.params.product_id, quantity: quantity }
 
       axios.post('/api/cart', body).then(res => {
-        props.updateCart(res.data)
+        updateCart(res.data)
       })
       setProductQuantity(1)
 
       if (productQuantity === 1) {
-        alert(`${productQuantity} ${props.product.name} were added to your cart!`)
+        alert(`${productQuantity} ${product.name} were added to your cart!`)
       } else if (productQuantity > 1) {
-        alert(`${productQuantity} ${props.product.name}s were added to your cart!`)
+        alert(`${productQuantity} ${product.name}s were added to your cart!`)
       }
     } else {
       alert('Please log in!')
@@ -55,54 +59,54 @@ const SingleProduct = (props) => {
   }
 
   return (
-    <div >
-      {props.productIsLoading ? (
+    <Container>
+      {productIsLoading ? (
         <Loading />
       ) : (
-          <div className='single-product'>
-            <div className='single-product-header'>
+          <Container className='single-product'>
+            <Container className='single-product-header'>
               <Link
                 to={'/products'}
                 className='link'
               >
-                <div className='single-product-back-btn'>
+                <Container className='single-product-back-btn'>
                   <MdKeyboardArrowLeft
                     size='22' />
                   <p className='single-product-back-text'>Shop</p>
-                </div>
+                </Container>
               </Link>
-            </div>
-            <div className='single-product-body'>
-              <img className='single-product-img'
-                src={props.product.img} alt='product' />
-              <div className='single-product-name-div'>
-                <p className='single-product-name'>{props.product.name}</p>
-              </div>
-              <p className='single-product-price'>${props.product.price}</p>
-              <button
+            </Container>
+            <Container className='single-product-body'>
+              <Image className='single-product-img'
+                src={product.img} alt='product' />
+              <Container className='single-product-name-div'>
+                <p className='single-product-name'>{product.name}</p>
+              </Container>
+              <p className='single-product-price'>${product.price}</p>
+              <Button
                 className='add-to-cart-btn'
                 onClick={(() => addToCart(productQuantity))}
-              >ADD TO CART</button>
-              <div className='quantity-div'>
+              >ADD TO CART</Button>
+              <Container className='quantity-div'>
 
-                <button
+                <Button
                   className='decrease-quantity-btn'
                   onClick={decreaseQuantity}
-                >-</button>
+                >-</Button>
                 <p>{productQuantity}</p>
-                <button
+                <Button
                   className='increase-quantity-btn'
                   onClick={increaseQuantity}
-                >+</button>
-              </div>
+                >+</Button>
+              </Container>
 
-              <div className='single-product-description-container'>
-                <p className='single-product-description'>{props.product.description}</p>
-              </div>
-            </div>
-          </div>
+              <Container className='single-product-description-container'>
+                <p className='single-product-description'>{product.description}</p>
+              </Container>
+            </Container>
+          </Container>
         )}
-    </div>
+    </Container>
   )
 }
 

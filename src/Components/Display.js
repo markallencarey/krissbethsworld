@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 import routes from '../routes.js'
 import Header from './Header/Header.js'
-
+import { Container } from 'react-bootstrap'
 
 const Display = (props) => {
 
@@ -13,10 +13,10 @@ const Display = (props) => {
   }, [])
 
   return (
-    <div className='Display'>
+    <Container fluid className='Display'>
       <Header />
       {routes}
-    </div >
+    </Container >
   )
 }
 

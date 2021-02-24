@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { loginUser, logoutUser } from '../../redux/userReducer'
 import { updateCart } from '../../redux/cartReducer'
 import { Link, withRouter } from 'react-router-dom'
+import { Container, Form, Button } from 'react-bootstrap'
 
 const Login = (props) => {
 
@@ -51,47 +52,43 @@ const Login = (props) => {
   }
 
   return (
-    <div className='Login'>
+    <Container className='Login'>
       {!props.isLoggedIn ? (
-        <div className='login-form'>
-          <div className='login-form-email'>
-            <p >Email: </p>
-            <form>
-              <input
-                type='email'
-                placeholder='email'
-                value={email}
-                onChange={e => handleEmailInput(e.target.value)}
-              />
-            </form>
-          </div>
+        <Form className='login-form'>
+          <Form.Group className='login-form-email'>
+            <Form.Label>Email: </Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='email'
+              value={email}
+              onChange={e => handleEmailInput(e.target.value)}
+            />
+          </Form.Group>
 
-          <div className='login-form-password'>
-            <p >Password: </p>
-            <form>
-              <input
+          <Form.Group className='login-form-password'>
+            <Form.Label>Password: </Form.Label>
+              <Form.Control
                 type='password'
                 placeholder='password'
                 value={password}
                 onChange={e => handlePasswordInput(e.target.value)}
               />
-            </form>
-          </div>
+          </Form.Group>
 
-          <button
+          <Button
             className='login-form-login-btn'
-            onClick={login}>Login</button>
-          <div className='login-form-register'>
+            onClick={login}>Login</Button>
+          <Container className='login-form-register'>
             <p>New user?</p>
             <Link
               className='link'
               to={'/login/register'}>
-              <button>Register</button>
+              <Button>Register</Button>
             </Link>
-          </div>
-        </div>
+          </Container>
+        </Form>
       ) : (
-          <div className='login-welcome-back'>
+          <Container className='login-welcome-back'>
             <p className='welcome-back'>Welcome back,</p>
             <p className='login-first-name'>{props.user.first_name}!</p>
             <Link
@@ -99,10 +96,10 @@ const Login = (props) => {
               to={'/products'}>
               <p className='check-out-shop'>Check out my shop</p>
             </Link>
-            <button onClick={logout}>Log Out</button>
-          </div>
+            <Button onClick={logout}>Log Out</Button>
+          </Container>
         )}
-    </div>
+    </Container>
   )
 }
 

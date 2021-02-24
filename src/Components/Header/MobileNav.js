@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { Nav } from 'react-bootstrap'
 
 const MobileNav = (props) => {
 
@@ -16,22 +17,22 @@ const MobileNav = (props) => {
   }
 
   return (
-    <div>
-      <div className='nav-close-btn'
+    <Nav>
+      <Nav.Item className='nav-close-btn'
         onClick={props.toggleNavMenu}>
         <MdKeyboardArrowLeft
           size='18' />
         <p className='mobile-close-text'>Close</p>
-      </div>
+      </Nav.Item>
 
       {props.isLoggedIn ? (
-        <div className='mobile-nav-welcome'>
+        <Nav.Item className='mobile-nav-welcome'>
           <p>Welcome,</p>
           <p>{props.user.first_name}!</p>
-        </div>
+        </Nav.Item>
       ) : (null)}
 
-      <div className='mobile-nav-items'>
+      <Nav.Item className='mobile-nav-items'>
         <Link
           className='link'
           to={'/'}>
@@ -66,8 +67,8 @@ const MobileNav = (props) => {
             </Link>
           )}
 
-      </div>
-    </div>
+      </Nav.Item>
+    </Nav>
 
   )
 }

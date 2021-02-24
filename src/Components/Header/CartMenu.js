@@ -6,15 +6,18 @@ import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
-// import { ClickAwayListener } from '@material-ui/core'
+import { Container, Button } from 'react-bootstrap'
 
 const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMxXrd2mycNJBIxKbzC8amtkDwRCRDrCVJWqJ30kcmeFrkmeJ91CxB00NvHR5Fep')
 
 const CartMenu = (props) => {
 
+  const { isLoggedIn, toggleCartMenu, cartIsLoading, cart, getCart } = props
+
   useEffect(() => {
-    props.getCart()
-  }, [props.isLoggedIn])
+    getCart()
+  }, [isLoggedIn]) // eslint-disable-line react-hooks/exhaustive-deps
+
 
   async function handleClick() {
     const stripe = await stripePromise
@@ -29,31 +32,26 @@ const CartMenu = (props) => {
     })
   }
 
-  // function handleClickAway() {
-  //   props.toggleCartMenu()
-  // }
-
   return (
-    // <ClickAwayListener onClickAway={handleClickAway}>
-    <div>
-      <div className='cart-menu-header'>
-        <div className='cart-menu-close-btn'
-          onClick={props.toggleCartMenu}>
+    <Container>
+      <Container className='cart-menu-header'>
+        <Container className='cart-menu-close-btn'
+          onClick={toggleCartMenu}>
           <MdKeyboardArrowLeft
             size='18' />
           <p className='cart-menu-close-text'>Close</p>
-        </div>
-        <button
+        </Container>
+        <Button
           onClick={props.clearCart}
           className='cart-menu-clear-cart-btn'
-        >Clear Cart</button>
-      </div>
+        >Clear</Button>
+      </Container>
 
-      <div className='cart-menu-list'>
-        {props.cartIsLoading ? (
+      <Container className='cart-menu-list'>
+        {cartIsLoading ? (
           <Loading />
         ) : (
-            props.cart.map(element => {
+            cart.map(element => {
               return (
                 <CartMenuItem
                   key={element.id}
@@ -62,22 +60,21 @@ const CartMenu = (props) => {
               )
             })
           )}
-      </div>
+      </Container>
 
-      <footer>
+      <Container className='cart-menu-footer'>
         {/* <div className='cart-menu-total-div'>
           <p className='cart-menu-total-text'>Total:</p>
           <p className='cart-menu-total-price'>${total}</p>
         </div> */}
-        <div className='cart-menu-checkout-btn-div'>
-          <button
-            className='cart-menu-checkout-btn'
-            onClick={handleClick}
-          >Checkout</button>
-        </div>
-      </footer>
-    </div>
-    // </ClickAwayListener>
+        {/* <Container className='cart-menu-checkout-btn-div'> */}
+        <Button
+          className='cart-menu-checkout-btn'
+          onClick={handleClick}
+        >Checkout</Button>
+        {/* </Container> */}
+      </Container>
+    </Container>
   )
 }
 

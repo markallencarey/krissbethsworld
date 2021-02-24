@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { updateCart } from '../../redux/cartReducer'
 import axios from 'axios'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { Container, Button, Image } from 'react-bootstrap'
 
 const CartMenuItem = (props) => {
 
@@ -35,38 +36,38 @@ const CartMenuItem = (props) => {
   }
 
   return (
-    <div className='cart-menu-item'>
-      <button
+    <Container className='cart-menu-item'>
+      <Button
         className='cart-menu-remove'
         onClick={removeCartMenuItem}
       >
-        -</button>
+        -</Button>
 
       {/* <Link
         className='link'
         to={`/products/${props.cartItem.product_id}`}
       > */}
-        <div className='cart-menu-link-div'>
-          <img className='cart-menu-img' src={props.cartItem.img} alt='product' />
-          <div className='cart-menu-item-name-div'>
+        <Container className='cart-menu-link-div'>
+          <Image className='cart-menu-img' src={props.cartItem.img} alt='product' />
+          <Container className='cart-menu-item-name-div'>
             <p className='cart-menu-item-name'>{props.cartItem.name}</p>
-          </div>
-        </div>
+          </Container>
+        </Container>
       {/* </Link> */}
 
-      <div className='cart-menu-qty-div'>
-        <button
+      <Container className='cart-menu-qty-div'>
+        <Button
           onClick={decreaseQuantity}
           className='cart-menu-decrease'
-        >-</button>
+        >-</Button>
         <p className='cart-menu-item-quantity'>x{props.cartItem.quantity}</p>
-        <button
+        <Button
           onClick={increaseQuantity}
           className='cart-menu-increase'
-        >+</button>
-      </div>
+        >+</Button>
+      </Container>
       <p className='cart-menu-item-price'>${price}</p>
-    </div>
+    </Container>
   )
 }
 

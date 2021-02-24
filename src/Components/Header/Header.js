@@ -7,6 +7,7 @@ import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
 import { AiOutlineShopping } from 'react-icons/ai'
 import KBLogo from '../../images/KBWorld-logo-nobg.png'
+import { Container, Image, Row, Col } from 'react-bootstrap'
 
 const Header = (props) => {
 
@@ -31,39 +32,41 @@ const Header = (props) => {
   }
 
   return (
-    <div>
-      <header className='header'>
-        <HiMenu
-          onClick={toggleNavMenu}
-          className='hamburger'
-          size='40'
-        />
-        <nav className={`mobile-nav ${isNavMenuOpen ? null : 'mobile-nav-hide'}`}>
-          <MobileNav
-            toggleNavMenu={toggleNavMenu}
-            logout={logout}
+    <Container fluid className='header'>
+      <Row>
+        <Col className='header-Col1'>
+          <HiMenu
+            onClick={toggleNavMenu}
+            className='hamburger'
+            size='5vh'
           />
-        </nav>
-        <nav>
+          <Container className={`mobile-nav ${isNavMenuOpen ? null : 'mobile-nav-hide'}`}>
+            <MobileNav
+              toggleNavMenu={toggleNavMenu}
+              logout={logout}
+            />
+          </Container>
           <NavBar />
-        </nav>
-
-        <Link to={'/'}>
-          <img className='logo' src={KBLogo} alt='logo'/>
-        </Link>
-        
-        <AiOutlineShopping
-          onClick={toggleCartMenu}
-          className='cart-icon'
-          size='40'
-        />
-        <div className={`cart-menu ${isCartMenuOpen ? null : 'cart-menu-hide'}`}>
-          <CartMenu
-            toggleCartMenu={toggleCartMenu}
+        </Col>
+        <Col className='header-Col2'>
+          <Link to={'/'}>
+            <Image fluid className='logo' src={KBLogo} alt='logo' />
+          </Link>
+        </Col>
+        <Col className='header-Col3'>
+          <AiOutlineShopping
+            onClick={toggleCartMenu}
+            className='cart-icon'
+            size='5vh'
           />
-        </div>
-      </header>
-    </div>
+          <Container className={`cart-menu ${isCartMenuOpen ? null : 'cart-menu-hide'}`}>
+            <CartMenu
+              toggleCartMenu={toggleCartMenu}
+            />
+          </Container>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
