@@ -24,7 +24,7 @@ const NavBar = (props) => {
           to={'/'}
           className='link'
         >
-          <p>Home</p>
+          <h5>Home</h5>
         </Link>
       </Nav.Item>
       <Nav.Item>
@@ -32,7 +32,7 @@ const NavBar = (props) => {
           to={'/products'}
           className='link'
         >
-          <p>Shop</p>
+          <h5>Shop</h5>
         </Link>
       </Nav.Item>
       {!isLoggedIn ? (
@@ -41,7 +41,7 @@ const NavBar = (props) => {
             to={'/login'}
             className='link'
           >
-            <p>Log In</p>
+            <h5>Log In</h5>
           </Link>
         </Nav.Item>
       ) : (

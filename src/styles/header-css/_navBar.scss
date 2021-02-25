@@ -16,7 +16,8 @@
   // background-color: blue;
   // display: flex;
   // align-items: center;
-  p {
+  h5 {
+    @include headerFontStyle();
     padding: 10px;
 //     font-size: 16px;
   }
