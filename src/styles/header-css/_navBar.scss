@@ -16,5 +16,6 @@
   h5 {
     @include headerFontStyle();
     padding: 10px;
+    margin: 0;
   }
 }
