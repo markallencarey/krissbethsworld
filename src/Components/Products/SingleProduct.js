@@ -71,12 +71,15 @@ const SingleProduct = (props) => {
                 to={'/products'}
                 className='link'
               >
-                <Container className='single-product-back-btn'>
+                <Container
+                  className='single-product-back-btn'
+                  variant='light'
+                >
                   <MdKeyboardArrowLeft
                     size='22'
                     className='single-product-back-arrow'
                   />
-                  <p className='single-product-back-text'>Shop</p>
+                  <h5 className='single-product-back-text'>Shop</h5>
                 </Container>
               </Link>
             </Container>
@@ -87,23 +90,26 @@ const SingleProduct = (props) => {
                 src={product.img} alt='product'
               />
               <Container className='single-product-name-div'>
-                <h1 className='single-product-name'>{product.name}</h1>
+                <h2 className='single-product-name'>{product.name}</h2>
               </Container>
-              <h2 className='single-product-price'>${product.price}</h2>
+              <h3 className='single-product-price'>${product.price}</h3>
               <Button
                 className='add-to-cart-btn'
                 onClick={(() => addToCart(productQuantity))}
+                variant='light'
               ><h4>Add to Cart</h4></Button>
               <Container className='quantity-div'>
 
                 <Button
                   className='decrease-quantity-btn'
                   onClick={decreaseQuantity}
+                  variant='light'
                 ><h3>-</h3></Button>
                 <h3 className='quantity-text'>{productQuantity}</h3>
                 <Button
                   className='increase-quantity-btn'
                   onClick={increaseQuantity}
+                  variant='light'
                 ><h3>+</h3></Button>
               </Container>
 

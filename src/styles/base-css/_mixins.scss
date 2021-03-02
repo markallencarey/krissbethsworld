@@ -9,10 +9,20 @@
   top: 8vh;
 }
 
-@mixin resetButtonStyle() {
-  background: none;
-  color: inherit;
-  font-weight: 300;
-	border: none;
-	cursor: pointer;
+@mixin buttonStyle() {
+  background-color: inherit;
+  border: none;
+}
+
+@mixin buttonHover() {
+  background-color: inherit;
+  border: none;
+  color: #519e8a;
+  text-decoration: none;
+}
+
+@mixin buttonFocus() {
+  background-color: inherit;
+  border: none;
+  color: #519e8a;
 }

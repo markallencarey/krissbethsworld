@@ -35,16 +35,19 @@ const CartMenu = (props) => {
   return (
     <Container>
       <Container className='cart-menu-header'>
-        <Container className='cart-menu-close-btn'
+        <Button
+          variant='light'
+          className='cart-menu-close-btn'
           onClick={toggleCartMenu}>
           <MdKeyboardArrowLeft
             size='18' />
-          <p className='cart-menu-close-text'>Close</p>
-        </Container>
+          <h6 className='cart-menu-close-text'>Close</h6>
+        </Button>
         <Button
           onClick={props.clearCart}
           className='cart-menu-clear-cart-btn'
-        >Clear</Button>
+          variant='light'
+        ><h6>Clear</h6></Button>
       </Container>
 
       <Container className='cart-menu-list'>
@@ -71,7 +74,8 @@ const CartMenu = (props) => {
         <Button
           className='cart-menu-checkout-btn'
           onClick={handleClick}
-        >Checkout</Button>
+          variant='light'
+        ><h6>Checkout</h6></Button>
         {/* </Container> */}
       </Container>
     </Container>

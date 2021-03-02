@@ -55,9 +55,10 @@ const Login = (props) => {
     <Container className='Login'>
       {!props.isLoggedIn ? (
         <Form className='login-form'>
-          <Form.Group className='login-form-email'>
-            <Form.Label>Email: </Form.Label>
+          <Form.Group className='login-form-group'>
+            <Form.Label className='login-form-label'><h6>Email: </h6></Form.Label>
             <Form.Control
+              className='login-form-control'
               type='email'
               placeholder='email'
               value={email}
@@ -65,26 +66,34 @@ const Login = (props) => {
             />
           </Form.Group>
 
-          <Form.Group className='login-form-password'>
-            <Form.Label>Password: </Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={e => handlePasswordInput(e.target.value)}
-              />
+          <Form.Group className='login-form-group'>
+            <Form.Label className='login-form-label'><h6>Password: </h6></Form.Label>
+            <Form.Control
+              className='login-form-control'
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={e => handlePasswordInput(e.target.value)}
+            />
           </Form.Group>
 
-          <Button
-            className='login-form-login-btn'
-            onClick={login}>Login</Button>
-          <Container className='login-form-register'>
-            <p>New user?</p>
-            <Link
-              className='link'
-              to={'/login/register'}>
-              <Button>Register</Button>
-            </Link>
+          <Container>
+            <Button
+              className='login-form-login-btn'
+              onClick={login}
+              variant='light'
+            ><h5>Login</h5></Button>
+            <Container className='login-form-register'>
+              <h4>New user?</h4>
+              <Link
+                className='link'
+                to={'/login/register'}>
+                <Button
+                  className='login-form-register-btn'
+                  variant='light'
+                ><h5>Register</h5></Button>
+              </Link>
+            </Container>
           </Container>
         </Form>
       ) : (

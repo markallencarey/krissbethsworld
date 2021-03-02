@@ -22,6 +22,12 @@
 .single-product-back-btn {
   display: flex;
   align-items: center;
+  @include buttonStyle();
+
+  h5 {
+    @include headerFontStyle();
+    margin: 0;
+  }
 }
 
 .single-product-back-text {
@@ -31,12 +37,13 @@
 
 .single-product-body {
   position: relative;
-  top: 4vh;
+  top: 2vh;
   overflow: auto;
   height: 86vh;
 }
 
 .single-product-img {
+  margin-top: 40px;
   max-height: 60vh;
   margin-bottom: 40px;
 }
@@ -52,10 +59,11 @@
 }
 
 .add-to-cart-btn {
-  @include resetButtonStyle();
+  @include buttonStyle();
 
   h4 {
     @include headerFontStyle();
+    margin: 0;
   }
 }
 
@@ -63,14 +71,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .increase-quantity-btn,
 .decrease-quantity-btn {
-  @include resetButtonStyle();
+  @include buttonStyle();
 
   h3 {
     @include headerFontStyle();
+    margin: 0;
   }
 }
 
@@ -78,4 +88,8 @@
   @include headerFontStyle();
   padding: 5px;
   margin: 0;
+}
+
+.single-product-description {
+  margin-bottom: 40px;
 }

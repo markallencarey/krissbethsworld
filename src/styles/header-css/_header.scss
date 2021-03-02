@@ -49,3 +49,11 @@
   justify-content: flex-end;
   align-items: center;
 }
+
+.header-btn {
+  @include buttonStyle();
+}
+
+.cart-icon:hover {
+  @include buttonHover();
+}

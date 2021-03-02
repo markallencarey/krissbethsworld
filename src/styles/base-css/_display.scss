@@ -3,7 +3,6 @@
 
 .Display {
   height: 100vh;
-  // width: 100vw;
   padding: 0;
   text-align: center;
   font-family: $globalFontFamily;
@@ -19,4 +18,8 @@
   text-decoration: none;
   color: black;
   @include headerFontStyle();
+}
+
+.link:hover {
+  @include buttonHover();
 }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
 import axios from 'axios'
-import { Container, Nav } from 'react-bootstrap'
+import { Container, Nav, Button } from 'react-bootstrap'
 
 const NavBar = (props) => {
 

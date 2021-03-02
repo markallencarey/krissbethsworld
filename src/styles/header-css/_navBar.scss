@@ -15,7 +15,12 @@
 .nav-bar {
   h5 {
     @include headerFontStyle();
-    padding: 10px;
     margin: 0;
+    margin-left: 10px;
   }
+}
+
+.nav-item-btn {
+  background-color: inherit;
+  border: none;
 }
