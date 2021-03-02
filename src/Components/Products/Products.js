@@ -15,7 +15,7 @@ const Products = (props) => {
 
 
   return (
-    <Container className='product-list'>
+    <Container fluid className='product-list'>
       {props.productIsLoading ? (
         <Loading />
       ) : (

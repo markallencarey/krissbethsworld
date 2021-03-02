@@ -1,38 +1,13 @@
-// @mixin flexCenter() {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// @mixin flexColumnStart() {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-// }
-
-// @mixin flexColumnCenter() {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-// @mixin flexSpaceBetween() {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
-  // justify-content: center;
-// }
-
 @mixin headerFontStyle() {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 300;
 }
 
-// @mixin componentTopPosition() {
-//   position: relative;
-//   top: 8vh;
-// }
+@mixin componentTopPosition() {
+  position: relative;
+  top: 8vh;
+}
 
 @mixin resetButtonStyle() {
   background: none;

@@ -1,13 +1,13 @@
 @import '../base-css/variables';
 @import '../base-css/mixins';
 
-// .Loading {
+.Loading {
 //   height: 100%;
 //   width: 100vw;
 //   display: flex;
 //   justify-content: center;
-//   @include componentTopPosition();
-// }
+  @include componentTopPosition();
+}
 
 // .loading-roller {
 //   margin-top: 10%;

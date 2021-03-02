@@ -59,11 +59,13 @@ const SingleProduct = (props) => {
   }
 
   return (
-    <Container>
+    <Container fluid>
       {productIsLoading ? (
         <Loading />
       ) : (
-          <Container className='single-product'>
+          <Container
+            fluid
+            className='single-product'>
             <Container className='single-product-header'>
               <Link
                 to={'/products'}
@@ -71,33 +73,38 @@ const SingleProduct = (props) => {
               >
                 <Container className='single-product-back-btn'>
                   <MdKeyboardArrowLeft
-                    size='22' />
+                    size='22'
+                    className='single-product-back-arrow'
+                  />
                   <p className='single-product-back-text'>Shop</p>
                 </Container>
               </Link>
             </Container>
             <Container className='single-product-body'>
-              <Image className='single-product-img'
-                src={product.img} alt='product' />
+              <Image
+                fluid
+                className='single-product-img'
+                src={product.img} alt='product'
+              />
               <Container className='single-product-name-div'>
-                <p className='single-product-name'>{product.name}</p>
+                <h1 className='single-product-name'>{product.name}</h1>
               </Container>
-              <p className='single-product-price'>${product.price}</p>
+              <h2 className='single-product-price'>${product.price}</h2>
               <Button
                 className='add-to-cart-btn'
                 onClick={(() => addToCart(productQuantity))}
-              >ADD TO CART</Button>
+              ><h4>Add to Cart</h4></Button>
               <Container className='quantity-div'>
 
                 <Button
                   className='decrease-quantity-btn'
                   onClick={decreaseQuantity}
-                >-</Button>
-                <p>{productQuantity}</p>
+                ><h3>-</h3></Button>
+                <h3 className='quantity-text'>{productQuantity}</h3>
                 <Button
                   className='increase-quantity-btn'
                   onClick={increaseQuantity}
-                >+</Button>
+                ><h3>+</h3></Button>
               </Container>
 
               <Container className='single-product-description-container'>
