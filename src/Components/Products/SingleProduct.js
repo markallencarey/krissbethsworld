@@ -94,20 +94,20 @@ const SingleProduct = (props) => {
               </Container>
               <h3 className='single-product-price'>${product.price}</h3>
               <Button
-                className='add-to-cart-btn'
+                className='add-to-cart-btn button'
                 onClick={(() => addToCart(productQuantity))}
                 variant='light'
               ><h4>Add to Cart</h4></Button>
               <Container className='quantity-div'>
 
                 <Button
-                  className='decrease-quantity-btn'
+                  className='decrease-quantity-btn button'
                   onClick={decreaseQuantity}
                   variant='light'
                 ><h3>-</h3></Button>
                 <h3 className='quantity-text'>{productQuantity}</h3>
                 <Button
-                  className='increase-quantity-btn'
+                  className='increase-quantity-btn button'
                   onClick={increaseQuantity}
                   variant='light'
                 ><h3>+</h3></Button>

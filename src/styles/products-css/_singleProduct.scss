@@ -19,6 +19,10 @@
   z-index: 5;
 }
 
+.single-product-name-div {
+  max-width: 80%;
+}
+
 .single-product-back-btn {
   display: flex;
   align-items: center;
@@ -88,6 +92,10 @@
   @include headerFontStyle();
   padding: 5px;
   margin: 0;
+}
+
+.single-product-description-container {
+  max-width: 75%;
 }
 
 .single-product-description {

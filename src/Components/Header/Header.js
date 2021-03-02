@@ -22,10 +22,6 @@ const Header = (props) => {
     setIsNavMenuOpen(!isNavMenuOpen)
   }
 
-  // function toggleCartMenu() {
-  //   setIsCartMenuOpen(!isCartMenuOpen)
-  // }
-
   function logout() {
     axios.delete('/auth/logout').then(() => {
 
@@ -66,11 +62,8 @@ const Header = (props) => {
             show={showCartMenu}
             onHide={handleCloseCartMenu}
             className='cart-menu'
-            // className={`cart-menu ${isCartMenuOpen ? null : 'cart-menu-hide'}`}
           >
-            <CartMenu
-              // toggleCartMenu={toggleCartMenu}
-            />
+            <CartMenu />
           </Modal>
         </Col>
       </Row>

@@ -55,74 +55,81 @@ const Register = (props) => {
     <Container className='Register'>
       {!props.isRegistered ? (
         <Form className='register-form'>
-          <Form.Group className='register-form-email'>
-            <Form.Label>Email: </Form.Label>
-              <Form.Control
-                type='email'
-                placeholder='email'
-                value={email}
-                onChange={e => handleEmailInput(e.target.value)}
-              />
+          <Form.Group className='register-form-group'>
+            <Form.Label className='register-form-label'>Email: </Form.Label>
+            <Form.Control
+              className='register-form-control'
+              type='email'
+              placeholder='email'
+              value={email}
+              onChange={e => handleEmailInput(e.target.value)}
+            />
           </Form.Group>
 
-          <Form.Group className='register-form-password'>
-            <Form.Label>Password: </Form.Label>
-              <Form.Control
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={e => handlePasswordInput(e.target.value)}
-              />
+          <Form.Group className='register-form-group'>
+            <Form.Label
+              className='register-form-label'
+            >Password: </Form.Label>
+            <Form.Control
+              className='register-form-control'
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={e => handlePasswordInput(e.target.value)}
+            />
           </Form.Group>
 
-          <Form.Group className='register-form-first-name'>
-            <Form.Label>First Name: </Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='first name'
-                value={firstName}
-                onChange={e => handleFirstNameInput(e.target.value)}
-              />
+          <Form.Group className='register-form-group'>
+            <Form.Label className='register-form-label'>First Name: </Form.Label>
+            <Form.Control
+              className='register-form-control'
+              type='text'
+              placeholder='first name'
+              value={firstName}
+              onChange={e => handleFirstNameInput(e.target.value)}
+            />
           </Form.Group>
 
-          <Form.Group className='register-form-last-name'>
-            <Form.Label>Last Name: </Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='last name'
-                value={lastName}
-                onChange={e => handleLastNameInput(e.target.value)}
-              />
+          <Form.Group className='register-form-group'>
+            <Form.Label className='register-form-label'>Last Name: </Form.Label>
+            <Form.Control
+              className='register-form-control'
+              type='text'
+              placeholder='last name'
+              value={lastName}
+              onChange={e => handleLastNameInput(e.target.value)}
+            />
           </Form.Group>
 
-          <Form.Group className='register-form-phone-no'>
-            <Form.Label>Phone Number: </Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='(000) 000-0000'
-                value={phoneNo}
-                onChange={e => handlePhoneNoInput(e.target.value)}
-              />
+          <Form.Group className='register-form-group'>
+            <Form.Label className='register-form-label'>Phone Number: </Form.Label>
+            <Form.Control
+              className='register-form-control'
+              type='text'
+              placeholder='(000) 000-0000'
+              value={phoneNo}
+              onChange={e => handlePhoneNoInput(e.target.value)}
+            />
           </Form.Group>
 
           <Button
-            className='register-form-register-btn'
+            className='register-form-register-btn button'
             onClick={register}>Register</Button>
           <Link
             className='link'
             to={'/login'}>
-            <Button>Back</Button>
+            <Button className='button'>Back</Button>
           </Link>
         </Form>
       ) : (
           <Container className='Registered'>
-            <p className='register-welcome'>Welcome</p>
+            <h5 className='register-welcome'>Welcome</h5>
             <h1 className='register-first-name'>{props.user.first_name}!</h1>
-            <p className='register-thanks'>Thanks for coming to my shop!</p>
+            <h5 className='register-thanks'>Thanks for coming to my shop!</h5>
             <Link
               className='link'
               to={'/products'}>
-              <p className='register-check-out'>Check out some of my products</p>
+              <h5 className='register-check-out'>Check out some of my products</h5>
             </Link>
           </Container>
         )}

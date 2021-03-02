@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateCart, clearCart, getCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
+// import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
@@ -12,7 +12,7 @@ const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMx
 
 const CartMenu = (props) => {
 
-  const { isLoggedIn, toggleCartMenu, cartIsLoading, cart, getCart } = props
+  const { isLoggedIn, cartIsLoading, cart, getCart } = props
 
   useEffect(() => {
     getCart()
@@ -35,17 +35,9 @@ const CartMenu = (props) => {
   return (
     <Container>
       <Modal.Header className='cart-menu-header' closeButton>
-        {/* <Button
-          variant='light'
-          className='cart-menu-close-btn'
-          onClick={toggleCartMenu}>
-          <MdKeyboardArrowLeft
-            size='18' />
-          <h6 className='cart-menu-close-text'>Close</h6>
-        </Button> */}
         <Button
           onClick={props.clearCart}
-          className='cart-menu-clear-cart-btn'
+          className='cart-menu-clear-cart-btn button'
           variant='light'
         ><h6>Clear</h6></Button>
       </Modal.Header>
@@ -72,7 +64,7 @@ const CartMenu = (props) => {
         </div> */}
         {/* <Container className='cart-menu-checkout-btn-div'> */}
         <Button
-          className='cart-menu-checkout-btn'
+          className='cart-menu-checkout-btn button'
           onClick={handleClick}
           variant='light'
         ><h6>Checkout</h6></Button>

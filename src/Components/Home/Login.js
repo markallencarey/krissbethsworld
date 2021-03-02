@@ -79,7 +79,7 @@ const Login = (props) => {
 
           <Container>
             <Button
-              className='login-form-login-btn'
+              className='login-form-login-btn button'
               onClick={login}
               variant='light'
             ><h5>Login</h5></Button>
@@ -89,7 +89,7 @@ const Login = (props) => {
                 className='link'
                 to={'/login/register'}>
                 <Button
-                  className='login-form-register-btn'
+                  className='login-form-register-btn button'
                   variant='light'
                 ><h5>Register</h5></Button>
               </Link>
@@ -98,14 +98,17 @@ const Login = (props) => {
         </Form>
       ) : (
           <Container className='login-welcome-back'>
-            <p className='welcome-back'>Welcome back,</p>
-            <p className='login-first-name'>{props.user.first_name}!</p>
+            <h5 className='welcome-back'>Welcome back,</h5>
+            <h1 className='login-first-name'>{props.user.first_name}!</h1>
             <Link
               className='link'
               to={'/products'}>
-              <p className='check-out-shop'>Check out my shop</p>
+              <h5 className='check-out-shop'>Check out my shop</h5>
             </Link>
-            <Button onClick={logout}>Log Out</Button>
+            <Button
+              className='button'
+              onClick={logout}>Log Out
+              </Button>
           </Container>
         )}
     </Container>

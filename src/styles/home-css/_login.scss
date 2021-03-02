@@ -12,9 +12,6 @@
 .login-form {
   position: relative;
   top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 40vw;
 }
 
@@ -68,4 +65,23 @@
     @include headerFontStyle();
     margin: 0;
   }
+}
+
+.login-welcome-back {
+  @include componentTopPosition();
+  margin: 2vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h4,
+  h5,
+  h6 {
+    @include headerFontStyle();
+    padding: 20px;
+  }
+}
+
+.login-first-name {
+  font-family: "Satisfy";
 }

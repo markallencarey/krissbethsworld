@@ -58,17 +58,11 @@
   margin: 0;
 }
 
-// .visit-shop-btn:hover {
-//   color: $eerieBlack;
-// }
+.home-visit-shop:hover {
+  @include buttonHover();
+}
 
 .title {
   font-size: 56px;
   font-family: "Satisfy";
-}
-
-@media (max-width: 1024px) {
-  .home-div {
-    top: 0;
-  }
 }
