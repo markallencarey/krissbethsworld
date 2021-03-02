@@ -2,40 +2,41 @@
 @import "../base-css/mixins";
 
 .cart-menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-  background-color: $globalColor;
-  transition: all 500ms;
-  box-shadow: $globalBoxShadow;
-  @include headerFontStyle();
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // width: 100vw;
+  // max-height: 90vh;
+  // display: flex;
+  // flex-direction: column;
+  // background-color: $globalColor;
+  // transition: all 500ms;
+  // box-shadow: $globalBoxShadow;
+  // @include headerFontStyle();
 }
 
-.cart-menu-hide {
-  display: none;
-}
+// .cart-menu-hide {
+//   display: none;
+// }
 
-.cart-menu-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 0;
-  margin-top: 10px;
-}
+// .cart-menu-header {
+//   display: flex;
+//   justify-content: space-between;
+//   margin: 0;
+//   margin-top: 10px;
+// }
 
-.cart-menu-close-btn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+// .cart-menu-close-btn {
+//   display: flex;
+//   align-items: center;
+//   cursor: pointer;
+//   @include buttonStyle();
 
-  h6 {
-    @include headerFontStyle();
-    margin: 0;
-  }
-}
+//   h6 {
+//     @include headerFontStyle();
+//     margin: 0;
+//   }
+// }
 
 .cart-menu-clear-cart-btn {
   @include buttonStyle();
@@ -62,8 +63,8 @@
   }
 }
 
-@media (min-width: 768px) {
-  .cart-menu {
-    width: 40vw;
-  }
-}
+// @media (min-width: 768px) {
+//   .cart-menu {
+//     width: 40vw;
+//   }
+// }

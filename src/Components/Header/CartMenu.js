@@ -6,7 +6,7 @@ import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
-import { Container, Button } from 'react-bootstrap'
+import { Container, Button, Modal } from 'react-bootstrap'
 
 const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMxXrd2mycNJBIxKbzC8amtkDwRCRDrCVJWqJ30kcmeFrkmeJ91CxB00NvHR5Fep')
 
@@ -34,23 +34,23 @@ const CartMenu = (props) => {
 
   return (
     <Container>
-      <Container className='cart-menu-header'>
-        <Button
+      <Modal.Header className='cart-menu-header' closeButton>
+        {/* <Button
           variant='light'
           className='cart-menu-close-btn'
           onClick={toggleCartMenu}>
           <MdKeyboardArrowLeft
             size='18' />
           <h6 className='cart-menu-close-text'>Close</h6>
-        </Button>
+        </Button> */}
         <Button
           onClick={props.clearCart}
           className='cart-menu-clear-cart-btn'
           variant='light'
         ><h6>Clear</h6></Button>
-      </Container>
+      </Modal.Header>
 
-      <Container className='cart-menu-list'>
+      <Modal.Body className='cart-menu-list'>
         {cartIsLoading ? (
           <Loading />
         ) : (
@@ -63,9 +63,9 @@ const CartMenu = (props) => {
               )
             })
           )}
-      </Container>
+      </Modal.Body>
 
-      <Container className='cart-menu-footer'>
+      <Modal.Footer className='cart-menu-footer'>
         {/* <div className='cart-menu-total-div'>
           <p className='cart-menu-total-text'>Total:</p>
           <p className='cart-menu-total-price'>${total}</p>
@@ -77,7 +77,7 @@ const CartMenu = (props) => {
           variant='light'
         ><h6>Checkout</h6></Button>
         {/* </Container> */}
-      </Container>
+      </Modal.Footer>
     </Container>
   )
 }

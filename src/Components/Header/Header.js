@@ -7,21 +7,24 @@ import CartMenu from './CartMenu'
 import { HiMenu } from 'react-icons/hi'
 import { AiOutlineShopping } from 'react-icons/ai'
 import KBLogo from '../../images/KBWorld-logo-nobg.png'
-import { Container, Image, Row, Col } from 'react-bootstrap'
+import { Container, Image, Row, Col, Modal } from 'react-bootstrap'
 
 const Header = (props) => {
 
   const [isNavMenuOpen, setIsNavMenuOpen] = useState(false)
 
-  const [isCartMenuOpen, setIsCartMenuOpen] = useState(false)
+  const [showCartMenu, setShowCartMenu] = useState(false)
+
+  const handleCloseCartMenu = () => setShowCartMenu(false)
+  const handleShowCartMenu = () => setShowCartMenu(true)
 
   function toggleNavMenu() {
     setIsNavMenuOpen(!isNavMenuOpen)
   }
 
-  function toggleCartMenu() {
-    setIsCartMenuOpen(!isCartMenuOpen)
-  }
+  // function toggleCartMenu() {
+  //   setIsCartMenuOpen(!isCartMenuOpen)
+  // }
 
   function logout() {
     axios.delete('/auth/logout').then(() => {
@@ -55,15 +58,20 @@ const Header = (props) => {
         </Col>
         <Col className='header-Col3'>
           <AiOutlineShopping
-            onClick={toggleCartMenu}
+            onClick={handleShowCartMenu}
             className='cart-icon'
             size='5vh'
           />
-          <Container className={`cart-menu ${isCartMenuOpen ? null : 'cart-menu-hide'}`}>
+          <Modal
+            show={showCartMenu}
+            onHide={handleCloseCartMenu}
+            className='cart-menu'
+            // className={`cart-menu ${isCartMenuOpen ? null : 'cart-menu-hide'}`}
+          >
             <CartMenu
-              toggleCartMenu={toggleCartMenu}
+              // toggleCartMenu={toggleCartMenu}
             />
-          </Container>
+          </Modal>
         </Col>
       </Row>
     </Container>

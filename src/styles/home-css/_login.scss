@@ -62,7 +62,6 @@
 }
 
 .login-form-register-btn {
-  @include resetButtonStyle();
   background-color: $globalColor;
 
   h5 {
