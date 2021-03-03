@@ -68,10 +68,8 @@ const MobileNav = (props) => {
               >Log Out</p>
             </Link>
           )}
-
       </Nav.Item>
     </Nav>
-
   )
 }
 

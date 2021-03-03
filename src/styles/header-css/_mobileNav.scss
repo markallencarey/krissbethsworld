@@ -5,24 +5,31 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 15px;
+  left: 15px;
   text-align: left;
   background-color: $globalColor;
-  transition: all 500ms;
+  // width: 40vw;
   z-index: 1000;
   box-shadow: $globalBoxShadow;
   padding: 5px;
-  border-radius: 0 0 5px 0;
-
+  border-radius: 5px;
+  opacity: 1;
+  visibility: visible;
+  transition: all 500ms;
 }
 
 .mobile-nav-item {
   margin: 5px 20px;
+  white-space: nowrap;
 }
 
 .mobile-nav-hide {
-  display: none;
+  width: 0;
+  // border: none;
+  box-shadow: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .mobile-nav-welcome {
