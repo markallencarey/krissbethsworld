@@ -9,7 +9,7 @@ const CartMenuItem = (props) => {
 
   const { cartItem, updateCart } = props
 
-  let price = (cartItem.quantity * cartItem.price).toFixed(2)
+  let cartPrice = (cartItem.price * cartItem.quantity).toFixed(2)
 
   function removeCartMenuItem() {
     axios.delete(`/api/cart?product_id=${cartItem.product_id}`).then(res => {
@@ -75,7 +75,7 @@ const CartMenuItem = (props) => {
             ><h5>+</h5></Button>
           </Container>
           <Container className='cart-qty'>
-            <h5 className='cart-item-price'>${cartItem.price}</h5>
+            <h5 className='cart-item-price'>${cartPrice}</h5>
           </Container>
           <Container className='cart-qty'>
             <Button

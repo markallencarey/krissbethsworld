@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
 import axios from 'axios'
-import { Container, Nav, Button } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 
 const NavBar = (props) => {
 
-  const { logoutUser, clearCart, isLoggedIn, user, isNavMenuOpen } = props
+  const { logoutUser, clearCart, isLoggedIn, user } = props
 
   function logout() {
     axios.delete('/auth/logout').then(res => {

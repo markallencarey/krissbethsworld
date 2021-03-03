@@ -1,7 +1,7 @@
 import React from 'react'
 import KBLogo from '../../images/KBWorld-logo-nobg.png'
 import { Link, withRouter } from 'react-router-dom'
-import { Container, Image, Row, Col, Button } from 'react-bootstrap'
+import { Container, Image, Row, Col } from 'react-bootstrap'
 
 const Home = (props) => {
 
@@ -23,7 +23,6 @@ const Home = (props) => {
               to={'/products'}>
               <h3 className='home-visit-shop'>Visit my Shop</h3>
             </Link>
-            {/* </Button> */}
           </Container>
         </Col>
         <Col></Col>

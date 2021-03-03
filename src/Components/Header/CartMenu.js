@@ -18,6 +18,9 @@ const CartMenu = (props) => {
     getCart()
   }, [isLoggedIn]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  let total = cart.reduce((acc, el) => {
+    return acc + (el.price * el.quantity)
+  }, 0).toFixed(2)
 
   async function handleClick() {
     const stripe = await stripePromise
@@ -33,7 +36,7 @@ const CartMenu = (props) => {
   }
 
   return (
-    <Container>
+    <Container className='CartMenu'>
       <Modal.Header className='cart-menu-header' closeButton>
         <Button
           onClick={props.clearCart}
@@ -58,17 +61,17 @@ const CartMenu = (props) => {
       </Modal.Body>
 
       <Modal.Footer className='cart-menu-footer'>
-        {/* <div className='cart-menu-total-div'>
-          <p className='cart-menu-total-text'>Total:</p>
-          <p className='cart-menu-total-price'>${total}</p>
-        </div> */}
-        {/* <Container className='cart-menu-checkout-btn-div'> */}
-        <Button
-          className='cart-menu-checkout-btn button'
-          onClick={handleClick}
-          variant='light'
-        ><h6>Checkout</h6></Button>
-        {/* </Container> */}
+        <div className='cart-menu-total-div'>
+          <h5 className='cart-menu-total-text'>Sub-Total:</h5>
+          <h5 className='cart-menu-total-price'>${total}</h5>
+        </div>
+        <Container className='cart-menu-checkout-btn-div'>
+          <Button
+            className='cart-menu-checkout-btn button'
+            onClick={handleClick}
+            variant='light'
+          ><h5>Checkout</h5></Button>
+        </Container>
       </Modal.Footer>
     </Container>
   )

@@ -8,12 +8,8 @@ module.exports = {
       const cart = await db.cart.get_cart([user_id])
 
       cart.map(el => {
-        el.price = parseFloat(el.price).toFixed(2)
-        // el.price = el.price.toFixed(2)
-        el.cart_total = cart.price * cart.quantity
+        el.price = el.price.toFixed(2)
       })
-
-      console.log(cart)
 
       res.status(200).send(cart)
     } else {
@@ -48,9 +44,14 @@ module.exports = {
   changeQuantity: async (req, res) => {
     const db = req.app.get('db')
 
-    const { product_id, quantity } = req.body
+    const { product_id } = req.body
+    let { quantity } = req.body
     const { id } = req.session.user
     const user_id = id
+
+    // if (quantity < 0) {
+    //   quantity = 0
+    // }
 
     await db.cart.change_quantity([quantity, user_id, product_id])
 

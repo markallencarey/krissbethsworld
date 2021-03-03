@@ -1,13 +1,22 @@
 @import "../base-css/variables";
 @import "../base-css/mixins";
 
+.CartMenu {
+  @include headerFontStyle();
+}
+
 .cart-menu-clear-cart-btn {
   @include buttonStyle();
 
   h6 {
-    @include headerFontStyle();
     margin: 0;
+    @include headerFontStyle();
   }
+}
+
+.cart-menu-list {
+  overflow: auto;
+  max-height: 70vh;
 }
 
 .cart-menu-footer {
@@ -16,12 +25,26 @@
   align-items: center;
 }
 
+.cart-menu-total-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  h5 {
+    margin-left: 10px;
+    @include headerFontStyle();
+  }
+}
+
+.cart-menu-checkout-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
 .cart-menu-checkout-btn {
   @include buttonStyle();
-  margin-bottom: 10px;
 
-  h6 {
+  h5 {
     @include headerFontStyle();
-    margin: 0;
   }
 }
