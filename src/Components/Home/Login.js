@@ -105,10 +105,15 @@ const Login = (props) => {
               to={'/products'}>
               <h5 className='check-out-shop'>Check out my shop</h5>
             </Link>
-            <Button
-              className='button'
-              onClick={logout}>Log Out
-              </Button>
+            <Link
+              className='link'
+              to={'/loggedout'}
+            >
+              <Button
+                className='button'
+                onClick={logout}>Log Out
+                </Button>
+            </Link>
           </Container>
         )}
     </Container>

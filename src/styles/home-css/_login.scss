@@ -5,8 +5,8 @@
 .Login {
   @include componentTopPosition();
   margin: 2vh 0;
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .login-form {
@@ -18,10 +18,8 @@
   margin-bottom: 40px;
   @include headerFontStyle();
   display: flex;
-  // justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  
 }
 
 .login-form-label {
@@ -81,4 +79,10 @@
 
 .login-first-name {
   font-family: "Satisfy";
+}
+
+@media (min-width: 1024px) {
+  .login-form-group {
+    width: 40vw;
+  }
 }

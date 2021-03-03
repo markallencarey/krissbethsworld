@@ -3,70 +3,90 @@ import { connect } from 'react-redux'
 import { updateCart } from '../../redux/cartReducer'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
-import { Container, Button, Image } from 'react-bootstrap'
+import { Container, Button, Image, Row, Col } from 'react-bootstrap'
 
 const CartMenuItem = (props) => {
 
-  let price = (props.cartItem.quantity * props.cartItem.price).toFixed(2)
+  const { cartItem, updateCart } = props
+
+  let price = (cartItem.quantity * cartItem.price).toFixed(2)
 
   function removeCartMenuItem() {
-    axios.delete(`/api/cart?product_id=${props.cartItem.product_id}`).then(res => {
-      props.updateCart(res.data)
+    axios.delete(`/api/cart?product_id=${cartItem.product_id}`).then(res => {
+      updateCart(res.data)
     })
   }
 
   function decreaseQuantity() {
-    const body = { product_id: props.cartItem.product_id, quantity: (props.cartItem.quantity - 1) }
+    const body = { product_id: cartItem.product_id, quantity: (cartItem.quantity - 1) }
 
     axios.put('/api/cart', body).then(
       res => {
-        props.updateCart(res.data)
+        updateCart(res.data)
       }
     )
   }
 
   function increaseQuantity() {
-    const body = { product_id: props.cartItem.product_id, quantity: (props.cartItem.quantity + 1) }
+    const body = { product_id: cartItem.product_id, quantity: (cartItem.quantity + 1) }
 
     axios.put('/api/cart', body).then(
       res => {
-        props.updateCart(res.data)
+        updateCart(res.data)
       }
     )
   }
 
   return (
     <Container className='cart-menu-item'>
-      <Button
-        className='cart-menu-remove'
-        onClick={removeCartMenuItem}
-      >
-        -</Button>
-
-      {/* <Link
-        className='link'
-        to={`/products/${props.cartItem.product_id}`}
-      > */}
-        <Container className='cart-menu-link-div'>
-          <Image className='cart-menu-img' src={props.cartItem.img} alt='product' />
-          <Container className='cart-menu-item-name-div'>
-            <p className='cart-menu-item-name'>{props.cartItem.name}</p>
+      <Row>
+        <Col
+          sm={12}
+          md={2}
+          className='cart-col'
+        >
+          <Image
+            fluid
+            className='cart-img'
+            src={cartItem.img} alt='product'
+          />
+        </Col>
+        <Col
+          sm={12}
+          md={4}
+          className='cart-col'
+        >
+          <p>{cartItem.name}</p>
+        </Col>
+        <Col
+          sm={12}
+          md={6}
+          className='cart-col cart-col-qty'
+        >
+          <Container className='cart-qty'>
+            <Button
+              className='button'
+              onClick={decreaseQuantity}
+            ><h5>-</h5></Button>
+            <h5>x{cartItem.quantity}</h5>
+            <Button
+              className='button'
+              onClick={increaseQuantity}
+            ><h5>+</h5></Button>
           </Container>
-        </Container>
-      {/* </Link> */}
-
-      <Container className='cart-menu-qty-div'>
-        <Button
-          onClick={decreaseQuantity}
-          className='cart-menu-decrease'
-        >-</Button>
-        <p className='cart-menu-item-quantity'>x{props.cartItem.quantity}</p>
-        <Button
-          onClick={increaseQuantity}
-          className='cart-menu-increase'
-        >+</Button>
-      </Container>
-      <p className='cart-menu-item-price'>${price}</p>
+          <Container className='cart-qty'>
+            <h5 className='cart-item-price'>${price}</h5>
+          </Container>
+          <Container className='cart-qty'>
+            <Button
+              className='button remove-btn'
+              onClick={removeCartMenuItem}
+            >
+              <p>Remove</p>
+            </Button>
+          </Container>
+        </Col>
+      </Row>
     </Container>
   )
 }

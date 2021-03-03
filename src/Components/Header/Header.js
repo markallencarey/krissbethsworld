@@ -61,6 +61,7 @@ const Header = (props) => {
             size='5vh'
           />
           <Modal
+            size='lg'
             show={showCartMenu}
             onHide={handleCloseCartMenu}
             className='cart-menu'

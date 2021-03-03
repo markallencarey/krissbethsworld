@@ -27,6 +27,7 @@
 .button {
   @include headerFontStyle();
   @include buttonStyle();
+  color: black;
 }
 
 .button:hover {

@@ -5,8 +5,8 @@
 .Register {
   @include componentTopPosition();
   margin: 2vh 0;
-  // display: flex;
-  // justify-content: center;
+  display: flex;
+  justify-content: center;
 
   .button {
     color: black;
@@ -24,28 +24,18 @@
 }
 
 .register-form-group {
-  // margin-bottom: 40px;
   @include headerFontStyle();
   display: flex;
   align-items: center;
-  // justify-content: center;
   flex-wrap: wrap;
 }
 
 .register-form-label {
   margin: 10px;
-  // width: 20%;
-  // display: flex;
-  // justify-content: flex-end;
 
   h6 {
-    // margin: 0;
     @include headerFontStyle();
   }
-}
-
-.register-form-control {
-  // width: 80%;
 }
 
 .Registered {
@@ -65,4 +55,10 @@
 
 .register-first-name {
   font-family: "Satisfy";
+}
+
+@media (min-width: 1024px) {
+  .register-form-group {
+    width: 40vw;
+  }
 }
