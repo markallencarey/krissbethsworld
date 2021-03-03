@@ -2,11 +2,11 @@
 @import '../base-css/mixins';
 
 .Loading {
-//   height: 100%;
-//   width: 100vw;
-//   display: flex;
-//   justify-content: center;
-  @include componentTopPosition();
+  // height: 100%;
+  // width: 100%;
+  display: flex;
+  justify-content: center;
+  // @include componentTopPosition();
 }
 
 // .loading-roller {

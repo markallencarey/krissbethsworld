@@ -75,7 +75,7 @@ const CartMenuItem = (props) => {
             ><h5>+</h5></Button>
           </Container>
           <Container className='cart-qty'>
-            <h5 className='cart-item-price'>${price}</h5>
+            <h5 className='cart-item-price'>${cartItem.price}</h5>
           </Container>
           <Container className='cart-qty'>
             <Button

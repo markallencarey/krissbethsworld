@@ -54,7 +54,7 @@ const Login = (props) => {
   return (
     <Container className='Login'>
       {!props.isLoggedIn ? (
-        <Form className='login-form'>
+        <Form className='login-form' onSubmit={login}>
           <Form.Group className='login-form-group'>
             <Form.Label className='login-form-label'><h6>Email: </h6></Form.Label>
             <Form.Control
@@ -82,6 +82,7 @@ const Login = (props) => {
               className='login-form-login-btn button'
               onClick={login}
               variant='light'
+              type='submit'
             ><h5>Login</h5></Button>
             <Container className='login-form-register'>
               <h4>New user?</h4>

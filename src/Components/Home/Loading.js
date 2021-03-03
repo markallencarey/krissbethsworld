@@ -7,9 +7,7 @@ const Loading = (props) => {
 
   return (
     <Container className='Loading'>
-      <Container className='loading-roller'>
-        <Roller />
-      </Container>
+      <Roller />
     </Container>
   )
 }

@@ -9,12 +9,12 @@ import { Nav } from 'react-bootstrap'
 
 const MobileNav = (props) => {
 
-  const { user, toggleNavMenu } = props
+  const { user, toggleNavMenu, logoutUser, clearCart } = props
 
   function logout() {
     axios.delete('/auth/logout').then(res => {
-      props.logoutUser()
-      props.clearCart()
+      logoutUser()
+      clearCart()
     })
   }
 
@@ -63,7 +63,7 @@ const MobileNav = (props) => {
                 className='mobile-nav-item'
                 onClick={() => {
                   logout()
-                  props.toggleNavMenu()
+                  toggleNavMenu()
                 }}
               >Log Out</p>
             </Link>

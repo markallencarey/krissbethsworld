@@ -7,6 +7,14 @@ module.exports = {
       const user_id = id
       const cart = await db.cart.get_cart([user_id])
 
+      cart.map(el => {
+        el.price = parseFloat(el.price).toFixed(2)
+        // el.price = el.price.toFixed(2)
+        el.cart_total = cart.price * cart.quantity
+      })
+
+      console.log(cart)
+
       res.status(200).send(cart)
     } else {
       res.sendStatus(404)

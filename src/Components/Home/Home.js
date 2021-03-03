@@ -18,15 +18,11 @@ const Home = (props) => {
               src={KBLogo} />
             <h1 className='title'>Krissbeth's</h1>
             <h1 className='title'>World!</h1>
-            {/* <Button
-              variant='light'
-              className='visit-shop-btn'
-            > */}
-              <Link
-                className='link'
-                to={'/products'}>
-                <h3 className='home-visit-shop'>Visit my Shop</h3>
-              </Link>
+            <Link
+              className='link'
+              to={'/products'}>
+              <h3 className='home-visit-shop'>Visit my Shop</h3>
+            </Link>
             {/* </Button> */}
           </Container>
         </Col>
