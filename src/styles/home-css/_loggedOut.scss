@@ -1,17 +1,15 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
 
-// .logged-out {
-//     height: 92vh;
-//     width: 60vw;
-//     @include flexColumnCenter();
-//     @include componentTopPosition();
-//     margin-top: 10%;
-    
-//     .logged-out-msg {
-//       padding-bottom: 40px;
-//       font-size: 18px;
-//       @include headerFontStyle();
-//       line-height: 24px;
-//     }
-// }
+.logged-out {
+  @include componentTopPosition();
+  margin: 2vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .link, .logged-out-msg {
+    position: relative;
+    top: 10vh;
+  }
+}

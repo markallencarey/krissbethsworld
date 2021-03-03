@@ -34,11 +34,13 @@ const Header = (props) => {
     <Container fluid className='header'>
       <Row>
         <Col className='header-Col1'>
-          <HiMenu
-            onClick={toggleNavMenu}
-            className='hamburger'
-            size='5vh'
-          />
+          {!isNavMenuOpen ? (
+            <HiMenu
+              onClick={toggleNavMenu}
+              className='hamburger'
+              size='5vh'
+            />
+          ) : (null)}
           <Container className={`mobile-nav ${isNavMenuOpen ? null : 'mobile-nav-hide'}`}>
             <MobileNav
               toggleNavMenu={toggleNavMenu}

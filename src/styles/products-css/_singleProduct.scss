@@ -7,6 +7,12 @@
   align-items: center;
   margin: 2vh 0;
   @include componentTopPosition();
+  padding: 0;
+
+  h1, h2, h3, h4, h5 {
+    @include headerFontStyle();
+    margin: 0;
+  }
 }
 
 .single-product-header {
@@ -17,21 +23,13 @@
   position: fixed;
   top: 8vh;
   z-index: 5;
-}
-
-.single-product-name-div {
-  max-width: 80%;
+  padding: 0;
 }
 
 .single-product-back-btn {
   display: flex;
   align-items: center;
   @include buttonStyle();
-
-  h5 {
-    @include headerFontStyle();
-    margin: 0;
-  }
 }
 
 .single-product-back-text {
@@ -44,31 +42,25 @@
   top: 2vh;
   overflow: auto;
   height: 86vh;
+  padding: 0;
 }
 
 .single-product-img {
-  margin-top: 40px;
-  max-height: 60vh;
+  margin-top: 20px;
+  max-height: 40vh;
   margin-bottom: 40px;
 }
 
 .single-product-name {
-  @include headerFontStyle();
   padding-bottom: 10px;
 }
 
 .single-product-price {
-  @include headerFontStyle();
   padding-bottom: 20px;
 }
 
 .add-to-cart-btn {
   @include buttonStyle();
-
-  h4 {
-    @include headerFontStyle();
-    margin: 0;
-  }
 }
 
 .quantity-div {
@@ -81,21 +73,12 @@
 .increase-quantity-btn,
 .decrease-quantity-btn {
   @include buttonStyle();
-
-  h3 {
-    @include headerFontStyle();
-    margin: 0;
-  }
 }
 
 .quantity-text {
   @include headerFontStyle();
   padding: 5px;
   margin: 0;
-}
-
-.single-product-description-container {
-  max-width: 75%;
 }
 
 .single-product-description {

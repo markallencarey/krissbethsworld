@@ -8,7 +8,7 @@ import { Container, Nav, Button } from 'react-bootstrap'
 
 const NavBar = (props) => {
 
-  const { logoutUser, clearCart, isLoggedIn, user } = props
+  const { logoutUser, clearCart, isLoggedIn, user, isNavMenuOpen } = props
 
   function logout() {
     axios.delete('/auth/logout').then(res => {
@@ -27,6 +27,7 @@ const NavBar = (props) => {
           <h5>Home</h5>
         </Link>
       </Nav.Item>
+
       <Nav.Item>
         <Link
           to={'/products'}
@@ -35,6 +36,7 @@ const NavBar = (props) => {
           <h5>Shop</h5>
         </Link>
       </Nav.Item>
+
       {!isLoggedIn ? (
         <Nav.Item>
           <Link
@@ -49,19 +51,19 @@ const NavBar = (props) => {
             <Link
               to={'/loggedout'}
               className='link'>
-              <p
-                className='nav-bar-item'
+              <h5
                 onClick={() => {
                   logout()
                 }}
-              >Log Out</p>
+              >Log Out</h5>
             </Link>
           </Nav.Item>
         )}
+
       {isLoggedIn ? (
-        <Container className='nav-bar-welcome'>
+        <Nav.Item className='nav-bar-welcome'>
           <p>Welcome, {user.first_name}!</p>
-        </Container>
+        </Nav.Item>
       ) : (null)}
     </Nav>
   )

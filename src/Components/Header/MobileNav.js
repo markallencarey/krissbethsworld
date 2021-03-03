@@ -9,6 +9,8 @@ import { Nav } from 'react-bootstrap'
 
 const MobileNav = (props) => {
 
+  const { user, toggleNavMenu } = props
+
   function logout() {
     axios.delete('/auth/logout').then(res => {
       props.logoutUser()
@@ -19,7 +21,7 @@ const MobileNav = (props) => {
   return (
     <Nav>
       <Nav.Item className='nav-close-btn'
-        onClick={props.toggleNavMenu}>
+        onClick={toggleNavMenu}>
         <MdKeyboardArrowLeft
           size='18' />
         <p className='mobile-close-text'>Close</p>
@@ -28,7 +30,7 @@ const MobileNav = (props) => {
       {props.isLoggedIn ? (
         <Nav.Item className='mobile-nav-welcome'>
           <p>Welcome,</p>
-          <p>{props.user.first_name}!</p>
+          <p>{user.first_name}!</p>
         </Nav.Item>
       ) : (null)}
 
@@ -37,13 +39,13 @@ const MobileNav = (props) => {
           className='link'
           to={'/'}>
           <p className='mobile-nav-item'
-            onClick={props.toggleNavMenu}>Home</p>
+            onClick={toggleNavMenu}>Home</p>
         </Link>
         <Link
           className='link'
           to={'/products'}>
           <p className='mobile-nav-item'
-            onClick={props.toggleNavMenu}>Shop</p>
+            onClick={toggleNavMenu}>Shop</p>
         </Link>
 
         {!props.isLoggedIn ? (
@@ -51,7 +53,7 @@ const MobileNav = (props) => {
             className='link'
             to={'/login'}>
             <p className='mobile-nav-item'
-              onClick={props.toggleNavMenu}>Log In</p>
+              onClick={toggleNavMenu}>Log In</p>
           </Link>
         ) : (
             <Link

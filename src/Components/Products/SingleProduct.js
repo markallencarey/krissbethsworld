@@ -90,27 +90,27 @@ const SingleProduct = (props) => {
                 src={product.img} alt='product'
               />
               <Container className='single-product-name-div'>
-                <h2 className='single-product-name'>{product.name}</h2>
+                <h3 className='single-product-name'>{product.name}</h3>
               </Container>
-              <h3 className='single-product-price'>${product.price}</h3>
+              <h4 className='single-product-price'>${product.price}</h4>
               <Button
                 className='add-to-cart-btn button'
                 onClick={(() => addToCart(productQuantity))}
                 variant='light'
-              ><h4>Add to Cart</h4></Button>
+              ><h5>Add to Cart</h5></Button>
               <Container className='quantity-div'>
 
                 <Button
                   className='decrease-quantity-btn button'
                   onClick={decreaseQuantity}
                   variant='light'
-                ><h3>-</h3></Button>
-                <h3 className='quantity-text'>{productQuantity}</h3>
+                ><h4>-</h4></Button>
+                <h4 className='quantity-text'>{productQuantity}</h4>
                 <Button
                   className='increase-quantity-btn button'
                   onClick={increaseQuantity}
                   variant='light'
-                ><h3>+</h3></Button>
+                ><h4>+</h4></Button>
               </Container>
 
               <Container className='single-product-description-container'>

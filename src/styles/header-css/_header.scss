@@ -10,6 +10,10 @@
   z-index: 1000;
 }
 
+.nav-bar {
+  display: none;
+}
+
 .logo {
   height: 8vh;
 }
@@ -18,19 +22,6 @@
   cursor: pointer;
 }
 
-.nav-bar {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .hamburger {
-    display: none;
-  }
-  .nav-bar {
-    display: flex;
-    align-items: center;
-  }
-}
 
 .header-Col1 {
   display: flex;
@@ -56,4 +47,19 @@
 
 .cart-icon:hover {
   @include buttonHover();
+}
+
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    h5 {
+      @include headerFontStyle();
+      margin: 0;
+      margin-left: 10px;
+    }
+  }
 }
