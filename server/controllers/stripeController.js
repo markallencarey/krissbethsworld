@@ -1,4 +1,7 @@
-const stripe = require('stripe')('sk_test_51I9YaaDrQip7yfNSrJeG7Tv1WfABgJRflh5OcvgdVzvfP96fpIB3C6YZRLvztim0QUKxhBzVVe6KU2LPat6Racgi00dgrcSwZ6')
+require('dotenv').config()
+const { STRIPE_KEY } = process.env
+
+const stripe = require('stripe')(STRIPE_KEY)
 
 // const YOUR_DOMAIN = 'http://localhost:3000/#'
 const YOUR_DOMAIN = 'http://krissbethsworld.com'
