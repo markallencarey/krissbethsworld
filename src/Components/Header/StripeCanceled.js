@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, withRouter } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 
 const StripeCanceled = (props) => {
   useEffect(() => {
@@ -7,7 +8,7 @@ const StripeCanceled = (props) => {
   })
 
   return (
-    <div className='Stripe-Canceled'>
+    <Container className='Stripe-Canceled'>
       <p>The checkout was canceled</p>
       <Link
         to={'/products'}
@@ -15,7 +16,7 @@ const StripeCanceled = (props) => {
       >
         <p>Return to Shop</p>
       </Link>
-    </div>
+    </Container>
   )
 }
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { loginUser, logoutUser } from '../../redux/userReducer'
 import { updateCart } from '../../redux/cartReducer'
 import { Link, withRouter } from 'react-router-dom'
+import { Container, Form, Button } from 'react-bootstrap'
 
 const Login = (props) => {
 
@@ -51,58 +52,72 @@ const Login = (props) => {
   }
 
   return (
-    <div className='Login'>
+    <Container className='Login'>
       {!props.isLoggedIn ? (
-        <div className='login-form'>
-          <div className='login-form-email'>
-            <p >Email: </p>
-            <form>
-              <input
-                type='email'
-                placeholder='email'
-                value={email}
-                onChange={e => handleEmailInput(e.target.value)}
-              />
-            </form>
-          </div>
+        <Form className='login-form' onSubmit={login}>
+          <Form.Group className='login-form-group'>
+            <Form.Label className='login-form-label'><h6>Email: </h6></Form.Label>
+            <Form.Control
+              className='login-form-control'
+              type='email'
+              placeholder='email'
+              value={email}
+              onChange={e => handleEmailInput(e.target.value)}
+            />
+          </Form.Group>
 
-          <div className='login-form-password'>
-            <p >Password: </p>
-            <form>
-              <input
-                type='password'
-                placeholder='password'
-                value={password}
-                onChange={e => handlePasswordInput(e.target.value)}
-              />
-            </form>
-          </div>
+          <Form.Group className='login-form-group'>
+            <Form.Label className='login-form-label'><h6>Password: </h6></Form.Label>
+            <Form.Control
+              className='login-form-control'
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={e => handlePasswordInput(e.target.value)}
+            />
+          </Form.Group>
 
-          <button
-            className='login-form-login-btn'
-            onClick={login}>Login</button>
-          <div className='login-form-register'>
-            <p>New user?</p>
-            <Link
-              className='link'
-              to={'/login/register'}>
-              <button>Register</button>
-            </Link>
-          </div>
-        </div>
+          <Container>
+            <Button
+              className='login-form-login-btn button'
+              onClick={login}
+              variant='light'
+              type='submit'
+            ><h5>Login</h5></Button>
+            <Container className='login-form-register'>
+              <h4>New user?</h4>
+              <Link
+                className='link'
+                to={'/login/register'}>
+                <Button
+                  className='login-form-register-btn button'
+                  variant='light'
+                ><h5>Register</h5></Button>
+              </Link>
+            </Container>
+          </Container>
+        </Form>
       ) : (
-          <div className='login-welcome-back'>
-            <p className='welcome-back'>Welcome back,</p>
-            <p className='login-first-name'>{props.user.first_name}!</p>
+          <Container className='login-welcome-back'>
+            <h5 className='welcome-back'>Welcome back,</h5>
+            <h1 className='login-first-name'>{props.user.first_name}!</h1>
             <Link
               className='link'
               to={'/products'}>
-              <p className='check-out-shop'>Check out my shop</p>
+              <h5 className='check-out-shop'>Check out my shop</h5>
             </Link>
-            <button onClick={logout}>Log Out</button>
-          </div>
+            <Link
+              className='link'
+              to={'/loggedout'}
+            >
+              <Button
+                className='button'
+                onClick={logout}>Log Out
+                </Button>
+            </Link>
+          </Container>
         )}
-    </div>
+    </Container>
   )
 }
 

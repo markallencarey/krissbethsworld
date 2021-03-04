@@ -3,6 +3,7 @@ import Product from './Product'
 import Loading from '../Home/Loading'
 import { connect } from 'react-redux'
 import { getAllProducts } from '../../redux/productsReducer'
+import { Container } from 'react-bootstrap'
 
 const Products = (props) => {
 
@@ -10,10 +11,11 @@ const Products = (props) => {
 
   useEffect(() => {
     getAllProducts()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
 
   return (
-    <div className='product-list'>
+    <Container fluid className='product-list'>
       {props.productIsLoading ? (
         <Loading />
       ) : (
@@ -23,7 +25,7 @@ const Products = (props) => {
             )
           })
         )}
-    </div>
+    </Container>
   )
 }
 

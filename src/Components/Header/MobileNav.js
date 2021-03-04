@@ -5,44 +5,47 @@ import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
+import { Nav } from 'react-bootstrap'
 
 const MobileNav = (props) => {
 
+  const { user, toggleNavMenu, logoutUser, clearCart } = props
+
   function logout() {
     axios.delete('/auth/logout').then(res => {
-      props.logoutUser()
-      props.clearCart()
+      logoutUser()
+      clearCart()
     })
   }
 
   return (
-    <div>
-      <div className='nav-close-btn'
-        onClick={props.toggleNavMenu}>
+    <Nav className='MobileNav'>
+      <Nav.Item className='nav-close-btn'
+        onClick={toggleNavMenu}>
         <MdKeyboardArrowLeft
           size='18' />
         <p className='mobile-close-text'>Close</p>
-      </div>
+      </Nav.Item>
 
       {props.isLoggedIn ? (
-        <div className='mobile-nav-welcome'>
+        <Nav.Item className='mobile-nav-welcome'>
           <p>Welcome,</p>
-          <p>{props.user.first_name}!</p>
-        </div>
+          <p>{user.first_name}!</p>
+        </Nav.Item>
       ) : (null)}
 
-      <div className='mobile-nav-items'>
+      <Nav.Item className='mobile-nav-items'>
         <Link
           className='link'
           to={'/'}>
           <p className='mobile-nav-item'
-            onClick={props.toggleNavMenu}>Home</p>
+            onClick={toggleNavMenu}>Home</p>
         </Link>
         <Link
           className='link'
           to={'/products'}>
           <p className='mobile-nav-item'
-            onClick={props.toggleNavMenu}>Shop</p>
+            onClick={toggleNavMenu}>Shop</p>
         </Link>
 
         {!props.isLoggedIn ? (
@@ -50,7 +53,7 @@ const MobileNav = (props) => {
             className='link'
             to={'/login'}>
             <p className='mobile-nav-item'
-              onClick={props.toggleNavMenu}>Log In</p>
+              onClick={toggleNavMenu}>Log In</p>
           </Link>
         ) : (
             <Link
@@ -60,15 +63,13 @@ const MobileNav = (props) => {
                 className='mobile-nav-item'
                 onClick={() => {
                   logout()
-                  props.toggleNavMenu()
+                  toggleNavMenu()
                 }}
               >Log Out</p>
             </Link>
           )}
-
-      </div>
-    </div>
-
+      </Nav.Item>
+    </Nav>
   )
 }
 

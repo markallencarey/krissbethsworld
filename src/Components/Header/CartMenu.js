@@ -2,19 +2,25 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateCart, clearCart, getCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
+// import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
-// import { ClickAwayListener } from '@material-ui/core'
+import { Container, Button, Modal } from 'react-bootstrap'
 
 const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMxXrd2mycNJBIxKbzC8amtkDwRCRDrCVJWqJ30kcmeFrkmeJ91CxB00NvHR5Fep')
 
 const CartMenu = (props) => {
 
+  const { isLoggedIn, cartIsLoading, cart, getCart } = props
+
   useEffect(() => {
-    props.getCart()
-  }, [props.isLoggedIn])
+    getCart()
+  }, [isLoggedIn]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  let total = cart.reduce((acc, el) => {
+    return acc + (el.price * el.quantity)
+  }, 0).toFixed(2)
 
   async function handleClick() {
     const stripe = await stripePromise
@@ -29,31 +35,21 @@ const CartMenu = (props) => {
     })
   }
 
-  // function handleClickAway() {
-  //   props.toggleCartMenu()
-  // }
-
   return (
-    // <ClickAwayListener onClickAway={handleClickAway}>
-    <div>
-      <div className='cart-menu-header'>
-        <div className='cart-menu-close-btn'
-          onClick={props.toggleCartMenu}>
-          <MdKeyboardArrowLeft
-            size='18' />
-          <p className='cart-menu-close-text'>Close</p>
-        </div>
-        <button
+    <Container className='CartMenu'>
+      <Modal.Header className='cart-menu-header' closeButton>
+        <Button
           onClick={props.clearCart}
-          className='cart-menu-clear-cart-btn'
-        >Clear Cart</button>
-      </div>
+          className='cart-menu-clear-cart-btn button'
+          variant='light'
+        ><h6>Clear</h6></Button>
+      </Modal.Header>
 
-      <div className='cart-menu-list'>
-        {props.cartIsLoading ? (
+      <Modal.Body className='cart-menu-list'>
+        {cartIsLoading ? (
           <Loading />
         ) : (
-            props.cart.map(element => {
+            cart.map(element => {
               return (
                 <CartMenuItem
                   key={element.id}
@@ -62,22 +58,22 @@ const CartMenu = (props) => {
               )
             })
           )}
-      </div>
+      </Modal.Body>
 
-      <footer>
-        {/* <div className='cart-menu-total-div'>
-          <p className='cart-menu-total-text'>Total:</p>
-          <p className='cart-menu-total-price'>${total}</p>
-        </div> */}
-        <div className='cart-menu-checkout-btn-div'>
-          <button
-            className='cart-menu-checkout-btn'
-            onClick={handleClick}
-          >Checkout</button>
+      <Modal.Footer className='cart-menu-footer'>
+        <div className='cart-menu-total-div'>
+          <h5 className='cart-menu-total-text'>Sub-Total:</h5>
+          <h5 className='cart-menu-total-price'>${total}</h5>
         </div>
-      </footer>
-    </div>
-    // </ClickAwayListener>
+        <Container className='cart-menu-checkout-btn-div'>
+          <Button
+            className='cart-menu-checkout-btn button'
+            onClick={handleClick}
+            variant='light'
+          ><h5>Checkout</h5></Button>
+        </Container>
+      </Modal.Footer>
+    </Container>
   )
 }
 

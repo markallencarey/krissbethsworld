@@ -1,15 +1,9 @@
 @import './variables';
 @import './mixins';
 
-*{
-  // box-sizing: border-box;
-  // padding: 0px;
-  // margin: 0px;
-}
-
 .Display {
   height: 100vh;
-  width: 100vw;
+  padding: 0;
   text-align: center;
   font-family: $globalFontFamily;
   position: relative;
@@ -26,7 +20,22 @@
   @include headerFontStyle();
 }
 
-button {
-  @include resetButtonStyle();
+.link:hover {
+  @include buttonHover();
+}
+
+.button {
   @include headerFontStyle();
+  @include buttonStyle();
+  color: black;
+}
+
+.button:hover {
+  @include buttonHover();
+}
+
+.top-line-div {
+  height: 2px;
+  background-color: black;
+  opacity: 0.5;
 }

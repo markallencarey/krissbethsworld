@@ -1,66 +1,71 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../redux/userReducer'
 import { clearCart } from '../../redux/cartReducer'
-import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
+import { Nav } from 'react-bootstrap'
 
 const NavBar = (props) => {
 
+  const { logoutUser, clearCart, isLoggedIn, user } = props
+
   function logout() {
     axios.delete('/auth/logout').then(res => {
-      props.logoutUser()
-      props.clearCart()
+      logoutUser()
+      clearCart()
     })
   }
 
   return (
-    <div className='nav-bar'>
-
-      <div className='nav-bar-items'>
+    <Nav className='nav-bar'>
+      <Nav.Item>
         <Link
           to={'/'}
           className='link'
         >
-          <p>Home</p>
+          <h5>Home</h5>
         </Link>
+      </Nav.Item>
+
+      <Nav.Item>
         <Link
           to={'/products'}
           className='link'
         >
-          <p>Shop</p>
+          <h5>Shop</h5>
         </Link>
+      </Nav.Item>
 
-        {!props.isLoggedIn ? (
+      {!isLoggedIn ? (
+        <Nav.Item>
           <Link
             to={'/login'}
             className='link'
           >
-            <p>Log In</p>
+            <h5>Log In</h5>
           </Link>
-        ) : (
+        </Nav.Item>
+      ) : (
+          <Nav.Item>
             <Link
               to={'/loggedout'}
               className='link'>
-              <p
-                className='nav-bar-item'
+              <h5
                 onClick={() => {
                   logout()
                 }}
-              >Log Out</p>
+              >Log Out</h5>
             </Link>
-          )}
-</div>
+          </Nav.Item>
+        )}
 
-        {props.isLoggedIn ? (
-          <div className='nav-bar-welcome'>
-            <p>Welcome, {props.user.first_name}!</p>
-          </div>
-        ) : (null)}
-
-
-    </div>
+      {isLoggedIn ? (
+        <Nav.Item className='nav-bar-welcome'>
+          <p>Welcome, {user.first_name}!</p>
+        </Nav.Item>
+      ) : (null)}
+    </Nav>
   )
 }
 

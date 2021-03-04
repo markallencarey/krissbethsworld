@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
+import { Container, Image } from 'react-bootstrap'
 
 /*data object:
   description
@@ -14,15 +15,15 @@ import { withRouter } from 'react-router-dom'
 const Product = (props) => {
 
   return (
-    <div className='product-list-item'>
+    <Container className='product-list-item'>
       <Link
         className='link'
         to={`/products/${props.product.id}`}>
-        <img className='product-img' src={props.product.img} alt='product'/>
+        <Image className='product-img' src={props.product.img} alt='product'/>
         <p className='product-name'>{props.product.name}</p>
         <p className='product-price'>${props.product.price}</p>
       </Link>
-    </div>
+    </Container>
   )
 }
 

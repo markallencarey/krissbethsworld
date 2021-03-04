@@ -1,15 +1,14 @@
 import React from 'react'
 import { Roller } from 'react-awesome-spinners'
+import { Container } from 'react-bootstrap'
 
 
 const Loading = (props) => {
 
   return (
-    <div className='Loading'>
-      <div className='loading-roller'>
-        <Roller />
-      </div>
-    </div>
+    <Container className='Loading'>
+      <Roller />
+    </Container>
   )
 }
 

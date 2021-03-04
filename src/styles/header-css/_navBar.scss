@@ -1,22 +1,14 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
 
-.nav-bar-welcome {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  margin-top: 2px;
 
-  p {
-    font-size: 12px;
-  }
+.nav-bar-hide {
+  display: none;
 }
 
-.nav-bar-items {
-  display: flex;
-  align-items: center;
-  p {
-    padding: 10px;
-    font-size: 16px;
-  }
+.nav-bar-welcome {
+    p {
+      margin: 0;
+      margin-left: 10px;
+    }
 }

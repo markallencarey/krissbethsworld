@@ -1,68 +1,70 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
 
 .header {
+  @include headerFontStyle();
   height: 8vh;
-  width: 100vw;
-  @include flexSpaceBetween();
-  // backdrop-filter: blur(3px);
-  background-color: $globalColor;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
 }
 
-.logo {
-  height: 60px;
-  margin-top: 3px;
-  margin-right: 5px;
-  position: absolute;
-  top: 0;
-  left: 42vw;
-}
-
-.hamburger {
-  margin-left: 10px;
-}
-
-.cart-icon {
-  margin-right: 10px;
-}
-
 .nav-bar {
   display: none;
 }
 
-@media (min-width: 768px) {
-  .header {
-    position: fixed;
-  }
-  
-  .logo {
-    height: 80px;
-    position: absolute;
-    left: 44vw;
-  }
+.logo {
+  height: 8vh;
+}
+
+.cart-icon {
+  cursor: pointer;
+}
+
+
+.header-Col1 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-Col2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-Col3 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-btn {
+  @include buttonStyle();
+}
+
+.cart-icon:hover {
+  @include buttonHover();
 }
 
 @media (min-width: 1024px) {
-  .logo {
-    height: 100px;
-    position: absolute;
-    left: 45vw;
-  }
-  .header {
-    height: 10vh;
-    position: fixed;
-  }
   .hamburger {
     display: none;
   }
+
+  // .mobile-nav {
+  //   display: none;
+  // }
+
   .nav-bar {
     display: flex;
     align-items: center;
-    @include headerFontStyle();
-    padding: 10px;
+    h5 {
+      @include headerFontStyle();
+      margin: 0;
+      margin-left: 10px;
+    }
   }
 }

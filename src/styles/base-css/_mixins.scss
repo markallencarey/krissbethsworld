@@ -1,36 +1,7 @@
-@mixin flexCenter() {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@mixin flexColumnStart() {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-@mixin flexColumnCenter() {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@mixin flexSpaceBetween() {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 @mixin headerFontStyle() {
   text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-@mixin backTextStyle() {
-  text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-weight: 300;
 }
 
 @mixin componentTopPosition() {
@@ -38,14 +9,20 @@
   top: 8vh;
 }
 
-@mixin resetButtonStyle() {
-  background: none;
-  // color: #00bfff;
-  color: inherit;
-	border: none;
-	padding: 10px;
-	font: inherit;
-	cursor: pointer;
-  outline: inherit;
-  font-size: 18px;
+@mixin buttonStyle() {
+  background-color: inherit;
+  border: none;
+}
+
+@mixin buttonHover() {
+  background-color: inherit;
+  border: none;
+  color: #519e8a;
+  text-decoration: none;
+}
+
+@mixin buttonFocus() {
+  background-color: inherit;
+  border: none;
+  color: #519e8a;
 }

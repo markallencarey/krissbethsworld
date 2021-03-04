@@ -1,13 +1,13 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
 
 .Stripe-Canceled {
   @include componentTopPosition();
-  margin-top: 20%;
-  @include headerFontStyle();
-  width: 200px;
-
+  margin: 12vh 0;
+  display: flex;
+  flex-direction: column;
+  
   p {
-    margin-bottom: 100px;
+    margin: 20px;
   }
 }

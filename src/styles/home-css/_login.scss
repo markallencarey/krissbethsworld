@@ -1,85 +1,88 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
 @import url(https://fonts.googleapis.com/css?family=Satisfy:regular);
 
 .Login {
   @include componentTopPosition();
-  margin-top: 10%;
+  margin: 2vh 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  font-size: 22px;
+}
+
+.login-form {
   position: relative;
-
-  input {
-    padding: 8px;
-    width: 250px;
-    font-family: $globalFontFamily;
-    font-size: 14px;
-    @include headerFontStyle();
-    
-  }
-
-  ::placeholder {
-    font-size: 14px;
-    @include headerFontStyle();
-    font-family: $globalFontFamily;
-  }
+  top: 6vh;
 }
 
-.login-form-email {
-  margin-bottom: 20px;
+.login-form-group {
+  margin-bottom: 40px;
   @include headerFontStyle();
-
-  p {
-    margin-bottom: 10px;
-  }
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.login-form-password {
-  margin-bottom: 20px;
-  @include headerFontStyle();
+.login-form-label {
+  margin: 10px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
 
-  p {
-    margin-bottom: 10px;
+  h6 {
+    margin: 0;
+    @include headerFontStyle();
   }
 }
 
 .login-form-login-btn {
+  width: 30%;
   margin-bottom: 40px;
-  @include headerFontStyle();
+  background-color: $globalColor;
+
+  h5 {
+    @include headerFontStyle();
+    margin: 0;
+  }
 }
 
 .login-form-register {
-  @include headerFontStyle();
-  
-  margin-bottom: 30px;
+  h4,
+  h5 {
+    margin-bottom: 20px;
+    @include headerFontStyle();
+  }
+}
 
-  p {
-    margin-bottom: 10px;
+.login-form-register-btn {
+  background-color: $globalColor;
+
+  h5 {
+    @include headerFontStyle();
+    margin: 0;
   }
 }
 
 .login-welcome-back {
-  p {
-    line-height: 24px;
-    padding: 5px;
-  }
+  @include componentTopPosition();
+  margin: 2vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  .welcome-back {
+  h4,
+  h5,
+  h6 {
     @include headerFontStyle();
-    font-size: 18px;
-  }
-  
-  .login-first-name {
-    font-family: 'Satisfy';
-    font-size: 44px;
     padding: 20px;
   }
+}
 
-  .check-out-shop {
-    padding-top: 60px;
-    padding-bottom: 120px;
-    font-size: 18px;
+.login-first-name {
+  font-family: "Satisfy";
+}
+
+@media (min-width: 1024px) {
+  .login-form-group {
+    width: 40vw;
   }
 }

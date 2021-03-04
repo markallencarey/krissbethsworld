@@ -7,6 +7,10 @@ module.exports = {
       const user_id = id
       const cart = await db.cart.get_cart([user_id])
 
+      cart.map(el => {
+        el.price = el.price.toFixed(2)
+      })
+
       res.status(200).send(cart)
     } else {
       res.sendStatus(404)
@@ -40,7 +44,8 @@ module.exports = {
   changeQuantity: async (req, res) => {
     const db = req.app.get('db')
 
-    const { product_id, quantity } = req.body
+    const { product_id } = req.body
+    let { quantity } = req.body
     const { id } = req.session.user
     const user_id = id
 
