@@ -59,7 +59,7 @@ const SingleProduct = (props) => {
   }
 
   return (
-    <Container fluid>
+    <Container fluid className='single-product-container'>
       {productIsLoading ? (
         <Loading />
       ) : (

@@ -24,7 +24,6 @@ const Header = (props) => {
 
   function logout() {
     axios.delete('/auth/logout').then(() => {
-
     }).catch(err => {
       console.log(err)
     })

@@ -2,14 +2,7 @@
 @import '../base-css/mixins';
 
 .Loading {
-  // height: 100%;
-  // width: 100%;
   display: flex;
   justify-content: center;
-  // @include componentTopPosition();
+  margin-top: 10vh;
 }
-
-// .loading-roller {
-//   margin-top: 10%;
-//   z-index: 10;
-// }

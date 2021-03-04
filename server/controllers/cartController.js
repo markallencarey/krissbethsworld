@@ -49,10 +49,6 @@ module.exports = {
     const { id } = req.session.user
     const user_id = id
 
-    // if (quantity < 0) {
-    //   quantity = 0
-    // }
-
     await db.cart.change_quantity([quantity, user_id, product_id])
 
     const cart = await db.cart.get_cart([user_id])

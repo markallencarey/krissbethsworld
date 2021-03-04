@@ -1,5 +1,10 @@
-@import '../base-css/variables';
-@import '../base-css/mixins';
+@import "../base-css/variables";
+@import "../base-css/mixins";
+
+.MobileNav {
+  display: flex;
+  flex-direction: column;
+}
 
 .mobile-nav {
   display: flex;
@@ -9,7 +14,6 @@
   left: 15px;
   text-align: left;
   background-color: $globalColor;
-  // width: 40vw;
   z-index: 1000;
   box-shadow: $globalBoxShadow;
   padding: 5px;
@@ -26,7 +30,6 @@
 
 .mobile-nav-hide {
   width: 0;
-  // border: none;
   box-shadow: none;
   opacity: 0;
   visibility: hidden;
@@ -34,7 +37,7 @@
 
 .mobile-nav-welcome {
   margin-bottom: 5px;
-  
+
   p {
     margin: 0 20px;
     font-weight: 500;

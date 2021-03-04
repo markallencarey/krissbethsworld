@@ -19,7 +19,7 @@ const MobileNav = (props) => {
   }
 
   return (
-    <Nav>
+    <Nav className='MobileNav'>
       <Nav.Item className='nav-close-btn'
         onClick={toggleNavMenu}>
         <MdKeyboardArrowLeft
