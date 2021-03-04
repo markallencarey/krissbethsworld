@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateCart, clearCart, getCart } from '../../redux/cartReducer'
 import CartMenuItem from './CartMenuItem'
-// import { MdKeyboardArrowLeft } from 'react-icons/md'
 import axios from 'axios'
 import Loading from '../Home/Loading'
 import { loadStripe } from '@stripe/stripe-js'
 import { Container, Button, Modal } from 'react-bootstrap'
 
-const stripePromise = loadStripe('pk_test_51I9YaaDrQip7yfNSgjgRZygvDZq6uDslE0NMxXrd2mycNJBIxKbzC8amtkDwRCRDrCVJWqJ30kcmeFrkmeJ91CxB00NvHR5Fep')
+const stripePromise = loadStripe('pk_live_51I9YaaDrQip7yfNSYkWQySRRXxHoYJgcgJS5WgS5U93w0UNqbCKDxto9H1KEWShSJA23u2JUizzehCCqcij6VKq900O7mgxy6J')
 
 const CartMenu = (props) => {
 
